@@ -30,7 +30,7 @@
 패키지 매니저 및 주요 프레임워크, 언어는 다음과 같습니다.
 
 - Next.js (`Create-Next-App`을 활용한 템플릿 사용)
-- Yarn 3.6.1 (`PnP` 기능 사용)
+- Yarn 3.6.1 (`PnP` 기능 미사용)
 - TypeScript
 - Node.js 20
 
