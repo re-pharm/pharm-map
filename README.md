@@ -1,34 +1,85 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 폐의약품 수거지도
 
-## Getting Started
+`폐의약품 수거지도`는 공공데이터를 기반으로 [스마트 서울맵](https://map.seoul.go.kr/smgis2/)의 폐의약품 수거함 위치 지도와 유사하게 전국의 폐의약품 수거함 위치와 폐기법을 안내하는 지도입니다. 향후 개발을 통해 다양한 부가 기능을 함께 제공하여 보다 손쉽게 폐의약품을 배출하고 안전하게 폐기할 수 있도록 지원합니다.
 
-First, run the development server:
+## 지원 예정 지역
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+> 지원 예정 지역의 데이터는 2023.04. 기준으로 데이터 존재 여부를 확인한 것으로, 현재 지원되는 지역 혹은 향후 실제 지원되는 지역과 차이가 있을 수 있습니다.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- 경기도 고양시<sup>우선 지원 예정</sup>
+- 경기도 구리시<sup>우선 지원 예정</sup>
+- 경상북도 19개 시/군
+- 광주광역시 전역
+- 인천광역시 전역
+- 대전광역시 3개 자치구
+- 대구광역시 5개 자치구
+- 세종특별자치시 전역
+- 전라남도 전역
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 참여하기
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### 개발에 참여하기
 
-## Learn More
+#### 개발 환경
 
-To learn more about Next.js, take a look at the following resources:
+본 프로젝트는 다음 환경에서 배포할 것을 가정하고 제작되었습니다.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- CloudFlare Pages
+- CloudFlare D1 Database
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+패키지 매니저 및 주요 프레임워크, 언어는 다음과 같습니다.
 
-## Deploy on Vercel
+- Next.js (`Create-Next-App`을 활용한 템플릿 사용)
+- Yarn 3.6.1 (`PnP` 기능 사용)
+- TypeScript
+- Node.js 20
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+따라서, `git clone`하신 후에는 개발 서버 실행 전 `yarn install` 명령어를 실행해주세요. 만약 `yarn`을 찾을 수 없다고 나온다면, `node.js`가 설치되어 있는지 혹은 `corepack`이 설치되어 있는지 확인해주세요.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+개발 서버는 `yarn dev`로 실행하시면 작동합니다. 기본 개발 서버 주소는 `localhost:3000`입니다.
+
+#### 커밋 및 브랜치 명명 규칙
+
+커밋 메시지는 `(종류)작업한 내용` 형태를 갖춰야 합니다. 종류는 다음과 같습니다.
+
+| 종류 | 설명 |
+| --- | --- |
+| `init` | 프로젝트를 초기화할 때 사용해요 |
+| `fix` | 버그를 수정하였을 때 사용해요. 이때 작업한 내용에는 **무엇을 고쳤다**, 가 아닌 **무엇이 문제다**를 써주세요. |
+| `feat` | 새로운 기능을 추가하였을 때 사용해요. |
+| `cont` | 공공데이터, 프로젝트 내부 문서 등 데이터나 문서를 추가하였을 때 사용해요. |
+
+> 기존 구조를 변경하는 커밋은 `feat`를 사용하여 표현해주세요. (예시: JSON 파일을 직접 들여오는 방식에서 API 사용으로 변경)
+
+브랜치는 다음과 같이 나눠집니다.
+
+| 종류 | 설명 |
+| --- | --- |
+| `main` | 현재 서비스에 적용되는 소스에요. |
+| `dev` | 현재 개발 중인 내용에 적용되는 소스에요. |
+| `커밋종류/간단 설명` | `init`을 제외하고 특정한 기능을 테스트할 목적으로 사용하는 브랜치에요. 일반적인 경우 개발은 `dev`에서 이뤄지고, 적용되지 않을 가능성이 높거나 버그 가능성으로 연구가 필요한 경우 사용해요. |
+
+> PR을 작성하실 때는 되도록 `커밋종류/간단 설명` 형태의 브랜치를 생성하여 작업해주시면 감사하겠습니다.
+
+### 데이터 기여 및 오류 제보
+
+개발 지식이 없더라도 누락된 혹은 잘못 포함된 데이터, 사용 중 발생한 오류를 제보해주시는 것만으로 큰 도움이 됩니다.
+
+#### 데이터 기여하기
+
+공공 데이터의 갱신 주기 차이 및 다양한 원인으로 인해 데이터와 실제가 불일치할 수 있습니다. 이와 관련하여 아래 양식으로 제보해주시면 확인하여 기존 데이터에서 제외하거나 추가할 수 있도록 하겠습니다.
+
+데이터 제보 전, 반드시 다음 사항을 확인해주세요.
+
+- **폐의약품 수거함이 포화 상태여서 수거가 불가한 경우**: 폐의약품을 받지 않는 경우는 아니므로 *신규 폐의약품 수거함 제보에만 가능해요*
+- **폐의약품 수거함 비치 예정인 경우**: 아직 비치되지 않아 사용자의 혼란을 유발할 수 있고, 개발자가 수작업으로 확인하기 어려워 제보가 *불가해요*
+- **폐의약품 수거함을 더는 비치하지 않는 경우**: 폐의약품을 앞으로도 받지 않으므로 제보가 *가능해요*
+
+**양식은 Google 설문지로 제공될 예정이에요. 조금만 기다려주세요.**
+
+#### 오류 제보
+
+사용 중 기능이 작동하지 않거나, 잘못된 작동을 하는 경우 개발자에게 수정을 요구할 수 있습니다. 한국어와 영어 모두 사용 가능합니다.
+
+- [GitHub 계정을 보유한 경우](https://github.com/re-pharm/pharm-map/issues/new/choose)
+- **GitHub 계정이 없는 경우의 양식은 Google 설문지로 제공될 예정이에요. 조금만 기다려주세요.**
