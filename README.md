@@ -83,3 +83,20 @@
 
 - [GitHub 계정을 보유한 경우](https://github.com/re-pharm/pharm-map/issues/new/choose)
 - **GitHub 계정이 없는 경우의 양식은 Google 설문지로 제공될 예정이에요. 조금만 기다려주세요.**
+
+### 제3자 데이터 및 라이브러리 안내
+
+#### 오픈 API
+
+- [경기도 고양시 폐의약품 수거함 현황](https://www.data.go.kr/data/15077990/fileData.do#tab-layer-openapi) : 이용허락범위 제한 없음
+
+공공데이터 포털에 신청한 시점부터 갱신하여 데이터를 추가할 예정입니다.
+
+#### 라이브러리, 프레임워크 및 패키지 매니저
+
+- [Next.js](https://nextjs.org): MIT License
+- [TailwindCSS](https://tailwindcss.com/): MIT License
+- [Yarn](https://yarnpkg.com/): BSD-2-Clause License
+- [Kakao Maps SDK for Kaka Open Platform Service](https://apis.map.kakao.com/web/) : [Apache License](https://devtalk.kakao.com/t/api/41598/3)
+- [React.js](https://react.dev): MIT License
+- [SUITE Variable](https://sunn.us/suite/): SIL Open Font License
