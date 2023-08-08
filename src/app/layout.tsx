@@ -13,7 +13,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
-      <body>{children}</body>
+      <body>
+        {children}
+        <footer className="m-4">
+          <p>
+            © 2023 Re:Pharm 프로젝트 및 &nbsp;
+            <a href="https://github.com/re-pharm/pharm-map/people" target="_blank">기여자</a>. &nbsp;
+            <a href="https://github.com/re-pharm/pharm-map/README.md" target="_blank">오픈소스 라이선스 확인하기</a>
+          </p>
+        </footer>  
+      </body>
     </html>
   )
 }

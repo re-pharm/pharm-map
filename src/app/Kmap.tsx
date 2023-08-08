@@ -38,7 +38,7 @@ export default function Kmap() {
           src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_KEY}&libraries=services,clusterer&autoload=false`}
           onLoad={() => (window as any).kakao.maps.load(initMap)}
       />
-      <section id="map" className="m-8 rounded-xl w-full">
+      <section id="map" className="mx-8 mt-8 rounded-xl w-full">
       </section>
     </>
   )
