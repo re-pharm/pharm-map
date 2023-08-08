@@ -4,24 +4,26 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-rgb: 255, 255, 255;
+}
+
+@font-face {
+  font-family: SUITE Variable;
+  src: url("/font/SUITE-Variable.woff2") format("woff2");
+  font-style: normal;
+  font-display: swap;
+  font-feature-settings: "ss17", "ss18", "tnum";
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-rgb: 0, 0, 0;
   }
 }
 
 body {
+  font-family: "SUITE Variable", "SUITE", "NanumSqaure Neo", "Noto Sans KR", sans-serif;
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: rgb(var(--background-rgb));
 }
