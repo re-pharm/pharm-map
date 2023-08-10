@@ -4,7 +4,7 @@ import Kmap from './Kmap';
 export default function Home() {
   return (
     <main className="flex">
-      <section id="search" className="px-8 pt-8">
+      <section id="search" className="w-full sm:w-fit px-8 pt-8">
         <h1 className="text-2xl">
           <span className="blockText text-sm">우리동네</span>
           폐의약품 수거지도 💊

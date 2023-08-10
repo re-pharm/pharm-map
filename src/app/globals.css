@@ -30,8 +30,13 @@ body {
   font-family: "SUITE Variable", "SUITE", "NanumSqaure Neo", "Noto Sans KR", sans-serif;
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
+  word-break: keep-all;
 }
 
 a {
   text-decoration: underline;
+}
+
+footer a {
+  display: inline-block;
 }
