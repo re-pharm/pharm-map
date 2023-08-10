@@ -20,6 +20,10 @@
     --foreground-rgb: 255, 255, 255;
     --background-rgb: 0, 0, 0;
   }
+
+  select {
+    color: rgb(var(--background-rgb));
+  }
 }
 
 body {
