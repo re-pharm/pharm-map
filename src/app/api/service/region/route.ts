@@ -21,9 +21,10 @@ export async function GET(request: Request) {
         case "state":
             return NextResponse.json(region.state);
         case "city":
-            if (state !== null)
+            if (state !== null && region.city[state])
                 return NextResponse.json(region.city[state]);
-            break;
+            else
+                return NextResponse.json({error: "없는 지역입니다."}, {status: 404});
         default:
             return NextResponse.json({error: "잘못된 지역 분류입니다."}, {status: 400});
     }
