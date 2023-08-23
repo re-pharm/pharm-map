@@ -4,33 +4,20 @@ import Script from 'next/script';
 import { useCallback } from 'react';
 import "./kmap.css";
 
-export default function Kmap() {
+type Props = {
+  lat: number;
+  lng: number;
+}
+
+export default function Kmap(props: Props) {
   const initMap = useCallback(() => {
     const container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
     const options = { //지도를 생성할 때 필요한 기본 옵션
-      center: new (window as any).kakao.maps.LatLng(33.450701, 126.570667), //지도의 중심좌표.
+      center: new (window as any).kakao.maps.LatLng(props.lat, props.lng), //지도의 중심좌표.
       level: 3 //지도의 레벨(확대, 축소 정도)
     };
     const map = new (window as any).kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-
-    if ("geolocation" in navigator) {
-      navigator.geolocation.getCurrentPosition(async ({ coords }) => {
-          const addressData = await fetch(`https://dapi.kakao.com/v2/local/geo/coord2regioncode.JSON?x=${coords.longitude}&y=${coords.latitude}`, {
-              headers: {
-                  "Authorization": `KakaoAK ${process.env.KAKAO_REST_KEY}`
-              }
-          });
-          
-          map.setCenter(new (window as any).kakao.maps.LatLng(coords.latitude, coords.longitude));
-      }, (error) => {
-          console.log(error);
-      }, {
-          enableHighAccuracy: true,
-          maximumAge: 10000,
-          timeout: 5000
-      });
-    }
-  }, []);
+  }, [props]);
 
   return (
     <>
