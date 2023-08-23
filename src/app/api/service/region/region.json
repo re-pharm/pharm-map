@@ -1,0 +1,20 @@
+{
+    "state": [
+        {
+            "code": "gg",
+            "name": "경기도"
+        }
+    ],
+    "city": {
+        "gg": [
+            {
+                "code": "goyang",
+                "name": "고양시"
+            },
+            {
+                "code": "guri",
+                "name": "구리시"
+            }
+        ]
+    }
+}
