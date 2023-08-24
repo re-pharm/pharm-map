@@ -7,7 +7,8 @@ type StateType = {
 }
 
 type Props = {
-    setLatLng: Dispatch<SetStateAction<{lat: number, lng: number}>>
+    setLatLng: Dispatch<SetStateAction<{lat: number, lng: number}>>,
+    setRegion: Dispatch<SetStateAction<{state: string|null, city: string|null}>>
 }
 
 export default function Location(prop: Props) {
@@ -63,7 +64,7 @@ export default function Location(prop: Props) {
             const cityData = await fetch(`/api/service/region?type=city&state=${state}`);
             const cities: StateType[] = await cityData.json();
 
-            setCities(cities);            
+            setCities(cities);
             selectState(null);
         }
 
@@ -73,23 +74,32 @@ export default function Location(prop: Props) {
     }, [selectedState])
 
     useEffect(() => {
-        if(selectedCity && citySelectBox.current && cityList.length > 0) {
+        if(selectedCity && citySelectBox.current && cityList.length > 0 && stateSelectBox.current) {
             citySelectBox.current.value = selectedCity;
+            prop.setRegion({state: stateSelectBox.current.value, city: selectedCity});
             selectCity(null);
         }
     }, [selectedCity, cityList]);
+
+    function sendRegionInfo(state:string|undefined, city: string|undefined) {
+        if (state && city) {
+            if (state !== "default" && city !== "default") {
+                prop.setRegion({state: state, city: city});
+            }
+        }
+    }
 
     return (
         <form name="findLocation" className="mt-4 mb-2 flex flex-col gap-4">
             <div id="region" className="flex flex-row gap-2">
                 <select ref={stateSelectBox} className="w-full rounded-sm focus:border-teal-400 focus:ring-teal-400" onChange={(e) => selectState(e.target.value)}>
-                    <option>시/도</option>
+                    <option value="default">시/도</option>
                     {stateList.map((state) => (
                         <option key={state.code} value={state.code}>{state.name}</option>
                     ))}
                 </select>
-                <select ref={citySelectBox} className="w-full rounded-sm focus:border-teal-400 focus:ring-teal-400">
-                    <option>시/군/구</option>
+                <select ref={citySelectBox} className="w-full rounded-sm focus:border-teal-400 focus:ring-teal-400" onChange={(e) => sendRegionInfo(stateSelectBox.current?.value, e.target.value)}>
+                    <option value="default">시/군/구</option>
                     {cityList.length > 0 && cityList.map((city) => (
                         <option key={city.code} value={city.code}>{city.name}</option>
                     ))}
