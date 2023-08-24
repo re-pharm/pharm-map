@@ -1,23 +1,33 @@
 'use client'
 
 import Script from 'next/script';
-import { useCallback } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import "./kmap.css";
 
 type Props = {
-  lat: number;
-  lng: number;
+  latLng: {
+    lat: Number,
+    lng: Number
+  }
 }
 
-export default function Kmap(props: Props) {
+export default function Kmap(prop: Props) {
+  const [map, generateMap] = useState<any>();
+
   const initMap = useCallback(() => {
     const container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
     const options = { //지도를 생성할 때 필요한 기본 옵션
-      center: new (window as any).kakao.maps.LatLng(props.lat, props.lng), //지도의 중심좌표.
+      center: new (window as any).kakao.maps.LatLng(prop.latLng.lat, prop.latLng.lng), //지도의 중심좌표.
       level: 3 //지도의 레벨(확대, 축소 정도)
     };
-    const map = new (window as any).kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-  }, [props]);
+    generateMap(new (window as any).kakao.maps.Map(container, options)); //지도 생성 및 객체 리턴
+  }, [prop]);
+
+  useEffect(() => {
+    if (map) {
+      map.setCenter(new (window as any).kakao.maps.LatLng(prop.latLng.lat, prop.latLng.lng));
+    }
+  }, [prop.latLng, map])
 
   return (
     <>

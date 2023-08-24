@@ -1,10 +1,11 @@
+"use client"
 import './page.css'
+import { useState } from 'react';
 import Kmap from './Kmap';
 import Location from './Location';
 
 export default function Home() {
-  let lat = 33.450701;
-  let lng = 126.570667;
+  const [latLng, setLatLng] = useState({lat: 33.450701, lng: 126.570667});
 
   return (
     <main className="flex">
@@ -13,14 +14,14 @@ export default function Home() {
           <span className="blockText text-sm">우리동네</span>
           폐의약품 수거지도 💊
         </h1>
-        <Location />
+        <Location setLatLng={setLatLng} />
         <form name="resultData">
           <input type="text" inputMode="text" id="pharm" placeholder="장소명을 검색하세요"
             className="border-solid focus:border-teal-400 focus:ring-teal-400 rounded-sm pl-2"
           />
         </form>
       </section>
-      <Kmap lat={lat} lng={lng} />
+      <Kmap latLng={latLng} />
     </main>
   )
 }
