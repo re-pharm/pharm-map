@@ -30,7 +30,8 @@ export async function GET(request: Request) {
             const stateResult = region.state.find((province) => province.name === state);
 
             if (stateResult !== undefined) {
-                const cityResult = region.city[stateResult.name].find((town) => town.name === city);
+                const cityResult = region.city[stateResult.code].find((town) => town.name === city);
+
                 if (cityResult !== undefined) {
                     return NextResponse.json({
                         state: stateResult,
