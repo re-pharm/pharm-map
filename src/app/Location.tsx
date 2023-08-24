@@ -90,7 +90,7 @@ export default function Location(prop: Props) {
                 </select>
                 <select ref={citySelectBox} className="w-full rounded-sm focus:border-teal-400 focus:ring-teal-400">
                     <option>시/군/구</option>
-                    {cityList.map((city) => (
+                    {cityList.length > 0 && cityList.map((city) => (
                         <option key={city.code} value={city.code}>{city.name}</option>
                     ))}
                 </select>
