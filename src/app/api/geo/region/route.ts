@@ -2,8 +2,8 @@ import { NextResponse } from "next/server";
 
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
-    const longitude: string | null = searchParams.get('longitude');
-    const latitude: string | null = searchParams.get('latitude');
+    const longitude: string | null = searchParams.get('lng');
+    const latitude: string | null = searchParams.get('lat');
 
     const addressData = await fetch(`https://dapi.kakao.com/v2/local/geo/coord2regioncode.JSON?x=${longitude}&y=${latitude}`, {
         headers: {
