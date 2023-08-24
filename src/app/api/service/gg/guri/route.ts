@@ -21,3 +21,5 @@ export async function GET(request: Request) {
         return NextResponse.json({ error: guriBoxData.msg}, { status: guriBox.status });
     }
 }
+
+export const runtime = 'edge';

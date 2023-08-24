@@ -18,3 +18,5 @@ export async function GET() {
         return NextResponse.json({ error: goyangData.msg}, { status: goyangPharm.status });
     }
 }
+
+export const runtime = 'edge';

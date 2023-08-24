@@ -48,3 +48,5 @@ export async function GET(request: Request) {
             return NextResponse.json({error: "잘못된 지역 분류입니다."}, {status: 400});
     }
 }
+
+export const runtime = 'edge';

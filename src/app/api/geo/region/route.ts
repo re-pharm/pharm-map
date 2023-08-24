@@ -22,3 +22,5 @@ export async function GET(request: Request) {
         return NextResponse.json({ error: "카카오 위치 변환 API 서비스가 점검 중입니다."}, { status: 500 });
     }
 }
+
+export const runtime = 'edge';
