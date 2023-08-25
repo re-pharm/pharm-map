@@ -45,8 +45,8 @@ export default function Home() {
   }, [region]);
 
   return (
-    <main className="flex">
-      <section id="search" className="w-full sm:w-fit px-8 pt-8">
+    <main className="flex h-full">
+      <section id="search" className="w-full sm:w-fit px-8 pt-8 flex flex-col h-[calc(100vh-4rem)]">
         <h1 className="text-2xl">
           <span className="blockText text-sm">우리동네</span>
           폐의약품 수거지도 💊
@@ -54,12 +54,16 @@ export default function Home() {
         <Location setLatLng={setLatLng} setRegion={setRegion} />
         <form name="resultData">
           <input type="text" inputMode="text" id="pharm" placeholder="장소명을 검색하세요"
-            className="border-solid focus:border-teal-400 focus:ring-teal-400 rounded-sm pl-2"
+            className="border-solid focus:border-teal-400 focus:ring-teal-400 rounded-sm pl-2 w-full"
           />
         </form>
-        <ul>
+        <ul className="rounded-xl overflow-y-scroll w-fit md:w-96 h-min">
           {dataList.length > 0 && dataList.map((place) => (
-            <li key={place.location}>{place.name}</li>
+            <li key={place.location} className="rounded-xl shadow-lg p-4 my-4 mx-2">
+              <span className="font-semibold block">{place.name}</span>
+              <span className="block">{place.location}</span>
+              <span className="block">{place.tel}</span>
+            </li>
           ))}
         </ul>
       </section>
