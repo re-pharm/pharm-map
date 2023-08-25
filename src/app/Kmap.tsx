@@ -8,7 +8,15 @@ type Props = {
   latLng: {
     lat: Number,
     lng: Number
-  }
+  },
+
+  lat?: string,
+  lng?: string,
+  data: {
+    name: string,
+    lat: string,
+    lng: string
+  }[]
 }
 
 export default function Kmap(prop: Props) {
@@ -28,6 +36,18 @@ export default function Kmap(prop: Props) {
       map.setCenter(new (window as any).kakao.maps.LatLng(prop.latLng.lat, prop.latLng.lng));
     }
   }, [prop.latLng, map])
+
+  useEffect(() => {
+    if (map) {
+      prop.data.forEach((place) => {
+        const marker = new (window as any).kakao.maps.Marker({
+          map: map,
+          position: new (window as any).kakao.maps.LatLng(place.lat, place.lng),
+          title: place.name
+        })
+      })
+    }
+  }, [prop.data, map])
 
   return (
     <>

@@ -7,12 +7,15 @@ import Location from './Location';
 type Data = {
   name: string,
   location: string,
-  tel: string
+  tel: string,
+  lat: string,
+  lng: string
 }
 
 export default function Home() {
   const [latLng, setLatLng] = useState({lat: 33.450701, lng: 126.570667});
   const [region, setRegion] = useState<{state: string|null, city: string|null}>({state: null, city: null});
+  const [registeredDate, setRegDate] = useState<string>("");
   const [dataList, setDataList] = useState<Data[]>([]);
   const [isDataError, setIsDataError] = useState(false);
 
@@ -23,21 +26,22 @@ export default function Home() {
       const data: Data[] = [];
 
       if (regionData.ok) {
-        regionJson.data.forEach((place: {[index: string]: string}) => {
+        regionJson.data.forEach((place:Data) => {
           data.push({
-            name: place[regionJson.structure.name],
-            location: place[regionJson.structure.location],
-            tel: place[regionJson.structure.tel]
+            name: place.name,
+            location: place.location,
+            tel: place.tel,
+            lat: place.lat,
+            lng: place.lng
           });
         });
 
         setDataList(data);
+        setRegDate(regionJson.date);
       } else {
         setIsDataError(true);
       }
     }
-
-    console.log(region);
 
     if (region.state !== null) {
       getRegionData();
@@ -57,17 +61,24 @@ export default function Home() {
             className="border-solid focus:border-teal-400 focus:ring-teal-400 rounded-sm pl-2 w-full"
           />
         </form>
-        <ul className="rounded-xl overflow-y-scroll w-fit md:w-96 h-min">
-          {dataList.length > 0 && dataList.map((place) => (
-            <li key={place.location} className="rounded-xl shadow-lg p-4 my-4 mx-2">
-              <span className="font-semibold block">{place.name}</span>
-              <span className="block">{place.location}</span>
-              <span className="block">{place.tel}</span>
-            </li>
-          ))}
-        </ul>
+        {!isDataError && (
+          <>
+            <p className="rounded-xl shadow-lg p-2 my-2">기준일: {registeredDate}</p>
+            <ul className="rounded-xl overflow-y-scroll w-full md:w-96 h-min">
+            {dataList.length > 0 ? dataList.map((place) => (
+              <li key={place.location} className="rounded-xl shadow-lg p-4 my-4 mx-2">
+                <span className="font-semibold block">{place.name}</span>
+                <span className="block">{place.location}</span>
+                <span className="block">{place.tel}</span>
+              </li>
+            )) : (
+              <p>데이터가 없습니다.</p>
+            )}
+            </ul>
+          </>
+        )}
       </section>
-      <Kmap latLng={latLng} />
+      <Kmap latLng={latLng} data={dataList} />
     </main>
   )
 }
