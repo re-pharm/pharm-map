@@ -9,7 +9,21 @@ type Data = {
   location: string,
   tel: string,
   lat: string,
-  lng: string
+  lng: string,
+  distance: number
+}
+
+function getDistanceKm(current: {lat: number, lng: number}, place: {lat: string, lng: string}) {
+  const radLat1 = Math.PI * current.lat / 180;
+  const radLat2 = Math.PI * Number(place.lat) / 180;
+  const radTheta = Math.PI * (current.lng - Number(place.lng)) / 180;
+  let distance = 
+    Math.sin(radLat1) * Math.sin(radLat2) + 
+    Math.cos(radLat1) * Math.cos(radLat2) * Math.cos(radTheta);
+  if (distance > 1)
+      distance = 1;
+
+  return Math.acos(distance) * 180 / Math.PI * 60 * 1.1515 * 1.609344;
 }
 
 export default function Home() {
@@ -32,11 +46,15 @@ export default function Home() {
             location: place.location,
             tel: place.tel,
             lat: place.lat,
-            lng: place.lng
+            lng: place.lng,
+            distance: getDistanceKm(
+              {lat: latLng.lat, lng: latLng.lng}, 
+              {lat: place.lat, lng: place.lng}
+            )
           });
         });
 
-        setDataList(data);
+        setDataList(data.sort((a, b) => a.distance - b.distance));
         setRegDate(regionJson.date);
       } else {
         setIsDataError(true);
@@ -67,7 +85,10 @@ export default function Home() {
             <ul className="rounded-xl overflow-y-scroll w-full md:w-96 h-min">
             {dataList.length > 0 ? dataList.map((place) => (
               <li key={place.location} className="rounded-xl shadow-lg p-4 my-4 mx-2">
-                <span className="font-semibold block">{place.name}</span>
+                <span className="block">
+                  <span className="font-semibold inline-block">{place.name}</span>
+                  <span className="inline-block ms-2">{place.distance.toFixed(2)}km</span>
+                </span>
                 <span className="block">{place.location}</span>
                 <span className="block">{place.tel}</span>
               </li>
