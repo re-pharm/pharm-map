@@ -24,6 +24,10 @@
   select {
     color: rgb(var(--background-rgb));
   }
+
+  .shadow-lg {
+    background: rgb(55 65 81);
+  }
 }
 
 body {
