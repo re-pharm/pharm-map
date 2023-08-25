@@ -81,7 +81,7 @@ export default function Home() {
         </form>
         {!isDataError && (
           <>
-            <p className="rounded-xl shadow-lg p-2 my-2">기준일: {registeredDate}</p>
+            <p className="rounded-xl shadow-lg p-2 my-2">기준일: {registeredDate ? registeredDate : "-"}</p>
             <ul className="rounded-xl overflow-y-scroll w-full md:w-96 h-min">
             {dataList.length > 0 ? dataList.map((place) => (
               <li key={place.location} className="rounded-xl shadow-lg p-4 my-4 mx-2">
@@ -93,7 +93,7 @@ export default function Home() {
                 <span className="block">{place.tel}</span>
               </li>
             )) : (
-              <p>데이터가 없습니다.</p>
+              <p className="text-center m-4">데이터가 없습니다.</p>
             )}
             </ul>
           </>
