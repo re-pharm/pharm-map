@@ -25,6 +25,7 @@ export async function GET(request: Request) {
             data.push({
                 name: place["설치 장소"],
                 location: place["위치(도로명)"],
+                type: "public",
                 tel: place["전화번호"],
                 lat: place["위도"],
                 lng: place["경도"]
@@ -35,6 +36,7 @@ export async function GET(request: Request) {
             data.push({
                 name: place["약국명칭"],
                 location: place["약국소재지(도로명)"],
+                type: "pharm",
                 tel: place["전화번호"],
                 lat: place["위도"],
                 lng: place["경도"]
