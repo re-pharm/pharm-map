@@ -124,7 +124,7 @@ export default function PharmBoxInfo(prop: Props) {
 
     return (
         <>
-            <dialog className="shadow-lg rounded-xl p-4 z-50 inset-y-1/3 lg:inset-1/2 dark:text-white md:hidden lg:block block" open>
+            <dialog className="shadow-lg rounded-xl p-4 sm:m-4 md:m-auto z-50 inset-y-1/3 lg:inset-1/2 dark:text-white md:hidden lg:block block" open>
                 {component}
             </dialog>
             <section className="shadow-lg rounded-xl md:block m-4 p-4 shrink hidden lg:hidden">
