@@ -3,6 +3,7 @@ import './page.css'
 import { useEffect, useState } from 'react';
 import Kmap from './Kmap';
 import Location from './Location';
+import PharmBoxInfo from './PharmBoxInfo';
 import { faCapsules, faBuildingColumns } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -133,7 +134,9 @@ export default function Home() {
         )}
       </section>
       <Kmap latLng={latLng} data={dataList} />
-      
+      {isPlaceModalOpened && (
+        <PharmBoxInfo currentData={currentData} openModal={setIsPlaceModalOpened} />
+      )}
     </main>
   )
 }
