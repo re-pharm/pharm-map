@@ -22,6 +22,7 @@ export async function GET(request: Request) {
         }, { status: 400 });
     }
 
+    console.log(`http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyListInfoInqire?serviceKey=${process.env.DATA_GO_KR_REST_KEY}&Q0=${state}&Q1=${city}&QT=1&QN=${place}&ORD=NAME&pageNo=1&numOfRows=10`);
     const pharmInfo = await fetch(`http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyListInfoInqire?serviceKey=${process.env.DATA_GO_KR_REST_KEY}&Q0=${state}&Q1=${city}&QT=1&QN=${place}&ORD=NAME&pageNo=1&numOfRows=10`).then((res) => res.text());
     const parser = new XMLParser();
     const parsedPharmInfo = parser.parse(pharmInfo);
