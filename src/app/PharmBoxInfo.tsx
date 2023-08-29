@@ -1,5 +1,5 @@
 "use client"
-import { faRoute, faXmark, faCapsules, faBuildingColumns, faPhone, faLocationDot, faClock } from "@fortawesome/free-solid-svg-icons";
+import { faRoute, faXmark, faCapsules, faBuildingColumns, faPhone, faLocationDot, faClock, faCheckDouble } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Kmap from "./Kmap";
@@ -120,6 +120,27 @@ export default function PharmBoxInfo(prop: Props) {
                     </ul>
                 </section>
             )}
+            <section id="dataSource" className="flex mt-2">
+                <div className="me-2">
+                    <FontAwesomeIcon icon={faCheckDouble} className="me-2" />
+                    <span className="font-semibold">출처</span>
+                </div>
+                <ul>
+                    <li>
+                        {`${prop.currentData?.location.split(" ")[0].endsWith("도") ? 
+                            prop.currentData?.location.split(" ")[1]
+                            :prop.currentData?.location.split(" ")[0]} 폐의약품 수거함 공공데이터`}
+                    </li>
+                    {operationInfo.length > 0 ? (
+                        <li>
+                            <a href="https://www.nmc.or.kr/nmc/main/contents.do?menuNo=200553" target="blank">
+                                국립중앙의료원 약국 정보 공공데이터
+                            </a>
+                        </li>
+                    )
+                    : ""}
+                </ul>
+            </section>
         </>
     );
 

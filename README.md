@@ -174,9 +174,10 @@ API 주소 이름은 명사로 표현하며, 다음과 같은 하위 분류가 �
 
 - [경기도 구리시 폐의약품 수거함 위치](https://www.data.go.kr/data/15074686/fileData.do): 이용허락범위 제한 없음 / 기준일 2023.03.29.
 - [경기도 구리시 폐의약품 수집 참여 약국 현황](https://www.data.go.kr/data/15074687/fileData.do): 이용허락범위 제한 없음 / 기준일 2023.06.15.
+- [국립중앙의료원 전국 약국 정보 조회 서비스](https://www.data.go.kr/tcs/dss/selectApiDataDetailView.do?publicDataPk=15000576): 이용허락범위 제한 없음
 
 > [!NOTE]
-> 제3자 API
+> 사기업 공개 API
 
 - [카카오 로컬 주소변환 API](https://developers.kakao.com/docs/latest/ko/local/dev-guide)
 
@@ -187,7 +188,12 @@ API 주소 이름은 명사로 표현하며, 다음과 같은 하위 분류가 �
 
 - [Next.js](https://nextjs.org): MIT License
 - [TailwindCSS](https://tailwindcss.com/): MIT License
+- [FontAwesome v6 for React](https://www.fontawesome.com)
+  - Icons: CC-BY 4.0 License
+  - Fonts: SIL OFL 1.1 License
+  - Code: MIT License
+  - [FontAwesome Free License Notice](https://fontawesome.com/license/free)
 - [Yarn](https://yarnpkg.com/): BSD-2-Clause License
-- [Kakao Maps SDK for Kaka Open Platform Service](https://apis.map.kakao.com/web/) : [Apache License](https://devtalk.kakao.com/t/api/41598/3)
+- [Kakao Maps SDK for Kakao Open Platform Service](https://apis.map.kakao.com/web/) : [Apache License](https://devtalk.kakao.com/t/api/41598/3)
 - [React.js](https://react.dev): MIT License
 - [SUITE Variable](https://sunn.us/suite/): SIL Open Font License
