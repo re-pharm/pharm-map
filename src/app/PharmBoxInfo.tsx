@@ -2,6 +2,7 @@
 import { faRoute, faXmark, faCapsules, faBuildingColumns, faPhone, faLocationDot, faClock } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import Kmap from "./Kmap";
 
 type Data = {
     name: string,
@@ -60,7 +61,7 @@ export default function PharmBoxInfo(prop: Props) {
     }, [prop.currentData])
 
 
-    const component = (
+    const component = prop.currentData && (
         <>
             <header className="flex justify-between">
                 <h1 className="text-3xl font-semibold flex">
@@ -96,12 +97,12 @@ export default function PharmBoxInfo(prop: Props) {
                     <span className="font-semibold">전화하기</span> {prop.currentData?.tel}
                 </a>
             </p>
-            <p>
+            <p id="location">
                 <FontAwesomeIcon icon={faLocationDot} className="pe-2" />
                 <span>{prop.currentData?.location}</span>
             </p>
             {operationInfo.length > 0 && prop.currentData?.type === "pharm" && (
-                <p className="flex mt-2">
+                <section id="operationHours" className="flex mt-2">
                     <FontAwesomeIcon icon={faClock} className="pe-2 mt-1" />
                     <ul>
                         {operationInfo.map((data: OperationData, index) => (
@@ -117,14 +118,14 @@ export default function PharmBoxInfo(prop: Props) {
                             </li>
                         ))}
                     </ul>
-                </p>
+                </section>
             )}
         </>
-    )
+    );
 
     return (
         <>
-            <dialog className="shadow-lg rounded-xl p-4 sm:m-4 md:m-auto z-50 inset-y-1/3 lg:inset-1/2 dark:text-white md:hidden lg:block block" open>
+            <dialog className="shadow-lg rounded-xl p-4 max-w-[calc(100%-1rem)] z-50 inset-y-1/3 lg:inset-1/2 dark:text-white md:hidden lg:block block" open>
                 {component}
             </dialog>
             <section className="shadow-lg rounded-xl md:block m-4 p-4 shrink hidden lg:hidden">
