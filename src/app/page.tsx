@@ -50,10 +50,13 @@ export default function Home() {
     pharm: "약국",
     public: "공공기관"
   }
+  const initialSound = new RegExp("[ㄱ-ㅎ|ㅏ-ㅣ]");
 
   function search() {
     const searchKeyword = pharmName.current ? pharmName.current.value : "";
-    setVisibleData(dataList.filter((data) => data.name.includes(searchKeyword)));
+    if (!initialSound.test(searchKeyword)) {
+      setVisibleData(dataList.filter((data) => data.name.includes(searchKeyword)));
+    }
   }
 
   useEffect(() => {
