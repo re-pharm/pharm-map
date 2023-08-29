@@ -1,6 +1,6 @@
 "use client"
 import './page.css'
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Kmap from './Kmap';
 import Location from './Location';
 import PharmBoxInfo from './PharmBoxInfo';
@@ -40,13 +40,20 @@ export default function Home() {
   const [region, setRegion] = useState<{state: string|null, city: string|null}>({state: null, city: null});
   const [registeredDate, setRegDate] = useState<string>("");
   const [dataList, setDataList] = useState<Data[]>([]);
+  const [visibleData, setVisibleData] = useState<Data[]>([]);
   const [currentData, setCurrentData] = useState<Data>();
   const [isDataError, setIsDataError] = useState(false);
   const [isPlaceModalOpened, setIsPlaceModalOpened] = useState(false);
+  const pharmName = useRef<HTMLInputElement>(null);
 
   const organizationType : OrganizationType = {
     pharm: "약국",
     public: "공공기관"
+  }
+
+  function search() {
+    const searchKeyword = pharmName.current ? pharmName.current.value : "";
+    setVisibleData(dataList.filter((data) => data.name.includes(searchKeyword)));
   }
 
   useEffect(() => {
@@ -72,6 +79,7 @@ export default function Home() {
         });
 
         setDataList(isGeolocationEnabled ? data.sort((a, b) => a.distance - b.distance) : data);
+        setVisibleData(isGeolocationEnabled ? data.sort((a, b) => a.distance - b.distance) : data);
         setRegDate(regionJson.date);
       } else {
         setIsDataError(true);
@@ -93,8 +101,11 @@ export default function Home() {
           </a>
         </h1>
         <Location setLatLng={setLatLng} setRegion={setRegion} setGeoEnabled={setGeoEnabled} />
-        <form name="resultData">
-          <input type="text" inputMode="text" id="pharm" placeholder="장소명을 검색하세요"
+        <form name="resultData" onChange={() => {search()}} onSubmit={(e) => {
+              e.preventDefault();
+              search();
+          }}>
+          <input type="text" inputMode="text" ref={pharmName} placeholder="장소명을 검색하세요"
             className="border-solid focus:border-teal-400 focus:ring-teal-400 rounded-sm pl-2 w-full"
           />
         </form>
@@ -113,7 +124,7 @@ export default function Home() {
               </p>
             </section>
             <ul className="rounded-xl overflow-y-scroll w-full md:w-96 h-min flex flex-col gap-4 p-2">
-            {dataList.length > 0 ? dataList.map((place) => (
+            {visibleData.length > 0 ? visibleData.map((place) => (
               <li key={place.location} className="w-full">
               <button
                 className="rounded-xl shadow-lg p-4 basis-0 shrink w-full text-start dark:bg-slate-700" 
