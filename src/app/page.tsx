@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import Kmap from './Kmap';
 import Location from './Location';
 import PharmBoxInfo from './PharmBoxInfo';
-import { faCapsules, faBuildingColumns } from '@fortawesome/free-solid-svg-icons';
+import { faCapsules, faBuildingColumns, faArrowUpWideShort, faCalendarCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 type Data = {
@@ -15,6 +15,10 @@ type Data = {
   lat: string,
   lng: string,
   distance: number
+}
+
+type OrganizationType = {
+  [index: string]: string
 }
 
 function getDistanceKm(current: {lat: number, lng: number}, place: {lat: string, lng: string}) {
@@ -39,6 +43,11 @@ export default function Home() {
   const [currentData, setCurrentData] = useState<Data>();
   const [isDataError, setIsDataError] = useState(false);
   const [isPlaceModalOpened, setIsPlaceModalOpened] = useState(false);
+
+  const organizationType : OrganizationType = {
+    pharm: "약국",
+    public: "공공기관"
+  }
 
   useEffect(() => {
     async function getRegionData() {
@@ -93,10 +102,12 @@ export default function Home() {
           <>
             <section id="info" className="flex my-2 gap-2">
               <p className="rounded-xl shadow-lg p-2">
+                <FontAwesomeIcon icon={faCalendarCheck} className="px-1" />
                 <span className="font-semibold pe-2">기준일</span>
                 {registeredDate ? registeredDate : "-"}
               </p>
               <p className="rounded-xl shadow-lg p-2">
+                <FontAwesomeIcon icon={faArrowUpWideShort} className="px-1" />
                 <span className="font-semibold pe-2">정렬 방법</span>
                 {isGeolocationEnabled ? "가까운 순" : "기본 순"}
               </p>
@@ -111,11 +122,11 @@ export default function Home() {
                   setIsPlaceModalOpened(true);
               }}>
                 <span className="block">
-                  <span className="inline-block rounded-xl dark:bg-slate-800 bg-slate-200 py-1 px-2 me-1">
+                  <span className="inline-block rounded-xl dark:bg-slate-800 bg-slate-200 py-1 px-2 me-2">
                     <FontAwesomeIcon 
                       icon={place.type === "pharm" ? faCapsules : faBuildingColumns}
                       className="pe-1" />
-                    {place.type === "pharm" ? "약국" : "관공서"}
+                    {organizationType[place.type]}
                   </span>
                   <span className="text-lg font-semibold inline-block">{place.name}</span>
                   {isGeolocationEnabled && (
