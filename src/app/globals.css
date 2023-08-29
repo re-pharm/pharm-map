@@ -21,7 +21,7 @@
     --background-rgb: 0, 0, 0;
   }
 
-  select {
+  select, input {
     color: rgb(var(--background-rgb));
   }
 
