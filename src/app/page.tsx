@@ -55,7 +55,8 @@ export default function Home() {
   function search() {
     const searchKeyword = pharmName.current ? pharmName.current.value : "";
     if (!initialSound.test(searchKeyword)) {
-      setVisibleData(dataList.filter((data) => data.name.includes(searchKeyword)));
+      setVisibleData(dataList.filter((data) => 
+        data.name.includes(searchKeyword) || data.location.includes(searchKeyword)));
     }
   }
 
@@ -108,7 +109,7 @@ export default function Home() {
               e.preventDefault();
               search();
           }}>
-          <input type="text" inputMode="text" ref={pharmName} placeholder="장소명을 검색하세요"
+          <input type="text" inputMode="text" ref={pharmName} placeholder="장소명 혹은 주소로 검색하세요"
             className="border-solid focus:border-teal-400 focus:ring-teal-400 rounded-sm pl-2 w-full"
           />
         </form>
