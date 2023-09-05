@@ -1,7 +1,7 @@
 "use client"
 import React, { Dispatch, SetStateAction, useEffect, useState, useRef } from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faLocationCrosshairs } from '@fortawesome/free-solid-svg-icons'
+import { faLocationCrosshairs, faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 
 type StateType = {
     code: string,
@@ -101,6 +101,11 @@ export default function Location(prop: Props) {
                     <FontAwesomeIcon icon={faLocationCrosshairs} className="pe-1" />
                     현위치
                 </button>
+                <a href="https://forms.gle/EST5vaZBFGy8DHGE8" target="_blank"
+                    className="hover:bg-slate-100 hover:dark:bg-slate-600 dark:bg-slate-800 rounded-xl p-2 no-underline">
+                    <FontAwesomeIcon icon={faPaperPlane} className="pe-1" />
+                    문의/제보
+                </a>
             </div>
             <div id="region" className="flex flex-row gap-2">
                 <select ref={stateSelectBox} className="w-full rounded-sm focus:border-teal-400 focus:ring-teal-400" onChange={(e) => selectState(e.target.value)}>
