@@ -1,5 +1,5 @@
 "use client"
-import { faRoute, faXmark, faCapsules, faBuildingColumns, faPhone, faLocationDot, faClock, faCheckDouble } from "@fortawesome/free-solid-svg-icons";
+import { faRoute, faXmark, faCapsules, faBuildingColumns, faPhone, faLocationDot, faClock, faCheckDouble, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import Kmap from "./Kmap";
@@ -120,9 +120,9 @@ export default function PharmBoxInfo(prop: Props) {
                     </ul>
                 </section>
             )}
-            <section id="dataSource" className="flex mt-2">
-                <div className="me-2">
-                    <FontAwesomeIcon icon={faCheckDouble} className="me-2" />
+            <section id="dataSource" className="flex gap-2 mt-2">
+                <div className="flex items-start">
+                    <FontAwesomeIcon icon={faCheckDouble} className="me-2 mt-1" />
                     <span className="font-semibold">출처</span>
                 </div>
                 <ul>
@@ -140,6 +140,19 @@ export default function PharmBoxInfo(prop: Props) {
                     )
                     : ""}
                 </ul>
+            </section>
+            <section id="caution" className="flex gap-2 mt-2">
+                <div className="flex items-start">
+                    <FontAwesomeIcon icon={faInfoCircle} className="me-2 mt-1" />
+                    <span className="font-semibold">안내</span>
+                </div>
+                <p>
+                    공공 데이터 자료는 특성상 기준일 이후 전화번호, 운영 시간 등이 변경될 수 있으므로,&nbsp;
+                    <a href={`https://map.kakao.com/link/search/${prop.currentData?.name}`} target="_blank">카카오맵</a>
+                    &nbsp;혹은&nbsp;
+                    <a href={`https://map.naver.com/p/search/${prop.currentData?.name}`} target="_blank">네이버 지도</a>
+                    에서 장소를 찾아보시거나 직접 전화하시어 다시 한 번 확인하세요.
+                </p>
             </section>
         </>
     );
