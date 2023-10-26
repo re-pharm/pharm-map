@@ -37,13 +37,23 @@ export async function GET(request: Request) {
                         state: stateResult,
                         city: cityResult
                     });
-                } else {
-                    return NextResponse.json({error: "찾고 있는 지역이 없습니다."}, {status: 400});
                 }
-            } else {
+                
                 return NextResponse.json({error: "찾고 있는 지역이 없습니다."}, {status: 400});
             }
-            break;
+            
+            if (state && region.city[state]) {
+                const cityResult = region.city[state].find((town) => town.code === city);
+
+                if (cityResult !== undefined) {
+                    return NextResponse.json({
+                        state: state,
+                        city: city
+                    });
+                }
+            }
+
+            return NextResponse.json({error: "찾고 있는 지역이 없습니다."}, {status: 400});
         default:
             return NextResponse.json({error: "잘못된 지역 분류입니다."}, {status: 400});
     }
