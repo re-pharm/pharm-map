@@ -10,9 +10,7 @@ type Props = {
     lng: Number
   },
 
-  lat?: string,
-  lng?: string,
-  data: {
+  data?: {
     name: string,
     lat: string,
     lng: string
@@ -38,7 +36,7 @@ export default function Kmap(prop: Props) {
   }, [prop.latLng, map])
 
   useEffect(() => {
-    if (map) {
+    if (map && prop.data) {
       prop.data.forEach((place) => {
         const marker = new (window as any).kakao.maps.Marker({
           map: map,
@@ -55,7 +53,7 @@ export default function Kmap(prop: Props) {
           src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_KEY}&libraries=services,clusterer&autoload=false`}
           onLoad={() => (window as any).kakao.maps.load(initMap)}
       />
-      <section id="map" className="rounded-xl w-full hidden md:me-8 md:mt-8 lg:block">
+      <section id="map" className="rounded-xl w-full hidden md:me-8 md:mt-8 md:block">
       </section>
     </>
   )
