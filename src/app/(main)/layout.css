@@ -2,8 +2,13 @@
     display: block;
 }
 
+#search {
+    width: 100%;
+}
+
 @media screen and (min-width: 768px) {
     #search {
-        min-width: 25rem;
+        min-width: 28rem;
+        max-width: 28rem;
     }
 }
