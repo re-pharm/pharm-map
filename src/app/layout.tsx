@@ -14,7 +14,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        {children}
+        <div className="flex h-full">
+          {children}
+        </div>
         <footer className="m-4">
           <p>
             © 2023 Re:Pharm 프로젝트 및 &nbsp;
