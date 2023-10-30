@@ -2,8 +2,15 @@ import './globals.css'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://pharm.paperbox.pe.kr"),
   title: '폐의약품 수거지도',
   description: '우리동네 폐의약품 수거함 위치를 확인하세요',
+  openGraph: {
+    type: "website",
+    url: "https://pharm.paperbox.pe.kr",
+    title: `폐의약품 수거지도`,
+    description: `우리동네 폐의약품 수거함 위치를 확인하세요`
+  }
 }
 
 export default function RootLayout({
