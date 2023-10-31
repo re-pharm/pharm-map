@@ -4,7 +4,7 @@ import Script from 'next/script';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import "./kmap.css";
 import { useRouter } from 'next/navigation';
-import type { Data } from '@/app/(result)/[state]/[city]/page';
+import type { Data } from '@/app/types/listdata';
 
 type Props = {
   latLng: {

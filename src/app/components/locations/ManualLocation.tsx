@@ -1,6 +1,5 @@
 "use client"
 import { useEffect, useState } from "react"
-import { validateRegionValue } from "./CurrentLocationButton"
 import { useRouter } from "next/navigation"
 
 type Props = {
@@ -46,13 +45,16 @@ export function ManualLocation(prop: Props) {
         //URL 데이터 존재 시 
         async function initURLData() {
             if (prop.state && prop.city) {
-                const result = await validateRegionValue(prop.state, prop.city);
-                if (result.status) {
+                const validateData =
+                    await fetch(`/api/service/supported_region?type=geo&state=${prop.state}&city=${prop.city}`);
+                const validateResult = await validateData.json();
+
+                if (validateData.ok) {
                     selectState(prop.state);
                     await getCityData(prop.state);
                     selectCity(prop.city);
                 } else {
-                    alert(`${result.message} 서울특별시인 경우, 스마트 서울맵을 이용하세요.`);
+                    alert(`${validateResult.error} 서울특별시인 경우, 스마트 서울맵을 이용하세요.`);
                 }
             }
         }
