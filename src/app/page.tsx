@@ -10,7 +10,7 @@ export default function Home() {
 
     return(
         <>
-            <div id="mainData" className="w-full sm:w-fit px-8 pt-8 flex flex-col h-[calc(100vh-4rem)]">
+            <div id="mainData" className="w-full sm:w-fit flex flex-col h-[calc(100vh-6rem)]">
                 <Header />
                 <main className="h-full flex flex-col">
                     <ManualLocation />
@@ -42,7 +42,7 @@ export default function Home() {
                 </main>
             </div>
             <div id="mapDummy"
-                className="w-full hidden md:me-8 md:mt-8 md:flex md:flex-col
+                className="w-full hidden md:flex md:flex-col
                     shadow-lg rounded-xl justify-center">
                 <FontAwesomeIcon icon={faMap} className="block" />
                 <p className="text-center m-4">
