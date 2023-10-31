@@ -1,8 +1,8 @@
 import "./page.css";
 import { ManualLocation } from "./components/locations/ManualLocation";
-import { faArrowUpWideShort, faCalendarCheck, faInfoCircle, faMap, faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { faArrowUpWideShort, faCalendarCheck, faInfoCircle, faMap } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import CurrentLocationButton from "./components/locations/CurrentLocationButton";
+import Header from "./components/layouts/Header";
 
 
 // 사용자 선택 전 대체 UI
@@ -11,22 +11,7 @@ export default function Home() {
     return(
         <>
             <div id="mainData" className="w-full sm:w-fit px-8 pt-8 flex flex-col h-[calc(100vh-4rem)]">
-                <header>
-                    <h1 className="text-2xl">
-                        <a href="/" className="no-underline">
-                            <span className="blockText text-sm">우리동네</span>
-                            폐의약품 수거지도 💊
-                        </a>
-                    </h1>
-                    <nav id="mainFunctions" className="flex gap-2">
-                        <CurrentLocationButton />
-                        <a href="https://forms.gle/EST5vaZBFGy8DHGE8" target="_blank"
-                            className="hover:bg-slate-100 hover:dark:bg-slate-600 dark:bg-slate-800 rounded-xl p-2 no-underline">
-                            <FontAwesomeIcon icon={faPaperPlane} className="pe-1" />
-                            문의/제보
-                        </a>                
-                    </nav>
-                </header>
+                <Header />
                 <main className="h-full flex flex-col">
                     <ManualLocation />
                     <form name="resultData">
