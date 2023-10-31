@@ -2,7 +2,7 @@
 import { faRoute, faXmark, faCapsules, faBuildingColumns, faPhone, faLocationDot, faClock, faCheckDouble, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import Kmap from "../components/kakaomap/Kmap";
+import Kmap from "./components/kakaomap/Kmap";
 
 type Data = {
     name: string,
