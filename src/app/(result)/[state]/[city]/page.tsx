@@ -9,7 +9,7 @@ import { insertDistanceInfo, sortDistance } from "@/app/functions/data/calcDista
 /* Components */
 import Kmap from "@/app/components/kakaomap/Kmap";
 import Header from "@/app/components/layouts/Header";
-import DataList from "@/app/components/listing/DataList";
+import DataList from "@/app/components/data/DataList";
 import { ManualLocation } from "@/app/components/locations/ManualLocation";
 /* External Libraries */
 import { faCalendarCheck, faArrowUpWideShort } from "@fortawesome/free-solid-svg-icons";
@@ -56,13 +56,18 @@ export default function Page({ params }: Params) {
                 setDataDate(pharmBoxData.date);
 
                 //위치 정보 여부 확인
-                if (lat && lng) {
-                    const dataWithDistance = insertDistanceInfo(pharmBoxData.data, lat, lng);
+                if (!currentLoc && lat && lng) {
                     //위치 정보 설정
                     setCurrentLocation({
                         lat: lat,
                         lng: lng
                     });
+                }
+
+                if (currentLoc) {
+                    const dataWithDistance = insertDistanceInfo(pharmBoxData.data, 
+                        currentLoc.lat, currentLoc.lng);
+                    
                     //정렬 및 데이터 삽입
                     setData(dataWithDistance.sort((a:Data, b: Data) => sortDistance(a, b)));
                 } else {
@@ -75,7 +80,7 @@ export default function Page({ params }: Params) {
         }
         
         validateDataList();
-    }, [params.city, params.state, router]);
+    }, [params.city, params.state, currentLoc, router]);
 
     return(
         <>
