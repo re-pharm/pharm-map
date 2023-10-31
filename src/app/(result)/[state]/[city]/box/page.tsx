@@ -46,7 +46,7 @@ export default async function PharmBoxInfoPage({params, searchParams}: Props) {
         boxList.data.filter((place:Data) => place.name === searchParams.name);
 
     return(
-        <section>
+        <section id="info">
             <PharmBoxInfo currentData={filterResult[0]} /> 
         </section>
     );
