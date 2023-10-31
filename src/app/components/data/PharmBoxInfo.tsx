@@ -2,21 +2,11 @@
 import { faRoute, faXmark, faCapsules, faBuildingColumns, faPhone, faLocationDot, faClock, faCheckDouble, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import Kmap from "./components/kakaomap/Kmap";
-
-type Data = {
-    name: string,
-    location: string,
-    type: string,
-    tel: string,
-    lat: string,
-    lng: string,
-    distance: number
-}
+import { Data, organizationIcons, organizationType } from "@/app/types/listdata";
+import Kmap from "../kakaomap/Kmap";
 
 type Props = {
     currentData: Data | undefined,
-    openModal: Dispatch<SetStateAction<boolean>>
 }
 
 type OperationData = {
@@ -27,59 +17,46 @@ type OperationData = {
 export default function PharmBoxInfo(prop: Props) {
     const [operationInfo, setOperationHour] = useState<OperationData[]>([]); //0~7 월~일
     const days = ["월", "화", "수", "목", "금", "토", "일", "공휴일"];
-    
-    function closeModal() {
-        prop.openModal(false);
-    }
 
     useEffect(() => {
-        async function getOperationData() {
-            if (prop.currentData) {
-                if (prop.currentData.type === "pharm") {
-                    const state = prop.currentData.location.split(" ")[0];
-                    const city = prop.currentData.location.split(" ")[1];
-                    const operationData = await fetch(`/api/service/pharm/info?state=${state}&city=${city}&name=${prop.currentData.name}`);
-                    const operationJson = await operationData.json();
-                    const operationArray: OperationData[] = [];
+        async function getOperationData(data: Data) {
+            const state = data.location.split(" ")[0];
+            const city = data.location.split(" ")[1];
+            const operationData =
+                await fetch(`/api/service/pharm/info?state=${state}&city=${city}&name=${data.name}`);
+            const operationJson = await operationData.json();
+            const operationArray: OperationData[] = [];
 
-                    if (operationData.ok) {
-                        for (let i = 1; i < 9; i++) {
-                            if(operationJson.data[`dutyTime${i}s`]) {
-                                operationArray.push({
-                                    start: operationJson.data[`dutyTime${i}s`],
-                                    end: operationJson.data[`dutyTime${i}c`]
-                                });    
-                            }
-                        }
-                        setOperationHour(operationArray);
+            if (operationData.ok) {
+                for (let i = 1; i < 9; i++) {
+                    if(operationJson.data[`dutyTime${i}s`]) {
+                        operationArray.push({
+                            start: operationJson.data[`dutyTime${i}s`],
+                            end: operationJson.data[`dutyTime${i}c`]
+                        });    
                     }
                 }
+                setOperationHour(operationArray);
             }
         }
 
-        getOperationData();
-    }, [prop.currentData])
+        if (prop.currentData && prop.currentData.type === "pharm") {
+            getOperationData(prop.currentData);
+        }
+    }, [prop.currentData]);
 
-
-    const component = prop.currentData && (
+    return (
+        prop.currentData && (
         <>
-            <header className="flex justify-between">
-                <h1 className="text-3xl font-semibold flex">
-                    <span className="w-max text-xl rounded-xl dark:bg-slate-800 bg-slate-200 py-1 px-2 me-2">
-                        <FontAwesomeIcon 
-                        icon={prop.currentData?.type === "pharm" ? faCapsules : faBuildingColumns}
-                        className="pe-1" />
-                        {prop.currentData?.type === "pharm" ? "약국" : "관공서"}
-                    </span>
-                    <span className="md:w-auto lg:w-max w-max md:break-all lg:break-keep">{prop.currentData?.name}</span>
-                </h1>
-                <button 
-                    className="rounded-xl hover:bg-slate-200 hover:dark:bg-slate-600 px-3 ms-2"
-                    onClick={() => {closeModal()}}
-                >
-                    <FontAwesomeIcon icon={faXmark}/>
-                </button>
-            </header>
+            <h2 className="text-3xl font-semibold flex">
+                <span className="w-max text-xl rounded-xl dark:bg-slate-800 bg-slate-200 py-1 px-2 me-2">
+                    <FontAwesomeIcon 
+                    icon={organizationIcons[prop.currentData?.type]}
+                    className="pe-1" />
+                    {organizationType[prop.currentData?.type]}
+                </span>
+                <span className="md:w-auto lg:w-max w-max md:break-all lg:break-keep">{prop.currentData?.name}</span>
+            </h2>
             <p className="flex gap-2 w-max">
                 <a 
                     href={`https://map.kakao.com/link/to/${prop.currentData?.name},${prop.currentData?.lat},${prop.currentData?.lng}`}
@@ -101,7 +78,7 @@ export default function PharmBoxInfo(prop: Props) {
                 <FontAwesomeIcon icon={faLocationDot} className="pe-2" />
                 <span>{prop.currentData?.location}</span>
             </p>
-            {operationInfo.length > 0 && prop.currentData?.type === "pharm" && (
+            {operationInfo.length > 0 && (
                 <section id="operationHours" className="flex mt-2">
                     <FontAwesomeIcon icon={faClock} className="pe-2 mt-1" />
                     <ul>
@@ -155,16 +132,5 @@ export default function PharmBoxInfo(prop: Props) {
                 </p>
             </section>
         </>
-    );
-
-    return (
-        <>
-            <dialog className="shadow-lg rounded-xl p-4 max-w-[calc(100%-1rem)] z-50 inset-y-1/3 lg:inset-1/2 dark:text-white md:hidden lg:block block" open>
-                {component}
-            </dialog>
-            <section className="shadow-lg rounded-xl md:block m-4 p-4 shrink hidden lg:hidden">
-                {component}
-            </section>
-        </>
-    );
+    ));
 }

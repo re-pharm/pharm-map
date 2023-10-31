@@ -1,3 +1,4 @@
+import { IconDefinition, faBuildingColumns, faCapsules, faEnvelopesBulk } from "@fortawesome/free-solid-svg-icons";
 import { createContext } from "react";
 
 export type Data = {
@@ -14,10 +15,20 @@ type OrganizationType = {
     [index: string]: string
 };
 
-export const organizationType : OrganizationType = {
+type OrganizationIcons = {
+    [index: string]: IconDefinition
+}
+
+export const organizationType: OrganizationType = {
     pharm: "약국",
     public: "공공기관",
     post: "우체통"
+}
+
+export const organizationIcons: OrganizationIcons = {
+    pharm: faCapsules,
+    public: faBuildingColumns,
+    post: faEnvelopesBulk
 }
 
 export const RegionData = createContext<{
