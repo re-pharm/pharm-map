@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { metadata } from '@/app/layout';
 import { validateLocationValue } from '@/app/api/service/supported_region/route';
 
-type Props = {
+type Params = {
     params: {
         state: string,
         city: string
@@ -10,7 +10,7 @@ type Props = {
 }
 
 export async function generateMetadata(
-    {params}: Props
+    {params}: Params
 ): Promise<Metadata> {
     const validateResult = validateLocationValue(params.state, params.city);
     
@@ -30,14 +30,12 @@ export async function generateMetadata(
     }
 }
 
-export default function ResultLayout({
-    children,
-  }: {
-    children: React.ReactNode
-  }) {
+export default function ResultLayout(props: 
+    { children: React.ReactNode, dialog: React.ReactNode}) {
     return (
         <>
-            {children}
+            {props.children}
+            {props.dialog}
         </>
     )
 }
