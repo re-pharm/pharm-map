@@ -92,7 +92,7 @@ export default function Page({ params }: Params) {
             state: params.state,
             city: params.city  
         }}>
-            <div id="mainData" className="w-full sm:w-fit px-8 pt-8 flex flex-col h-[calc(100vh-4rem)]">
+            <div id="mainData" className="w-full sm:w-fit flex flex-col h-[calc(100vh-6rem)]">
                 <Header />
                 <main className="h-full flex flex-col overflow-hidden">
                     <ManualLocation />

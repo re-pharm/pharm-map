@@ -93,7 +93,7 @@ export default function Kmap(prop: Props) {
 
   return (
     <>
-      <section ref={mapContainer} className="rounded-xl w-full hidden md:me-8 md:mt-8 md:block">
+      <section ref={mapContainer} className="rounded-xl w-full hidden md:block">
       </section>
     </>
   )
