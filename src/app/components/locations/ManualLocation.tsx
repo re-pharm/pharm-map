@@ -1,20 +1,17 @@
 "use client"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-
-type Props = {
-    state?: string,
-    city?: string
-}
+import { RegionData } from "@/app/types/listdata"
 
 type StateType = {
     code: string,
     name: string
 }
 
-export function ManualLocation(prop: Props) {
+export function ManualLocation() {
     const router = useRouter(); //페이지 이동
 
+    const urlRegionData = useContext(RegionData);
     const [stateList, setStates] = useState<StateType[]>([]); //시도 목록
     const [cityList, setCities] = useState<StateType[]>([]); //시군구 목록
     const [selectedState, selectState] = useState<string|undefined>(undefined); //선택한 시도
@@ -42,26 +39,17 @@ export function ManualLocation(prop: Props) {
 
     //페이지 로드 시 데이터 초기화
     useEffect(() => {
-        //URL 데이터 존재 시 
-        async function initURLData() {
-            if (prop.state && prop.city) {
-                const validateData =
-                    await fetch(`/api/service/supported_region?type=geo&state=${prop.state}&city=${prop.city}`);
-                const validateResult = await validateData.json();
-
-                if (validateData.ok) {
-                    selectState(prop.state);
-                    await getCityData(prop.state);
-                    selectCity(prop.city);
-                } else {
-                    alert(`${validateResult.error} 서울특별시인 경우, 스마트 서울맵을 이용하세요.`);
-                }
+        async function setData() {
+            if (urlRegionData && urlRegionData.state && urlRegionData.city) {
+                selectState(urlRegionData.state);
+                await getCityData(urlRegionData.state);
+                selectCity(urlRegionData.city);
             }
         }
 
         getStateData();
-        initURLData();
-    }, [prop.state, prop.city]);
+        setData();
+    }, [urlRegionData]);
 
     //"시/군/구" 선택 후 이동
     function sendRegionInfo(state:string|undefined, city: string|undefined) {

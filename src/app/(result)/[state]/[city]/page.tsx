@@ -69,6 +69,7 @@ export default function Page({ params }: Params) {
                     setData(pharmBoxData.data);
                 }
             } else {
+                alert(`URL을 잘못 입력하셨거나, 찾고 계신 지역을 지원하지 않습니다. 서울특별시인 경우, 스마트 서울맵을 이용하세요.`);
                 router.replace("/");
             }
         }
@@ -89,7 +90,7 @@ export default function Page({ params }: Params) {
             <div id="mainData" className="w-full sm:w-fit px-8 pt-8 flex flex-col h-[calc(100vh-4rem)]">
                 <Header />
                 <main className="h-full flex flex-col overflow-hidden">
-                    <ManualLocation state={params.state} city={params.city} />
+                    <ManualLocation />
                     <form name="resultData">
                         <input type="text" inputMode="text" placeholder="장소명 혹은 주소로 검색하세요"
                         className="border-solid focus:border-teal-400 focus:ring-teal-400 rounded-sm pl-2 w-full"
@@ -115,7 +116,7 @@ export default function Page({ params }: Params) {
                     lat: currentLoc ? Number(currentLoc.lat) : 37.65838, 
                     lng: currentLoc ? Number(currentLoc.lng) : 126.83187
                 }}
-                data={data} stateCode={params.state} cityCode={params.city} />
+                data={data} />
         </RegionData.Provider>
         </RealtimeLocationData.Provider>
         </>

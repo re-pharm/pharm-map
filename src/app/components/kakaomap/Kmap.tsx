@@ -1,10 +1,10 @@
 'use client'
 
 import Script from 'next/script';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import "./kmap.css";
 import { useRouter } from 'next/navigation';
-import type { Data } from '@/app/types/listdata';
+import { RegionData, type Data } from '@/app/types/listdata';
 
 type Props = {
   latLng: {
@@ -13,13 +13,12 @@ type Props = {
   },
 
   data?: Data[],
-  stateCode?: string,
-  cityCode?: string,
 }
 
 export default function Kmap(prop: Props) {
   const router = useRouter();
   const mapContainer = useRef(null);
+  const regionCode = useContext(RegionData);
   const [map, generateMap] = useState<any>(undefined);
 
   //맵 초기화
@@ -59,9 +58,9 @@ export default function Kmap(prop: Props) {
       router.push(`/${state}/${city}/${title}`);
     }
 
-    if (map && prop.data && prop.data.length > 0 && prop.stateCode && prop.cityCode) {
-      const state = prop.stateCode;
-      const city = prop.cityCode;
+    if (map && prop.data && prop.data.length > 0 && regionCode) {
+      const state = regionCode.state;
+      const city = regionCode.city;
 
       prop.data.forEach((place) => {
         const marker = new (window as any).kakao.maps.Marker({
@@ -90,7 +89,7 @@ export default function Kmap(prop: Props) {
         });
       });
     }
-  }, [prop.data, map, router, prop.stateCode, prop.cityCode]);
+  }, [prop.data, map, router, regionCode]);
 
   return (
     <>
