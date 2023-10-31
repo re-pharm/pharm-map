@@ -9,7 +9,10 @@ type Data = {
     lng: string
 }
 
-export async function getPharmBoxList() {
+export async function GET(request: Request) {
+    const { searchParams } = new URL(request.url);
+    const page: string | null = searchParams.get('page');
+
     try {
         //0: 폐의약품 수거함 위치, 1: 폐의약품 수거 약국 위치
         const guriList = await Promise.all([
@@ -40,20 +43,13 @@ export async function getPharmBoxList() {
             })
         })
 
-        return [{
+        return NextResponse.json({
             data: data,
             date: "20230607"
-        }, { status: 200 }];
+        });
     } catch(e) {
-        return [{ error: e}, { status: 500 }];
-    }
-}
-
-export async function GET(request: Request) {
-    const { searchParams } = new URL(request.url);
-    const page: string | null = searchParams.get('page');
-    
-    return NextResponse.json(await getPharmBoxList());
+        return NextResponse.json({ error: e}, { status: 500 });
+    }    
 }
 
 export const runtime = 'edge';
