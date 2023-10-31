@@ -55,7 +55,7 @@ export default function Kmap(prop: Props) {
   // 맵에 수거함 위치 설정
   useEffect(() => {
     function loadPharmBoxInfo(title: string, state: string, city: string) {
-      router.push(`/${state}/${city}/${title}`);
+      router.push(`/${state}/${city}/box?name=${title}`);
     }
 
     if (map && prop.data && prop.data.length > 0 && regionCode) {
