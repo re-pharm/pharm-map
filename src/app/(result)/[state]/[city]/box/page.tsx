@@ -47,7 +47,7 @@ export default async function PharmBoxInfoPage({params, searchParams}: Props) {
         boxList.data.filter((place:Data) => place.name === searchParams.name);
 
     return(
-        <section id="info" className="flex">
+        <section id="info" className="flex shadow-lg p-4 rounded-2xl">
             <PharmBoxInfo currentData={filterResult[0]} />
             <Kmap latLng={{
                 lat: Number(filterResult[0].lat),
