@@ -56,6 +56,8 @@ export default function CurrentLocationButton() {
     function removeLocationInfo(e: React.MouseEvent<HTMLButtonElement>) {
         sessionStorage.removeItem("lat");
         sessionStorage.removeItem("lng");
+        pageCurrentLoc?.set(undefined);
+        router.refresh();
     }
 
     return (
