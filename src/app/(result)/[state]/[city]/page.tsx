@@ -27,6 +27,7 @@ type Params = { params: {
 export default function Page({ params }: Params) {
     const [data, setData] = useState<Data[]>([]);
     const [date, setDataDate] = useState<string|undefined>(undefined);
+    const [defaultLocation, setDefaultLocation] = useState<CurrentLoc>({ lat: "37.65841", lng: "126.83196"});
     const [currentLoc, setCurrentLocation] = useState<CurrentLoc|undefined>(undefined);
     const router = useRouter();
 
@@ -55,6 +56,7 @@ export default function Page({ params }: Params) {
                     await fetch(`/api/service/${params.state}/${params.city}`).then(async (data) => await data.json());
                 //기준 날짜 설정
                 setDataDate(pharmBoxData.date);
+                setDefaultLocation(pharmBoxData.center);
 
                 //위치 정보 여부 확인
                 if (!currentLoc && lat && lng) {
@@ -119,8 +121,8 @@ export default function Page({ params }: Params) {
                 </main>
             </div>
             <Kmap latLng={{ 
-                    lat: currentLoc ? Number(currentLoc.lat) : 37.65838, 
-                    lng: currentLoc ? Number(currentLoc.lng) : 126.83187
+                    lat: currentLoc ? Number(currentLoc.lat) : Number(defaultLocation.lat), 
+                    lng: currentLoc ? Number(currentLoc.lng) : Number(defaultLocation.lng)
                 }}
                 data={data} />
         </RegionData.Provider>

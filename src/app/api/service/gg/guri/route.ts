@@ -45,7 +45,11 @@ export async function GET(request: Request) {
 
         return NextResponse.json({
             data: data,
-            date: "20230607"
+            date: "20230607",
+            center: {
+                "lat": "37.59417",
+                "lng": "127.12968"
+            }
         });
     } catch(e) {
         return NextResponse.json({ error: e}, { status: 500 });
