@@ -10,7 +10,7 @@ type Props = {
 export default function Header(props: Props) {
     return (
         <header>
-            <h1 className="text-2xl">
+            <h1 className="text-2xl mb-1">
                 <a href="/" className="no-underline">
                     <span className="blockText text-sm">우리동네</span>
                     폐의약품 수거지도 💊
