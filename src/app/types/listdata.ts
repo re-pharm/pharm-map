@@ -1,5 +1,4 @@
 import { IconDefinition, faBuildingColumns, faCapsules, faEnvelopesBulk } from "@fortawesome/free-solid-svg-icons";
-import { createContext } from "react";
 
 export type Data = {
     name: string,
@@ -30,8 +29,3 @@ export const organizationIcons: OrganizationIcons = {
     public: faBuildingColumns,
     post: faEnvelopesBulk
 }
-
-export const RegionData = createContext<{
-    state: string,
-    city: string
-}|undefined>(undefined);

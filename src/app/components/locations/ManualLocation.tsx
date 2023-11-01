@@ -1,7 +1,7 @@
 "use client"
 import { useContext, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { RegionData } from "@/app/types/listdata"
+import { RegionData } from "@/app/types/listDataWithContext"
 
 type StateType = {
     code: string,

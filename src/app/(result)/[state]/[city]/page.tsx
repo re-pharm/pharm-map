@@ -3,7 +3,8 @@
 import "../../../page.css";
 /* Types and Data */
 import { CurrentLoc, RealtimeLocationData } from "@/app/types/locationdata";
-import { Data, RegionData } from "@/app/types/listdata";
+import { Data } from "@/app/types/listdata";
+import { RegionData } from "@/app/types/listDataWithContext";
 /* Functions */
 import { insertDistanceInfo, sortDistance } from "@/app/functions/data/calcDistance";
 /* Components */
