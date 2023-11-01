@@ -31,7 +31,7 @@ export async function GET(request: Request) {
             return NextResponse.json({
                 data: parsedPharmInfo.response.body.items.item
             });    
-        } else if (parsedPharmInfo.body.totalCount < 1) {
+        } else if (!parsedPharmInfo.body || parsedPharmInfo.body.totalCount < 1) {
             return NextResponse.json({
                 error: "검색 결과가 없습니다."
             }, { status: 404});
