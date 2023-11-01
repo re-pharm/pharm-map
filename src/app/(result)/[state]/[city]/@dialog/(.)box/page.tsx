@@ -1,5 +1,9 @@
 import PharmBoxInfo from "@/app/components/data/PharmBoxInfo";
+import Dialog from "@/app/components/layouts/Dialog";
 import type { Data } from "@/app/types/listdata";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 type Params = { 
@@ -20,9 +24,8 @@ export default async function PharmBoxInfoDialog({ params, searchParams }: Param
         boxList.data.filter((place:Data) => place.name === searchParams.name);
 
     return (
-        <dialog open 
-            className="shadow-lg rounded-xl p-4 max-w-[calc(100%-1rem)] z-50 inset-y-1/3 inset-1/2 dark:text-white block">
+        <Dialog>
             <PharmBoxInfo currentData={filterResult[0]} /> 
-        </dialog>
+        </Dialog>
     ); 
 }
