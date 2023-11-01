@@ -3,6 +3,7 @@ import { metadata } from '@/app/layout';
 import { validateLocationValue } from '@/app/api/service/supported_region/route';
 import PharmBoxInfo from '@/app/components/data/PharmBoxInfo';
 import { Data } from '@/app/types/listdata';
+import Kmap from '@/app/components/kakaomap/Kmap';
 
 type Props = {
     params: {
@@ -24,13 +25,13 @@ export async function generateMetadata(
         return {
             title: `${searchParams.name} | ${validateResult.state} ${validateResult.city} | 폐의약품 수거지도`,
             description: 
-                `${validateResult.state} ${validateResult.city}의 폐의약품 수거함 중 하나인 ${searchParams.name}의 정보를 확인하세요.`,
+                `${validateResult.state} ${validateResult.city}의 폐의약품 수거함이 위치한 ${searchParams.name}의 정보를 확인하세요.`,
             openGraph: {
                 type: "website",
                 url: "https://pharm.paperbox.pe.kr",
                 title: `${searchParams.name} | ${validateResult.state} ${validateResult.city} 폐의약품 수거지도`,
                 description:
-                    `${validateResult.state} ${validateResult.city}의 폐의약품 수거함 중 하나인 ${searchParams.name}의 정보를 확인하세요.`
+                    `${validateResult.state} ${validateResult.city}의 폐의약품 수거함이 위치한 ${searchParams.name}의 정보를 확인하세요.`
             }
         }
     } else {
@@ -46,8 +47,12 @@ export default async function PharmBoxInfoPage({params, searchParams}: Props) {
         boxList.data.filter((place:Data) => place.name === searchParams.name);
 
     return(
-        <section id="info">
-            <PharmBoxInfo currentData={filterResult[0]} /> 
+        <section id="info" className="flex">
+            <PharmBoxInfo currentData={filterResult[0]} />
+            <Kmap latLng={{
+                lat: Number(filterResult[0].lat),
+                lng: Number(filterResult[0].lng)
+            }} data={[filterResult[0]]} />
         </section>
     );
 }

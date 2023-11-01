@@ -2,9 +2,9 @@
 
 import Script from 'next/script';
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
-import "./kmap.css";
 import { useRouter } from 'next/navigation';
-import { RegionData, type Data } from '@/app/types/listdata';
+import type { Data } from '@/app/types/listdata';
+import { RegionData } from '@/app/types/listDataWithContext';
 
 type Props = {
   latLng: {
@@ -58,9 +58,7 @@ export default function Kmap(prop: Props) {
       router.push(`/${state}/${city}/box?name=${title}`);
     }
 
-    if (map && prop.data && prop.data.length > 0 && regionCode) {
-      const state = regionCode.state;
-      const city = regionCode.city;
+    if (map && prop.data && prop.data.length > 0) {
 
       prop.data.forEach((place) => {
         const marker = new (window as any).kakao.maps.Marker({
@@ -76,9 +74,14 @@ export default function Kmap(prop: Props) {
           `
         });
 
-        (window as any).kakao.maps.event.addListener(marker, "click", function() {
-          loadPharmBoxInfo(place.name, state, city);
-        });
+        if (regionCode) {
+          const state = regionCode.state;
+          const city = regionCode.city;
+    
+          (window as any).kakao.maps.event.addListener(marker, "click", function() {
+            loadPharmBoxInfo(place.name, state, city);
+          });
+        }
 
         (window as any).kakao.maps.event.addListener(marker, "mouseover", function() {
           infoWindow.open(map, marker);
