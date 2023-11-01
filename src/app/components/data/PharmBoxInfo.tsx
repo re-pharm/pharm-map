@@ -20,8 +20,9 @@ export default async function PharmBoxInfo(prop: Props) {
     if (data && data.type === "pharm") {
         const state = data.location.split(" ")[0];
         const city = data.location.split(" ")[1];
+        const name = data.name.replace(/\s+/g, '');
         const operationData =
-            await fetch(`${process.env.SERVICE_URL}/api/service/pharm/info?state=${state}&city=${city}&name=${data.name}`);
+            await fetch(`${process.env.SERVICE_URL}/api/service/pharm/info?state=${state}&city=${city}&name=${name}`);
         const operationJson = await operationData.json();
 
         if (operationData.ok) {
@@ -53,7 +54,7 @@ export default async function PharmBoxInfo(prop: Props) {
                 </h2>
     
                 {/* 수거함 위치 및 연락처로 연결되는 버튼 모음 */}
-                <ul className="flex gap-2 w-max">
+                <ul className="flex gap-2 w-max my-2">
                     <li>
                         <a 
                             href={`https://map.kakao.com/link/to/${data.name},${data.lat},${data.lng}`}
