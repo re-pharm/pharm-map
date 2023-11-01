@@ -1,19 +1,60 @@
+"use client";
 import { Data, organizationIcons, organizationType } from "@/app/types/listdata"; //데이터 타입
+import { RealtimeLocationData } from "@/app/types/locationdata";
+import { faCalendarCheck, faArrowUpWideShort } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
+import { useContext, useEffect, useState } from "react";
 
 type Props = {
     state: string,
     city: string,
-    data: Data[]
+    data: Data[],
+    date: string|undefined
 }
 
 export default function DataList(props: Props) {
+    const currentLoc = useContext(RealtimeLocationData);
+    const [currentData, setData] = useState<Data[]>(props.data);
+
+    useEffect(() => {
+        setData(props.data);
+    }, [props.data]);
+
+    // 데이터 필터링(검색)
+    function search(keyword: string) {
+        const initialSound = new RegExp("[ㄱ-ㅎ|ㅏ-ㅣ|/\s/g]");
+        
+        if (!initialSound.test(keyword)) {
+            setData(props.data.filter((place:Data) => {
+                return place.name.includes(keyword) || place.location.includes(keyword)
+            }));
+        }
+    }
 
     return(
+        <>
+        <form name="resultData">
+            <input type="text" inputMode="text" placeholder="장소명 혹은 주소로 검색하세요"
+            className="border-solid focus:border-teal-400 focus:ring-teal-400 rounded-sm pl-2 w-full"
+            onChange={(e) => search(e.target.value)}
+            />
+        </form>
+        <section id="info" className="flex my-2 gap-2">
+            <p className="rounded-xl shadow-md p-2">
+                <FontAwesomeIcon icon={faCalendarCheck} className="px-1" />
+                <span className="font-semibold pe-2">기준일</span>
+                {props.date ?? "-"}
+            </p>
+            <p className="rounded-xl shadow-md p-2">
+                <FontAwesomeIcon icon={faArrowUpWideShort} className="px-1" />
+                <span className="font-semibold pe-2">정렬 방법</span>
+                {currentLoc ? "가까운 순" : "기본 순"}
+            </p>
+        </section>
         <section id="dataList" className="flex items-center justify-center max-h-full flex-col shrink rounded-md overflow-hidden">
             <ul className="overflow-y-scroll w-full flex flex-col gap-4 p-2">
-            {props.data.map((place) => (
+            {currentData.map((place) => (
                 <li key={place.location}>
                     <Link href={`/${props.state}/${props.city}/box?name=${place.name}`}
                         className="block p-4 rounded-xl shadow-lg basis-0 shrink w-full text-start no-underline dark:bg-slate-700">
@@ -36,5 +77,6 @@ export default function DataList(props: Props) {
             ))}
             </ul>       
         </section>
+        </>
     )
 }

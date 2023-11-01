@@ -31,18 +31,6 @@ export default function Page({ params }: Params) {
     const [currentLoc, setCurrentLocation] = useState<CurrentLoc|undefined>(undefined);
     const router = useRouter();
 
-
-    // 데이터 필터링(검색)
-    function search(keyword: string) {
-        const initialSound = new RegExp("[ㄱ-ㅎ|ㅏ-ㅣ]");
-        
-        if (!initialSound.test(keyword)) {
-            setData(data.filter((place:Data) => {
-                place.name.includes(keyword) || place.location.includes(keyword)
-            }));
-        }
-    }
-
     useEffect(() => {
         async function validateDataList() {
             const validateData =
@@ -99,25 +87,7 @@ export default function Page({ params }: Params) {
                 <Header />
                 <main className="h-full flex flex-col overflow-hidden">
                     <ManualLocation />
-                    <form name="resultData">
-                        <input type="text" inputMode="text" placeholder="장소명 혹은 주소로 검색하세요"
-                        className="border-solid focus:border-teal-400 focus:ring-teal-400 rounded-sm pl-2 w-full"
-                        onChange={(e) => search(e.target.value)}
-                        />
-                    </form>
-                    <section id="info" className="flex my-2 gap-2">
-                        <p className="rounded-xl shadow-md p-2">
-                            <FontAwesomeIcon icon={faCalendarCheck} className="px-1" />
-                            <span className="font-semibold pe-2">기준일</span>
-                            {date ?? "-"}
-                        </p>
-                        <p className="rounded-xl shadow-md p-2">
-                            <FontAwesomeIcon icon={faArrowUpWideShort} className="px-1" />
-                            <span className="font-semibold pe-2">정렬 방법</span>
-                            {currentLoc ? "가까운 순" : "기본 순"}
-                        </p>
-                    </section>
-                    <DataList state={params.state} city={params.city} data={data} />
+                    <DataList state={params.state} city={params.city} data={data} date={date} />
                 </main>
             </div>
             <Kmap latLng={{ 
