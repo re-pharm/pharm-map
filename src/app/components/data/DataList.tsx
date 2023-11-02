@@ -56,7 +56,7 @@ export default function DataList(props: Props) {
                     <span className="font-semibold pe-2">정렬 방법</span>
                 </span>
                 <span className="inline-block">
-                    {currentLoc ? "가까운 순" : "기본 순"}
+                    {currentLoc && currentLoc.value ? "가까운 순" : "기본 순"}
                 </span>
             </p>
         </section>
