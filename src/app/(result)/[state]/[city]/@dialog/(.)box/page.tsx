@@ -1,10 +1,6 @@
 import PharmBoxInfo from "@/app/components/data/PharmBoxInfo";
 import Dialog from "@/app/components/layouts/Dialog";
 import type { Data } from "@/app/types/listdata";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import Link from "next/link";
-import { useEffect, useState } from "react";
 
 type Params = { 
     params: {

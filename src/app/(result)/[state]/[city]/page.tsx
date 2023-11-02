@@ -13,8 +13,6 @@ import Header from "@/app/components/layouts/Header";
 import DataList from "@/app/components/data/DataList";
 import { ManualLocation } from "@/app/components/locations/ManualLocation";
 /* External Libraries */
-import { faCalendarCheck, faArrowUpWideShort } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
