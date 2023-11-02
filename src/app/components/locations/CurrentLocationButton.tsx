@@ -66,7 +66,7 @@ export default function CurrentLocationButton() {
                 className="hover:bg-slate-100 hover:dark:bg-slate-600 dark:bg-slate-800 rounded-xl p-2"
                 onClick={(e) => {getGeolocation(e)}}>
                 <FontAwesomeIcon icon={faLocationCrosshairs} className="pe-1" />
-                현위치
+                {isGeolocationEnabled ? "위치정보 갱신" : "현위치"}
             </button>
             {isGeolocationEnabled ? (
                 <button
