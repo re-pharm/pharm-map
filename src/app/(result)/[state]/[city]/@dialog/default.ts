@@ -5,3 +5,5 @@ const Default: FC = () => {
 };
 
 export default Default;
+
+export const runtime = 'edge';

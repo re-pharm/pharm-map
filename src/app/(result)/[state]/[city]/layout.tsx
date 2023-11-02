@@ -39,3 +39,5 @@ export default function ResultLayout(props:
         </>
     )
 }
+
+export const runtime = 'edge';

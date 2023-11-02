@@ -56,3 +56,5 @@ export default async function PharmBoxInfoPage({params, searchParams}: Props) {
         </section>
     );
 }
+
+export const runtime = 'edge';

@@ -25,3 +25,5 @@ export default async function PharmBoxInfoDialog({ params, searchParams }: Param
         </Dialog>
     ); 
 }
+
+export const runtime = 'edge';

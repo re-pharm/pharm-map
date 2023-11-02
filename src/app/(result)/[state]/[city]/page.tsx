@@ -98,3 +98,5 @@ export default function Page({ params }: Params) {
         </>
     )
 }
+
+export const runtime = 'edge';

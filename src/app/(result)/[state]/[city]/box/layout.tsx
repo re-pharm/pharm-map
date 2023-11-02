@@ -29,3 +29,5 @@ export default function IndependantBoxInfoLayout({ children, params }: {
         </div>
     )
 }
+
+export const runtime = 'edge';
