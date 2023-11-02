@@ -40,16 +40,24 @@ export default function DataList(props: Props) {
             onChange={(e) => search(e.target.value)}
             />
         </form>
-        <section id="info" className="flex my-2 gap-2">
+        <section id="info" className="flex my-2 gap-2 break-keep">
             <p className="rounded-xl shadow-md p-2">
-                <FontAwesomeIcon icon={faCalendarCheck} className="px-1" />
-                <span className="font-semibold pe-2">기준일</span>
-                {props.date ?? "-"}
+                <span className="inline-block">
+                    <FontAwesomeIcon icon={faCalendarCheck} className="px-1" />
+                    <span className="font-semibold pe-2">기준일</span>
+                </span>
+                <span className="inline-block">
+                    {props.date ?? "-"}
+                </span>
             </p>
             <p className="rounded-xl shadow-md p-2">
-                <FontAwesomeIcon icon={faArrowUpWideShort} className="px-1" />
-                <span className="font-semibold pe-2">정렬 방법</span>
-                {currentLoc ? "가까운 순" : "기본 순"}
+                <span className="inline-block">
+                    <FontAwesomeIcon icon={faArrowUpWideShort} className="px-1" />
+                    <span className="font-semibold pe-2">정렬 방법</span>
+                </span>
+                <span className="inline-block">
+                    {currentLoc ? "가까운 순" : "기본 순"}
+                </span>
             </p>
         </section>
         <section id="dataList" className="flex items-center justify-center max-h-full flex-col shrink rounded-md overflow-hidden">
