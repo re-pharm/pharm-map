@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { metadata } from '@/app/layout';
-import { validateLocationValue } from '@/app/api/service/supported_region/route';
+import { validateLocationValue } from '@/app/functions/data/validateLocationData';
 import PharmBoxInfo from '@/app/components/data/PharmBoxInfo';
 import { Data } from '@/app/types/listdata';
 import Kmap from '@/app/components/kakaomap/Kmap';

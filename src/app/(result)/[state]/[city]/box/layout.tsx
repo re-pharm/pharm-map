@@ -1,4 +1,4 @@
-import { validateLocationValue } from "@/app/api/service/supported_region/route";
+import { validateLocationValue } from "@/app/functions/data/validateLocationData";
 import Header from "@/app/components/layouts/Header"
 import Link from "next/link";
 
