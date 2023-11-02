@@ -6,7 +6,9 @@ type Params = {
     params: {
         state: string,
         city: string
-    }
+    },
+    children: React.ReactNode,
+    dialog: React.ReactNode
 }
 
 export async function generateMetadata(
@@ -30,8 +32,7 @@ export async function generateMetadata(
     }
 }
 
-export default function ResultLayout(props: 
-    { children: React.ReactNode, dialog: React.ReactNode}) {
+export default function ResultLayout(props: Params) {
     return (
         <>
             {props.children}
