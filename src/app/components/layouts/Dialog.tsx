@@ -8,7 +8,7 @@ export default function Dialog({ children } : { children: React.ReactNode }) {
 
     return (
         <dialog open
-        className="shadow-lg rounded-xl p-4 max-w-[calc(100%-1rem)] z-50 inset-y-1/3 inset-1/2 dark:text-white">
+        className="shadow-lg rounded-xl p-4 max-w-[calc(100%-1rem)] z-50 inset-y-1/3 md:inset-1/2 dark:text-white">
             <section id="dialogButtons"
                 className="flex text-xl w-full justify-between items-center mb-2 border-b-2">
                 <p>수거함 정보</p>
