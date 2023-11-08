@@ -20,7 +20,7 @@ export default async function PharmBoxInfoDialog({ params, searchParams }: Param
         boxList.data.filter((place:Data) => place.name === searchParams.name);
 
     return (
-        <Dialog>
+        <Dialog state={params.state} city={params.city}>
             <PharmBoxInfo currentData={filterResult[0]} /> 
         </Dialog>
     ); 

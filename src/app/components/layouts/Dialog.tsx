@@ -1,23 +1,48 @@
 "use client";
-import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useLayoutEffect, useRef } from "react";
 
-export default function Dialog({ children } : { children: React.ReactNode }) {
+type Props = {
+    children: React.ReactNode,
+    state?: string,
+    city?: string
+}
+
+export default function Dialog(props:Props) {
     const router = useRouter();
+    const dialog = useRef<HTMLDialogElement>(null);
+    const path = usePathname();
+
+    useLayoutEffect(() => {
+        if (dialog && dialog.current && path.includes("/box")) {
+            dialog.current.showModal();
+        }
+    }, [dialog, path]);
+
+    function closeModal() {
+        if(props.state && props.city) {
+            router.push(`/${props.state}/${props.city}`);
+        } else {
+            router.back();
+        }
+    }
 
     return (
-        <dialog open
-        className="shadow-lg rounded-xl p-4 max-w-[calc(100%-1rem)] z-50 inset-y-1/3 md:inset-1/2 dark:text-white">
+        <dialog ref={dialog} onClose={(e) => closeModal()}
+        className="shadow-lg rounded-xl p-4 max-w-[calc(100%-1rem)] z-50 inset-y-1/3 md:inset-1/2 dark:text-white lg:backdrop:opacity-10">
             <section id="dialogButtons"
-                className="flex text-xl w-full justify-between items-center mb-2 border-b-2">
+                className="flex text-xl w-full justify-between items-center mb-2">
                 <p>수거함 정보</p>
-                <button onClick={(e) => router.back()}
-                    className="no-underline py-0 px-2 mb-1 hover:bg-slate-200 hover:dark:bg-slate-600 rounded-xl">
-                    <FontAwesomeIcon icon={faArrowLeft} />
-                </button>
+                <form method="dialog">
+                    <button
+                        className="no-underline py-0 px-2 mb-1 hover:bg-slate-200 hover:dark:bg-slate-600 rounded-xl">
+                        <FontAwesomeIcon icon={faXmark} />
+                    </button>
+                </form>
             </section>
-            { children }
+            { props.children }
         </dialog>
     )
 }
