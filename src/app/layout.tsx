@@ -30,7 +30,7 @@ export default function RootLayout({
         <footer className="m-4 h-[2rem]">
           <p>
             © 2023 Re:Pharm 프로젝트 및 &nbsp;
-            <a href="https://github.com/re-pharm/pharm-map/people" target="_blank">기여자</a>. &nbsp;
+            <a href="https://github.com/re-pharm/pharm-map/graphs/contributors" target="_blank">기여자</a>. &nbsp;
             <a href="https://github.com/re-pharm/pharm-map/blob/main/README.md" target="_blank">오픈소스 라이선스 확인하기</a>
           </p>
         </footer>  
