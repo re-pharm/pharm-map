@@ -66,13 +66,16 @@ export default function Kmap(prop: Props) {
           position: new (window as any).kakao.maps.LatLng(place.lat, place.lng)
         });
 
-        const infoWindow = new (window as any).kakao.maps.InfoWindow({
+        const info = new (window as any).kakao.maps.CustomOverlay({
           content: `
-            <div class="w-full me-8">
-              <p class="text-center px-8">${place.name}</p>
+            <div class="w-full relative bottom-16 rounded-xl bg-white dark:bg-black shadow-lg">
+              <p class="text-center font-semibold text-base px-4 py-2">${place.name}</p>
             </div>
-          `
+          `,
+          map: map,
+          position: marker.getPosition()
         });
+        info.setMap(null);
 
         if (regionCode) {
           const state = regionCode.state;
@@ -87,11 +90,11 @@ export default function Kmap(prop: Props) {
         }
 
         (window as any).kakao.maps.event.addListener(marker, "mouseover", function() {
-          infoWindow.open(map, marker);
+          info.setMap(map);
         });
 
         (window as any).kakao.maps.event.addListener(marker, "mouseout", function() {
-          infoWindow.close();
+          info.setMap(null);
         });
       });
     }
