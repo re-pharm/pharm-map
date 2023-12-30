@@ -16,7 +16,8 @@ export default function Home() {
                     <ManualLocation />
                     <form name="resultData">
                         <input type="text" inputMode="text" placeholder="장소명 혹은 주소로 검색하세요"
-                        className="border-solid focus:border-teal-400 focus:ring-teal-400 rounded-sm pl-2 w-full"
+                        className="border-0 border-b-2 focus:border-teal-400 focus:ring-transparent hover:bg-slate-100 dark:hover:bg-slate-800
+                        pl-2 w-full bg-slate-50 dark:bg-slate-700 dark:text-white border-slate-300 dark:border-slate-600"
                         />
                     </form>
                     <section id="info" className="flex my-2 gap-2">

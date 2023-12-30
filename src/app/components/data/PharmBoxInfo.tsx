@@ -42,7 +42,7 @@ export default async function PharmBoxInfo(prop: Props) {
             <div>
                 {/* 수거함 종류 및 이름 */}
                 <h2 className="text-3xl font-semibold flex">
-                    <span className="w-max text-xl rounded-xl dark:bg-slate-800 bg-slate-200 py-1 px-2 me-2">
+                    <span className="w-max text-xl rounded-sm dark:bg-slate-900 bg-slate-200 py-1 px-2 mb-1 me-2">
                         <FontAwesomeIcon 
                         icon={organizationIcons[data.type]}
                         className="pe-1" />
@@ -54,12 +54,13 @@ export default async function PharmBoxInfo(prop: Props) {
                 </h2>
     
                 {/* 수거함 위치 및 연락처로 연결되는 버튼 모음 */}
-                <ul className="flex gap-2 w-max my-2">
+                <ul className="flex gap-2 w-max my-4">
                     <li>
                         <a 
                             href={`https://map.kakao.com/link/to/${data.name},${data.lat},${data.lng}`}
                             target="_blank"
-                            className="no-underline p-2 mt-1 hover:bg-slate-200 hover:dark:bg-slate-600 rounded-xl"
+                            className="no-underline px-2 pt-2 pb-1.5 mt-1 border-b-2 border-slate-300 dark:border-slate-400
+                                hover:bg-slate-100 hover:dark:bg-slate-600 rounded-sm"
                         >
                             <FontAwesomeIcon icon={faRoute} className="pe-1" />
                             <span className="font-semibold">길찾기</span>
@@ -68,7 +69,8 @@ export default async function PharmBoxInfo(prop: Props) {
                     <li>
                         <a
                             href={`tel:${data.tel}`}
-                            className="no-underline p-2 mt-1 hover:bg-slate-200 hover:dark:bg-slate-600 rounded-xl"
+                            className="no-underline px-2 pt-2 pb-1.5 mt-1 border-b-2 border-slate-300 dark:border-slate-400
+                            hover:bg-slate-100 hover:dark:bg-slate-600 rounded-sm"
                         >
                             <FontAwesomeIcon icon={faPhone} className="pe-1" />
                             <span className="font-semibold">전화하기</span> {data.tel}
@@ -77,8 +79,8 @@ export default async function PharmBoxInfo(prop: Props) {
                 </ul>
                 
                 {/* 수거함 주소 */}
-                <p id="location">
-                    <FontAwesomeIcon icon={faLocationDot} className="pe-2" />
+                <p id="location" className="flex">
+                    <FontAwesomeIcon icon={faLocationDot} className="pe-2 mt-1" />
                     <span>{data.location}</span>
                 </p>
     

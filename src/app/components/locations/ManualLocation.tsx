@@ -71,14 +71,16 @@ export function ManualLocation() {
 
     return (
         <form name="manualLocation" className="my-2 flex gap-2">
-            <select className="w-full border-0 border-b-2 focus:border-teal-400 focus:ring-transparent dark:bg-slate-700 dark:text-white"
+            <select className="w-full border-0 border-b-2 focus:border-teal-400 focus:ring-transparent rounded-sm
+                bg-slate-50 hover:bg-slate-100 hover:dark:bg-slate-800 dark:bg-slate-700 dark:text-white border-slate-300 dark:border-slate-600"
                 onChange={(e) => sendStateInfo(e.target.value)} value={selectedState}>
                 <option value="default">시/도</option>
                 {stateList.map((state) => (
                     <option key={state.code} value={state.code}>{state.name}</option>
                 ))}
             </select>
-            <select className="w-full border-0 border-b-2 focus:border-teal-400 focus:ring-transparent dark:bg-slate-700 dark:text-white"
+            <select className="w-full border-0 border-b-2 focus:border-teal-400 focus:ring-transparent rounded-sm
+                bg-slate-50 hover:bg-slate-100 hover:dark:bg-slate-800 dark:bg-slate-700 dark:text-white border-slate-300 dark:border-slate-600"
                 onChange={(e) => sendRegionInfo(selectedState, e.target.value)} value={selectedCity}>
                 <option value="default">시/군/구</option>
                 {cityList.length > 0 && cityList.map((city) => (

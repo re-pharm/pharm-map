@@ -37,7 +37,8 @@ export default function DataList(props: Props) {
         <>
         <form name="resultData" onSubmit={(e) => {e.preventDefault()}}>
             <input type="text" inputMode="text" placeholder="장소명 혹은 주소로 검색하세요"
-            className="border-0 border-b-2 focus:border-teal-400 focus:ring-transparent pl-2 w-full dark:bg-slate-700 dark:text-white"
+            className="border-0 border-b-2 focus:border-teal-400 focus:ring-transparent hover:bg-slate-100 dark:hover:bg-slate-800
+                pl-2 w-full bg-slate-50 dark:bg-slate-700 dark:text-white border-slate-300 dark:border-slate-600"
             onChange={(e) => search(e.target.value)}
             />
         </form>
@@ -67,9 +68,10 @@ export default function DataList(props: Props) {
                 <li key={place.location}>
                     <Link href={`/${props.state}/${props.city}/box?name=${place.name}`}
                         onClick={(e) => {props.setMapCenter({lat: Number(place.lat), lng: Number(place.lng)})}}
-                        className="block p-4 rounded-xl shadow-lg basis-0 shrink w-full text-start no-underline dark:bg-slate-700">
+                        className="block p-4 rounded-xl shadow-lg basis-0 shrink w-full text-start
+                            no-underline hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-slate-700">
                         <span className="block">
-                            <span className="inline-block rounded-xl dark:bg-slate-800 bg-slate-200 py-1 px-2 me-2">
+                            <span className="inline-block rounded-sm dark:bg-slate-900 bg-slate-200 py-1 mb-2 px-2 me-2">
                                 <FontAwesomeIcon 
                                     icon={organizationIcons[place.type]}
                                     className="pe-1" />

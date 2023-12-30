@@ -99,21 +99,23 @@ export default function CurrentLocationButton() {
             {errorMessage ? (
                 <section className="rounded-xl shadow-md p-2 flex z-50 absolute bg-white dark:bg-black items-center">
                     <p>{errorMessage}</p>
-                    <button className="hover:bg-slate-100 hover:dark:bg-slate-600 dark:bg-slate-800 rounded-xl px-2"
+                    <button className="hover:bg-slate-200 hover:dark:bg-slate-600 dark:bg-slate-800 rounded-xl px-2"
                         onClick={(e) => {closeErrorMessage()}}>
                         <FontAwesomeIcon icon={faXmark} />
                     </button>
                 </section>
             ): ""}
             <button
-                className="hover:bg-slate-100 hover:dark:bg-slate-600 dark:bg-slate-800 rounded-xl p-2"
+                className="border-b-2 border-slate-300 dark:border-slate-400 hover:bg-slate-100
+                    hover:dark:bg-slate-600 dark:bg-slate-800 rounded-sm p-2"
                 onClick={(e) => {getGeolocation(e)}}>
                 <FontAwesomeIcon icon={faLocationCrosshairs} className="pe-1" />
                 {isGeolocationSaved ? "위치정보 갱신" : "현위치"}
             </button>
             {isGeolocationSaved ? (
                 <button
-                    className="hover:bg-slate-100 hover:dark:bg-slate-600 dark:bg-slate-800 rounded-xl p-2"
+                    className="border-b-2 border-slate-300 dark:border-slate-400 hover:bg-slate-100
+                        hover:dark:bg-slate-600 dark:bg-slate-800 rounded-sm p-2"
                     onClick={(e) => {removeLocationInfo(e)}}>
                     <FontAwesomeIcon icon={faEraser}className="pe-1" />
                     위치정보 지우기
