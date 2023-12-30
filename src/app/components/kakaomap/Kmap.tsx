@@ -80,6 +80,9 @@ export default function Kmap(prop: Props) {
     
           (window as any).kakao.maps.event.addListener(marker, "click", function() {
             loadPharmBoxInfo(place.name, state, city);
+            map.setCenter(new (window as any).kakao.maps.LatLng(
+              place.lat, place.lng
+            ));
           });
         }
 
