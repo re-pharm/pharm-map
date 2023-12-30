@@ -92,7 +92,8 @@ export default function Page({ params }: Params) {
                 <Header />
                 <main className="h-full flex flex-col overflow-hidden">
                     <ManualLocation />
-                    <DataList state={params.state} city={params.city} data={data} date={date} />
+                    <DataList state={params.state} city={params.city} data={data} date={date}
+                        setMapCenter={setDefaultLocation} />
                 </main>
             </div>
             <Kmap latLng={defaultLoc ?? { lat: 37.65841, lng: 126.83196}}

@@ -1,16 +1,17 @@
 "use client";
 import { Data, organizationIcons, organizationType } from "@/app/types/listdata"; //데이터 타입
-import { IsRealtimeLocationEnabled } from "@/app/types/locationdata";
+import { CurrentLoc, IsRealtimeLocationEnabled } from "@/app/types/locationdata";
 import { faCalendarCheck, faArrowUpWideShort } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { useContext, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
 
 type Props = {
     state: string,
     city: string,
     data: Data[],
-    date: string|undefined
+    date: string|undefined,
+    setMapCenter: Dispatch<SetStateAction<CurrentLoc | undefined>>
 }
 
 export default function DataList(props: Props) {
@@ -65,6 +66,7 @@ export default function DataList(props: Props) {
             {currentData.map((place) => (
                 <li key={place.location}>
                     <Link href={`/${props.state}/${props.city}/box?name=${place.name}`}
+                        onClick={(e) => {props.setMapCenter({lat: Number(place.lat), lng: Number(place.lng)})}}
                         className="block p-4 rounded-xl shadow-lg basis-0 shrink w-full text-start no-underline dark:bg-slate-700">
                         <span className="block">
                             <span className="inline-block rounded-xl dark:bg-slate-800 bg-slate-200 py-1 px-2 me-2">
