@@ -2,7 +2,7 @@
 /* Stylesheets */
 import "../../../page.css";
 /* Types and Data */
-import { CurrentLoc, RealtimeLocationData } from "@/app/types/locationdata";
+import { CurrentLoc, IsRealtimeLocationEnabled } from "@/app/types/locationdata";
 import { Data } from "@/app/types/listdata";
 import { RegionData } from "@/app/types/listDataWithContext";
 /* Functions */
@@ -25,8 +25,8 @@ type Params = { params: {
 export default function Page({ params }: Params) {
     const [data, setData] = useState<Data[]>([]);
     const [date, setDataDate] = useState<string|undefined>(undefined);
-    const [defaultLocation, setDefaultLocation] = useState<CurrentLoc>({ lat: "37.65841", lng: "126.83196"});
-    const [currentLoc, setCurrentLocation] = useState<CurrentLoc|undefined>(undefined);
+    const [defaultLoc, setDefaultLocation] = useState<CurrentLoc|undefined>({ lat: 37.65841, lng: 126.83196});
+    const [locProvided, enableDistanceCalculate] = useState<Boolean>(false);
     const router = useRouter();
 
     useEffect(() => {
@@ -35,6 +35,8 @@ export default function Page({ params }: Params) {
                     await fetch(`/api/service/supported_region?type=geo&state=${params.state}&city=${params.city}`);
             const lat = sessionStorage.getItem("lat");
             const lng = sessionStorage.getItem("lng");
+            const state = sessionStorage.getItem("state");
+            const city = sessionStorage.getItem("city");
             
             if (validateData.ok) {
                 //데이터 불러오기
@@ -42,40 +44,45 @@ export default function Page({ params }: Params) {
                     await fetch(`/api/service/${params.state}/${params.city}`).then(async (data) => await data.json());
                 //기준 날짜 설정
                 setDataDate(pharmBoxData.date);
-                setDefaultLocation(pharmBoxData.center);
 
                 //위치 정보 여부 확인
-                if (!currentLoc && lat && lng) {
-                    //위치 정보 설정
-                    setCurrentLocation({
-                        lat: lat,
-                        lng: lng
-                    });
-                }
-
-                if (currentLoc) {
-                    const dataWithDistance = insertDistanceInfo(pharmBoxData.data, 
-                        currentLoc.lat, currentLoc.lng);
-                    
-                    //정렬 및 데이터 삽입
-                    setData(dataWithDistance.sort((a:Data, b: Data) => sortDistance(a, b)));
+                if (lat && lng) {
+                    if (locProvided) {
+                        // 거리 계산
+                        const dataWithDistance = insertDistanceInfo(pharmBoxData.data, lat, lng);
+    
+                        //정렬 및 데이터 삽입
+                        setData(dataWithDistance.sort((a:Data, b: Data) => sortDistance(a, b)));
+                        // 현 위치와 찾고자 하는 지역이 같으면 지도 위치 현 위치로 설정
+                        if (params.state === state && params.city === city) {
+                            setDefaultLocation({
+                                lat: Number(lat),
+                                lng: Number(lng)
+                            });
+                        } else {
+                            setDefaultLocation(pharmBoxData.center);
+                        }
+                    } else {
+                        enableDistanceCalculate(true);
+                    }
                 } else {
                     setData(pharmBoxData.data);
+                    setDefaultLocation(pharmBoxData.center);
                 }
             } else {
-                alert(`URL을 잘못 입력하셨거나, 찾고 계신 지역을 지원하지 않습니다. 서울특별시인 경우, 스마트 서울맵을 이용하세요.`);
+                alert(`URL을 잘못 입력하셨거나 서버가 불안정합니다. 초기 화면으로 돌아갑니다.`);
                 router.replace("/");
             }
         }
         
         validateDataList();
-    }, [params.city, params.state, currentLoc, router]);
+    }, [params.city, params.state, locProvided, router]);
 
     return(
         <>
-        <RealtimeLocationData.Provider value={{
-            value: currentLoc,
-            set: setCurrentLocation
+        <IsRealtimeLocationEnabled.Provider value={{
+            value: locProvided,
+            set: enableDistanceCalculate
         }}>
         <RegionData.Provider value={{
             state: params.state,
@@ -88,13 +95,10 @@ export default function Page({ params }: Params) {
                     <DataList state={params.state} city={params.city} data={data} date={date} />
                 </main>
             </div>
-            <Kmap latLng={{ 
-                    lat: currentLoc ? Number(currentLoc.lat) : Number(defaultLocation.lat), 
-                    lng: currentLoc ? Number(currentLoc.lng) : Number(defaultLocation.lng)
-                }}
+            <Kmap latLng={defaultLoc ?? { lat: 37.65841, lng: 126.83196}}
                 data={data} />
         </RegionData.Provider>
-        </RealtimeLocationData.Provider>
+        </IsRealtimeLocationEnabled.Provider>
         </>
     )
 }

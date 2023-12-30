@@ -1,6 +1,6 @@
 "use client";
 import { Data, organizationIcons, organizationType } from "@/app/types/listdata"; //데이터 타입
-import { RealtimeLocationData } from "@/app/types/locationdata";
+import { IsRealtimeLocationEnabled } from "@/app/types/locationdata";
 import { faCalendarCheck, faArrowUpWideShort } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
@@ -14,7 +14,7 @@ type Props = {
 }
 
 export default function DataList(props: Props) {
-    const currentLoc = useContext(RealtimeLocationData);
+    const useGeolocation = useContext(IsRealtimeLocationEnabled);
     const [currentData, setData] = useState<Data[]>(props.data);
 
     useEffect(() => {
@@ -56,7 +56,7 @@ export default function DataList(props: Props) {
                     <span className="font-semibold pe-2">정렬 방법</span>
                 </span>
                 <span className="inline-block">
-                    {currentLoc && currentLoc.value ? "가까운 순" : "기본 순"}
+                    {useGeolocation && useGeolocation.value ? "가까운 순" : "기본 순"}
                 </span>
             </p>
         </section>

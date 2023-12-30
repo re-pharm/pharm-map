@@ -1,12 +1,12 @@
 import { Dispatch, SetStateAction, createContext } from "react";
 
-export const RealtimeLocationData = 
+export const IsRealtimeLocationEnabled = 
     createContext<{
-        value: CurrentLoc | undefined,
-        set: Dispatch<SetStateAction<CurrentLoc | undefined>>
+        value: Boolean,
+        set: Dispatch<SetStateAction<Boolean>>
     }|undefined>(undefined);
 
 export type CurrentLoc = {
-    lat: string,
-    lng: string
+    lat: Number,
+    lng: Number,
 }
