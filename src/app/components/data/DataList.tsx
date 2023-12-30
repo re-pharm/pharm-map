@@ -35,7 +35,7 @@ export default function DataList(props: Props) {
 
     return(
         <>
-        <form name="resultData">
+        <form name="resultData" onSubmit={(e) => {e.preventDefault()}}>
             <input type="text" inputMode="text" placeholder="장소명 혹은 주소로 검색하세요"
             className="border-solid focus:border-teal-400 focus:ring-teal-400 rounded-sm pl-2 w-full"
             onChange={(e) => search(e.target.value)}
