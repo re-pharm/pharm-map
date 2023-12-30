@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import data from "./region.json";
+import { ERROR } from "@/app/types/errormessages";
 
 type StateType = {
     code: string,
@@ -42,12 +43,12 @@ export async function GET(request: Request) {
                     });
                 }
                 
-                return NextResponse.json({error: "찾고 있는 지역이 없습니다."}, {status: 400});
+                return NextResponse.json({error: ERROR.UNSUPPORTED}, {status: 400});
             }
 
-            return NextResponse.json({error: "찾고 있는 지역이 없습니다."}, {status: 400});
+            return NextResponse.json({error: ERROR.UNSUPPORTED}, {status: 400});
         default:
-            return NextResponse.json({error: "잘못된 지역 분류입니다."}, {status: 400});
+            return NextResponse.json({error: ERROR.INVALIDATE_REGION}, {status: 400});
     }
 }
 

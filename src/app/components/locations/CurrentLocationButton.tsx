@@ -50,7 +50,7 @@ export default function CurrentLocationButton() {
                     }
                     enableGeolocation(true);
                 } else {
-                    openErrorMessage(`${validateResult.error} ${ERROR.UNSUPPORTED}`);
+                    openErrorMessage(`${validateResult.error}`);
                 }
             }, (error) => {
                 if (error.code) {
