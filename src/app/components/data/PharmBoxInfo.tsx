@@ -32,6 +32,11 @@ export default async function PharmBoxInfo(prop: Props) {
                         start: operationJson.data[`dutyTime${i}s`],
                         end: operationJson.data[`dutyTime${i}c`]
                     });    
+                } else {
+                    operationArray.push({
+                        start: NaN,
+                        end: NaN
+                    }); 
                 }
             }
         }
@@ -92,13 +97,16 @@ export default async function PharmBoxInfo(prop: Props) {
                             {operationArray.map((data: OperationData, index) => (
                                 <li key={index}>
                                     <span className="font-semibold pe-2">{operationDays[index]}</span>
-                                    {data.start >= 1000 ? 
-                                        `${data.start.toString().slice(0, 2)}:${data.start.toString().slice(2)}`
-                                        : `${data.start.toString().slice(0, 1)}:${data.start.toString().slice(1)}`}
-                                    &nbsp;~&nbsp;
-                                    {data.end >= 1000 ? 
-                                        `${data.end.toString().slice(0, 2)}:${data.end.toString().slice(2)}`
-                                        : `${data.end.toString().slice(0, 1)}:${data.end.toString().slice(1)}`}
+                                    {Number.isNaN(data.start) ? "휴무 혹은 정보 없음" :
+                                        `${data.start >= 1000 ? 
+                                            `${data.start.toString().slice(0, 2)}:${data.start.toString().slice(2)}`
+                                            : `${data.start.toString().slice(0, 1)}:${data.start.toString().slice(1)}`}
+                                         ~ 
+                                        ${data.end >= 1000 ? 
+                                            `${data.end.toString().slice(0, 2)}:${data.end.toString().slice(2)}`
+                                            : `${data.end.toString().slice(0, 1)}:${data.end.toString().slice(1)}`}
+                                        `
+                                    }
                                 </li>
                             ))}
                         </ul>
@@ -140,6 +148,8 @@ export default async function PharmBoxInfo(prop: Props) {
                         &nbsp;혹은&nbsp;
                         <a href={`https://map.naver.com/p/search/${data.name}`} target="_blank">네이버 지도</a>
                         에서 장소를 찾아보시거나 직접 전화하시어 다시 한 번 확인하세요.
+                        <br />
+                        일부 약국은 공휴일에도 평시와 같은 운영시간을 가지고 있어 공휴일 영업 정보가 없으니 이용 전 확인 바랍니다.
                     </p>
                 </section>
             </div>
