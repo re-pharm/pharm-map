@@ -21,29 +21,6 @@ export default function Kmap(prop: Props) {
   const regionCode = useContext(RegionData);
   const [map, generateMap] = useState<any>(undefined);
 
-  //맵 초기화
-  useEffect(() => {
-    const script = document.createElement("script");
-    script.src =
-      `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_KEY}&autoload=false`;
-    document.head.appendChild(script);
-
-    script.onload = () => {
-      (window as any).kakao.maps.load(() => {
-        //지도 생성 및 객체 리턴
-        const container = mapContainer.current; //지도를 담을 영역의 DOM 레퍼런스
-        const options = { //지도를 생성할 때 필요한 기본 옵션
-          center: new (window as any).kakao.maps.LatLng(
-            prop.latLng.lat, 
-            prop.latLng.lng
-          ), //지도의 중심좌표.
-          level: 3 //지도의 레벨(확대, 축소 정도)
-        };
-        generateMap(new (window as any).kakao.maps.Map(container, options));
-      });
-    }
-  }, [prop.latLng, mapContainer]);
-
   useEffect(() => {
     if (map) {
       map.setCenter(new (window as any).kakao.maps.LatLng(
@@ -102,6 +79,20 @@ export default function Kmap(prop: Props) {
 
   return (
     <>
+      <Script src={`https://dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAO_MAP_KEY}&autoload=false`}
+        onReady={() => {
+          (window as any).kakao.maps.load(() => {
+            //지도 생성 및 객체 리턴
+            const container = mapContainer.current; //지도를 담을 영역의 DOM 레퍼런스
+            const options = { //지도를 생성할 때 필요한 기본 옵션
+              center: new (window as any).kakao.maps.LatLng(
+                prop.latLng.lat, 
+                prop.latLng.lng
+              ), //지도의 중심좌표.
+              level: 3 //지도의 레벨(확대, 축소 정도)
+            };
+            generateMap(new (window as any).kakao.maps.Map(container, options));
+          })}}/>
       <section ref={mapContainer} className="rounded-xl w-full hidden md:block">
       </section>
     </>
