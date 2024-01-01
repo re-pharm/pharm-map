@@ -15,12 +15,13 @@ export default function IndependantBoxInfoLayout({ children, params }: {
         <div>
             <section id="regionAndHeader" className="flex gap-2 mb-4">
                 <Header isInfoPage={true} />
-                <p className="text-2xl mt-[1.25rem]">
+                <p className="text-lg md:text-2xl mt-[1.25rem]">
                     |&nbsp;
-                    <Link href={`/${params.state}/${params.city}`} className="no-underline">
+                    <Link href={`/${params.state}/${params.city}`}
+                        className="no-underline hover:after:content-['→'] focus:after:content-['→']" >
                         {validateResult.state} {validateResult.city}
                     </Link>
-                    &nbsp;수거함 정보
+                    <span className="hidden md:inline">&nbsp;수거함 정보</span>
                 </p>
             </section>
             <section id="content" className="">
