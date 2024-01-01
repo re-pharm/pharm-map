@@ -11,6 +11,19 @@ type OperationData = {
     end: number
 }
 
+type PharmData = {
+    dutyAddr: string,
+    dutyMapimg: string,
+    dutyName: string,
+    dutyTel1: string,
+    hpid: string,
+    postCdn1: Number,
+    postCdn2: Number,
+    rnum: Number,
+    wgs84Lat: Number,
+    wgs84Lon: Number|string
+}
+
 const operationDays = ["월", "화", "수", "목", "금", "토", "일", "공휴일"];
 
 export default async function PharmBoxInfo(prop: Props) {
@@ -25,12 +38,18 @@ export default async function PharmBoxInfo(prop: Props) {
             await fetch(`${process.env.SERVICE_URL}/api/service/pharm/info?state=${state}&city=${city}&name=${name}`);
         const operationJson = await operationData.json();
 
-        if (operationData.ok) {
+        if (operationData.ok && operationJson.data) {
+            let data = operationJson.data;
+
+            if (Array.isArray(operationJson.data)) {
+                data = operationJson.data.find((data:PharmData) => data.dutyName === name);    
+            }
+
             for (let i = 1; i < 9; i++) {
-                if(operationJson.data[`dutyTime${i}s`]) {
+                if(data[`dutyTime${i}s`]) {
                     operationArray.push({
-                        start: operationJson.data[`dutyTime${i}s`],
-                        end: operationJson.data[`dutyTime${i}c`]
+                        start: data[`dutyTime${i}s`],
+                        end: data[`dutyTime${i}c`]
                     });    
                 } else {
                     operationArray.push({
@@ -112,6 +131,12 @@ export default async function PharmBoxInfo(prop: Props) {
                         </ul>
                     </section>
                 )}
+                {operationArray.length === 0 && data.type === "pharm" && (
+                    <section id="operationHours" className="flex mt-2">
+                        <FontAwesomeIcon icon={faClock} className="pe-2 mt-1" />
+                        <p>운영 시간 정보 없음</p>
+                    </section>
+                )}
     
                 {/* 수거함 정보 출처 */}
                 <section id="dataSource" className="flex gap-2 mt-2">
@@ -149,7 +174,9 @@ export default async function PharmBoxInfo(prop: Props) {
                         <a href={`https://map.naver.com/p/search/${data.name}`} target="_blank">네이버 지도</a>
                         에서 장소를 찾아보시거나 직접 전화하시어 다시 한 번 확인하세요.
                         <br />
-                        일부 약국은 공휴일에도 평시와 같은 운영시간을 가지고 있어 공휴일 영업 정보가 없으니 이용 전 확인 바랍니다.
+                        {data.type === "pharm" ? 
+                            "일부 약국은 공휴일에도 평시와 같은 운영시간을 가지고 있어 공휴일 영업 정보가 없으니 이용 전 확인 바랍니다."
+                        : ""}
                     </p>
                 </section>
             </div>
