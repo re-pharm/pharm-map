@@ -24,10 +24,10 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <div className="flex h-full px-8 pt-8 gap-8">
+        <div className="flex h-full px-4 pt-4 gap-4 md:px-8 md:pt-8 md:gap-8">
           {children}
         </div>
-        <footer className="m-4 h-[2rem]">
+        <footer className="mx-4 md:mx-8 my-2 md:my-4 h-[2rem]">
           <p>
             © 2023 Re:Pharm 프로젝트 및 &nbsp;
             <a href="https://github.com/re-pharm/pharm-map/graphs/contributors" target="_blank">기여자</a>. &nbsp;

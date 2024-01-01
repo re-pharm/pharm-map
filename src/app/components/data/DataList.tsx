@@ -42,20 +42,18 @@ export default function DataList(props: Props) {
             onChange={(e) => search(e.target.value)}
             />
         </form>
-        <section id="info" className="flex my-2 gap-2 break-keep">
+        <section id="info" className="flex my-1 gap-2 break-keep">
             <p className="rounded-xl shadow-md p-2">
-                <span className="inline-block">
+                <span className="inline-block me-1">
                     <FontAwesomeIcon icon={faCalendarCheck} className="px-1" />
-                    <span className="font-semibold pe-2">기준일</span>
                 </span>
                 <span className="inline-block">
-                    {props.date ?? "-"}
+                    {`${props.date} 기준` ?? "-"}
                 </span>
             </p>
             <p className="rounded-xl shadow-md p-2">
-                <span className="inline-block">
+                <span className="inline-block me-1">
                     <FontAwesomeIcon icon={faArrowUpWideShort} className="px-1" />
-                    <span className="font-semibold pe-2">정렬 방법</span>
                 </span>
                 <span className="inline-block">
                     {useGeolocation && useGeolocation.value ? "가까운 순" : "기본 순"}

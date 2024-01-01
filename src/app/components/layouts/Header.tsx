@@ -21,7 +21,9 @@ export default function Header(props: Props) {
                 <a href="https://forms.gle/EST5vaZBFGy8DHGE8" target="_blank"
                     className="border-b-2 border-slate-300 dark:border-slate-400 hover:bg-slate-100
                         hover:dark:bg-slate-600 dark:bg-slate-800 rounded-sm p-2 no-underline">
-                    <FontAwesomeIcon icon={faPaperPlane} className="pe-1" />
+                    <span className="pe-1">
+                        <FontAwesomeIcon icon={faPaperPlane} />
+                    </span>
                     문의/제보
                 </a>
             </nav>

@@ -10,7 +10,7 @@ export default function Home() {
 
     return(
         <>
-            <div id="mainData" className="w-full sm:w-fit flex flex-col h-[calc(100vh-6rem)]">
+            <div id="mainData" className="w-full sm:w-fit flex flex-col h-[calc(100vh-4rem)] md:h-[calc(100vh-6rem)]">
                 <Header />
                 <main className="h-full flex flex-col">
                     <ManualLocation />
