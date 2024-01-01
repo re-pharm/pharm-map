@@ -81,7 +81,7 @@ export function ManualLocation() {
             </select>
             <select className="w-full border-0 border-b-2 focus:border-teal-400 focus:ring-transparent rounded-sm
                 bg-slate-50 hover:bg-slate-100 hover:dark:bg-slate-800 dark:bg-slate-700 dark:text-white border-slate-300 dark:border-slate-600"
-                onChange={(e) => sendRegionInfo(selectedState, e.target.value)} value={selectedCity}>
+                onChange={(e) => sendRegionInfo(selectedState, e.target.value)} value={selectedCity} autoFocus>
                 <option value="default">시/군/구</option>
                 {cityList.length > 0 && cityList.map((city) => (
                     <option key={city.code} value={city.code}>{city.name}</option>
