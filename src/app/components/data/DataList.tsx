@@ -67,7 +67,8 @@ export default function DataList(props: Props) {
                     <Link href={`/${props.state}/${props.city}/box?name=${place.name}`}
                         onClick={(e) => {props.setMapCenter({lat: Number(place.lat), lng: Number(place.lng)})}}
                         className="block p-4 rounded-xl shadow-lg basis-0 shrink w-full text-start
-                            no-underline hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-slate-700">
+                            no-underline hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-slate-700"
+                        scroll={false}>
                         <span className="block">
                             <span className="inline-block rounded-sm dark:bg-slate-900 bg-slate-200 py-1 mb-2 px-2 me-2">
                                 <FontAwesomeIcon 
