@@ -2,6 +2,8 @@
 import { useContext, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { RegionData } from "@/app/types/listDataWithContext"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons"
 
 type StateType = {
     code: string,
@@ -51,8 +53,11 @@ export function ManualLocation() {
         setData();
     }, [urlRegionData]);
 
-    //"시/군/구" 선택 후 이동
-    function sendRegionInfo(state:string|undefined, city: string|undefined) {
+    //"시/군/구" 선택 후 버튼 눌러야 이동
+    function sendRegionInfo(e: React.MouseEvent<HTMLButtonElement>,
+        state:string|undefined, city: string|undefined) {
+
+        e.preventDefault();
         if (state && city) {
             if (state !== "default" && city !== "default") {
                 router.push(`/${state}/${city}`);
@@ -60,7 +65,7 @@ export function ManualLocation() {
         }
     }
 
-    function sendStateInfo(state: string) {
+    function sendStateInfo(state: string) {                
         selectState(state);
         if (state !== "default") {
             getCityData(state);
@@ -81,12 +86,17 @@ export function ManualLocation() {
             </select>
             <select className="w-full border-0 border-b-2 focus:border-teal-400 focus:ring-transparent rounded-sm
                 bg-slate-50 hover:bg-slate-100 hover:dark:bg-slate-800 dark:bg-slate-700 dark:text-white border-slate-300 dark:border-slate-600"
-                onChange={(e) => sendRegionInfo(selectedState, e.target.value)} value={selectedCity} autoFocus>
+                value={selectedCity} onChange={(e) => selectCity(e.target.value)} autoFocus>
                 <option value="default">시/군/구</option>
                 {cityList.length > 0 && cityList.map((city) => (
                     <option key={city.code} value={city.code}>{city.name}</option>
                 ))}
             </select>
+            <button type="submit" className="border-0 border-b-2 bg-slate-50 hover:bg-slate-100 hover:dark:bg-slate-800 dark:bg-slate-700
+                dark:text-white border-slate-300 dark:border-slate-600 px-2.5 focus:border-teal-400 focus:outline-none rounded-sm"
+                onClick={(e) => sendRegionInfo(e, selectedState, selectedCity)} aria-label="선택한 지역으로 이동">
+                <FontAwesomeIcon icon={faArrowRight} />
+            </button>
         </form>
     )
 }
