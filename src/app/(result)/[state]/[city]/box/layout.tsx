@@ -26,7 +26,7 @@ export default function IndependantBoxInfoLayout({ children, params }: {
             </section>
             <section id="content" className="">
                 {children}
-            </section>        
+            </section>
         </div>
     )
 }
