@@ -1,52 +1,83 @@
 import { NextResponse } from "next/server";
-import data from "./region.json";
 import { ERROR } from "@/app/types/errormessages";
+import { sbHeader } from "@/app/types/rest";
 
-type StateType = {
+type ListType = {
     code: string,
     name: string
 }
 
-export type RegionType = {
-    state: StateType[],
-    city: {[key: string]: StateType[]}
+type DetailType = {
+    state: {
+        code: string,
+        name: string
+    },
+    city: string,
+    integrated: string,
+    lat: string,
+    lng: string
 }
-
-const region: RegionType = data;
 
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const type: string | null = searchParams.get('type');
     const state: string | null = searchParams.get('state');
     const city: string | null = searchParams.get('city');
-
+    
     switch(type) {
         case "state":
-            return NextResponse.json(region.state);
+            const stateList: ListType[] = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_states`, sbHeader)
+                .then((res) => res.json());
+
+            return NextResponse.json(stateList);
         case "city":
-            if (state !== null && region.city[state])
-                return NextResponse.json(region.city[state]);
-            else
-                return NextResponse.json({error: "없는 지역입니다."}, {status: 404});
-        case "geo":
-            const stateResult = region.state.find((province) => province.name === state) ||
-                region.state.find((province) => province.code === state);
-
-            if (stateResult !== undefined) {
-                const cityResult = region.city[stateResult.code].find((town) => town.name === city) ||
-                    region.city[stateResult.code].find((town) => town.code === city);
-
-                if (cityResult !== undefined) {
-                    return NextResponse.json({
-                        state: stateResult,
-                        city: cityResult
-                    });
-                }
+            if (state !== null) {
+                const cityList: ListType[] = 
+                    await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities${
+                            `?state=eq.${state}&select=code,name`
+                        }`, sbHeader).then((res) => res.json());
                 
+                return NextResponse.json(cityList);
+            } else {
+                return NextResponse.json({error: "존재하지 않는 지역입니다."}, {status: 404});
+            }
+                
+        case "geo":
+            const data: DetailType[] = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
+                "state(name,code),cityname:name,city:code"
+            }&or=(name.eq.${city},code.eq.${city})`, sbHeader).then((res) => res.json());
+
+            const selected: DetailType | null = (data.length === 1 ? data[0] :
+                data.length > 1 ? data.filter((region) => (
+                    region.state.name === state ||
+                    region.state.code === state
+                ))[0] : null);
+
+            if (selected) {
+                return NextResponse.json({
+                    state: selected.state.code,
+                    city: selected.city,
+                    integrated: selected.integrated,
+                    lat: selected.lat,
+                    lng: selected.lng
+                });
+            } else {
                 return NextResponse.json({error: ERROR.UNSUPPORTED}, {status: 400});
             }
+        case "current":
+            const current: DetailType[] = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
+                `integrated, lat, lng&and=(state.eq.${state}, code.eq.${city})`
+            }`, sbHeader).then((res) => res.json());
 
-            return NextResponse.json({error: ERROR.UNSUPPORTED}, {status: 400});
+            if (current.length > 0) {
+                return NextResponse.json({
+                    integrated: current[0].integrated,
+                    lat: current[0].lat,
+                    lng: current[0].lng
+                })
+            } else {
+                return NextResponse.json({error: ERROR.UNSUPPORTED}, {status: 400});
+            }
         default:
             return NextResponse.json({error: ERROR.INVALIDATE_REGION}, {status: 400});
     }

@@ -31,19 +31,22 @@ export default function Page({ params }: Params) {
 
     useEffect(() => {
         async function validateDataList() {
-            const validateData =
-                    await fetch(`/api/service/supported_region?type=geo&state=${params.state}&city=${params.city}`);
+            const validData =
+                    await fetch(`/api/service/supported_region?type=current&state=${
+                        params.state}&city=${params.city}`).then((res) => res.json());
             const lat = sessionStorage.getItem("lat");
             const lng = sessionStorage.getItem("lng");
             const state = sessionStorage.getItem("state");
             const city = sessionStorage.getItem("city");
             
-            if (validateData.ok) {
+            if (validData) {
                 //데이터 불러오기
                 const pharmBoxData = 
-                    await fetch(`/api/service/${params.state}/${params.city}`).then(async (data) => await data.json());
+                    await fetch(`/api/service/data?${
+                        `state=${params.state}&city=${params.city}&integrated=${validData.integrated}`}`)
+                        .then(async (data) => await data.json());
                 //기준 날짜 설정
-                setDataDate(pharmBoxData.date);
+                setDataDate("20230605");
 
                 //위치 정보 여부 확인
                 if (lat && lng) {
@@ -60,14 +63,20 @@ export default function Page({ params }: Params) {
                                 lng: Number(lng)
                             });
                         } else {
-                            setDefaultLocation(pharmBoxData.center);
+                            setDefaultLocation({
+                                lat: Number(validData.lat), 
+                                lng: Number(validData.lng)
+                            });
                         }
                     } else {
                         enableDistanceCalculate(true);
                     }
                 } else {
                     setData(pharmBoxData.data);
-                    setDefaultLocation(pharmBoxData.center);
+                    setDefaultLocation({
+                        lat: Number(validData.lat), 
+                        lng: Number(validData.lng)
+                    });
                 }
             } else {
                 alert(`URL을 잘못 입력하셨거나 서버가 불안정합니다. 초기 화면으로 돌아갑니다.`);

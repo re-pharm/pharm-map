@@ -42,9 +42,9 @@ export default function CurrentLocationButton() {
                 const validateResult = await validateLocation.json();
 
                 if (validateLocation.ok) {
-                    router.push(`/${validateResult.state.code}/${validateResult.city.code}`);
-                    sessionStorage.setItem("state", validateResult.state.code);
-                    sessionStorage.setItem("city", validateResult.city.code);
+                    router.push(`/${validateResult.state}/${validateResult.city}`);
+                    sessionStorage.setItem("state", validateResult.state);
+                    sessionStorage.setItem("city", validateResult.city);
                     if (useGeolocation) {
                         useGeolocation.set(true);
                     }
