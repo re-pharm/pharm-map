@@ -38,12 +38,14 @@ export default function RootLayout({
           {children}
         </div>
         <footer className="mx-4 md:mx-8 my-2 md:my-4 h-[1.5rem]">
-          <p>
-            © 2023-24 Re:Pharm 프로젝트 및&nbsp;
-            <a href="https://github.com/re-pharm/pharm-map/graphs/contributors" target="_blank">기여자</a>.&nbsp;
+          <p className="flex flex-wrap gap-2">
+            <span className="plain-text">© 2023-24 Re:Pharm 프로젝트 및&nbsp;
+              <a href="https://github.com/re-pharm/pharm-map/graphs/contributors" target="_blank">기여자</a>.
+            </span>
             <a href="https://github.com/re-pharm/pharm-map/blob/main/LICENSE" target="_blank">오픈소스 라이선스 확인하기</a>
+            <Link href="/dashboard">현황판</Link>
           </p>
-        </footer>  
+        </footer>
       </body>
     </html>
   )
