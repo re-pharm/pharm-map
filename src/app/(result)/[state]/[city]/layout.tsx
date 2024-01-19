@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { metadata } from '@/app/layout';
-import { validateLocationValue } from '@/app/functions/data/validateLocationData';
 
 type Params = {
     params: {
@@ -14,17 +13,19 @@ type Params = {
 export async function generateMetadata(
     {params}: Params
 ): Promise<Metadata> {
-    const validateResult = validateLocationValue(params.state, params.city);
+    const validateResult = await fetch(`${process.env.SERVICE_URL
+        }/api/service/supported_region?type=single&state=${
+        params.state}&city=${params.city}`).then((res) => res.json());
     
-    if (validateResult.valid) {
+    if (validateResult.state.name) {
         return {
-            title: `${validateResult.state} ${validateResult.city} | 폐의약품 수거지도`,
-            description: `${validateResult.state} ${validateResult.city}의 폐의약품 수거함 위치를 확인하세요.`,
+            title: `${validateResult.state.name} ${validateResult.city.name} | 폐의약품 수거지도`,
+            description: `${validateResult.state.name} ${validateResult.city.name}의 폐의약품 수거함 위치를 확인하세요.`,
             openGraph: {
                 type: "website",
                 url: "https://pharm.paperbox.pe.kr",
-                title: `${validateResult.state} ${validateResult.city} 폐의약품 수거지도`,
-                description: `${validateResult.state} ${validateResult.city}의 폐의약품 수거함 위치를 확인하세요`
+                title: `${validateResult.state.name} ${validateResult.city.name} 폐의약품 수거지도`,
+                description: `${validateResult.state.name} ${validateResult.city.name}의 폐의약품 수거함 위치를 확인하세요`
             }
         }
     } else {

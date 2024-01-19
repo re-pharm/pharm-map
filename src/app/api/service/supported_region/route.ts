@@ -13,6 +13,7 @@ type DetailType = {
         name: string
     },
     city: string,
+    name?: string,
     integrated: string,
     lat: string,
     lng: string
@@ -43,8 +44,9 @@ export async function GET(request: Request) {
             }
                 
         case "geo":
+        case "single":
             const data: DetailType[] = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
-                "state(name,code),cityname:name,city:code"
+                "state(name,code),name,city:code"
             }&or=(name.eq.${city},code.eq.${city})`, sbHeader).then((res) => res.json());
 
             const selected: DetailType | null = (data.length === 1 ? data[0] :
@@ -54,13 +56,23 @@ export async function GET(request: Request) {
                 ))[0] : null);
 
             if (selected) {
+                if (type === "geo") {
+                    return NextResponse.json({
+                        state: selected.state.code,
+                        city: selected.city,
+                        integrated: selected.integrated,
+                        lat: selected.lat,
+                        lng: selected.lng
+                    });    
+                }
+
                 return NextResponse.json({
-                    state: selected.state.code,
-                    city: selected.city,
-                    integrated: selected.integrated,
-                    lat: selected.lat,
-                    lng: selected.lng
-                });
+                    state: selected.state,
+                    city: {
+                        code: selected.city,
+                        name: selected.name
+                    }
+                })
             } else {
                 return NextResponse.json({error: ERROR.UNSUPPORTED}, {status: 400});
             }

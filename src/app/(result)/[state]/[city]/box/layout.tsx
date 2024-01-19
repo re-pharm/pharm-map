@@ -1,15 +1,17 @@
-import { validateLocationValue } from "@/app/functions/data/validateLocationData";
 import Header from "@/app/components/layouts/Header"
 import Link from "next/link";
 
-export default function IndependantBoxInfoLayout({ children, params }: {
+export default async function IndependantBoxInfoLayout({ children, params }: {
     children: React.ReactNode,
     params: {
       state: string,
       city: string
     }
 }) {
-    const validateResult = validateLocationValue(params.state, params.city);
+    const validData =
+                    await fetch(`${process.env.SERVICE_URL
+                        }/api/service/supported_region?type=single&state=${
+                        params.state}&city=${params.city}`).then((res) => res.json());
 
     return (
         <div>
@@ -19,7 +21,7 @@ export default function IndependantBoxInfoLayout({ children, params }: {
                     |&nbsp;
                     <Link href={`/${params.state}/${params.city}`}
                         className="no-underline hover:after:content-['→'] focus:after:content-['→']" >
-                        {validateResult.state} {validateResult.city}
+                        {validData.state.name} {validData.city.name}
                     </Link>
                     <span className="hidden md:inline">&nbsp;수거함 정보</span>
                 </p>

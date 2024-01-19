@@ -35,7 +35,7 @@ export default async function PharmBoxInfo(prop: Props) {
         const city = data.location.split(" ")[1];
         const name = data.name.replace(/\s+/g, '');
         const operationData =
-            await fetch(`${process.env.SERVICE_URL}/api/service/pharm/info?state=${state}&city=${city}&name=${name}`);
+            await fetch(`${process.env.SERVICE_URL}/api/service/pharm?state=${state}&city=${city}&name=${name}`);
         const operationJson = await operationData.json();
 
         if (operationData.ok && operationJson.data) {
