@@ -43,7 +43,6 @@ export default function RootLayout({
               <a href="https://github.com/re-pharm/pharm-map/graphs/contributors" target="_blank">기여자</a>.
             </span>
             <a href="https://github.com/re-pharm/pharm-map/blob/main/LICENSE" target="_blank">오픈소스 라이선스 확인하기</a>
-            <Link href="/dashboard">현황판</Link>
           </p>
         </footer>
       </body>

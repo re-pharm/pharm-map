@@ -52,3 +52,7 @@ footer a {
 .plain-btn-link {
     text-decoration: none;
 }
+
+.menu-item {
+    @apply block rounded-md px-2 py-1 hover:bg-slate-200 w-full hover:dark:bg-slate-600 dark:bg-slate-800 no-underline;
+}
