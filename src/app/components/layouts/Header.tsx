@@ -1,4 +1,3 @@
-import "./header.css";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import CurrentLocationButton from "../locations/CurrentLocationButton";
@@ -7,12 +6,21 @@ type Props = {
     isInfoPage?: boolean
 }
 
+/*
+    menu icon: faEllipsis
+    dashboard icon: faChartLine
+    help icon: faCircleQuestion
+    contributors icon: faCodeCompare
+    inquiry icon: faPaperPlane
+    bookmark icon: faBookmark
+*/
+
 export default function Header(props: Props) {
     return (
         <header>
             <h1 className="text-2xl mb-1">
                 <a href="/" className="no-underline">
-                    <span className="blockText text-sm">우리동네</span>
+                    <span className="block text-sm">우리동네</span>
                     폐의약품 수거지도 💊
                 </a>
             </h1>
