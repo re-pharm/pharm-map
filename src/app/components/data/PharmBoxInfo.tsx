@@ -83,8 +83,7 @@ export default async function PharmBoxInfo(prop: Props) {
                         <a 
                             href={`https://map.kakao.com/link/to/${data.name},${data.lat},${data.lng}`}
                             target="_blank"
-                            className="no-underline px-2 pt-2 pb-1.5 mt-1 border-b-2 border-slate-300 dark:border-slate-400
-                                hover:bg-slate-100 hover:dark:bg-slate-600 rounded-sm"
+                            className="plain-btn-link"
                         >
                             <FontAwesomeIcon icon={faRoute} className="pe-1" />
                             <span className="font-semibold">길찾기</span>
@@ -93,8 +92,7 @@ export default async function PharmBoxInfo(prop: Props) {
                     <li>
                         <a
                             href={`tel:${data.tel}`}
-                            className="no-underline px-2 pt-2 pb-1.5 mt-1 border-b-2 border-slate-300 dark:border-slate-400
-                            hover:bg-slate-100 hover:dark:bg-slate-600 rounded-sm"
+                            className="plain-btn-link"
                         >
                             <FontAwesomeIcon icon={faPhone} className="pe-1" />
                             <span className="font-semibold">전화하기</span> {data.tel}

@@ -106,8 +106,7 @@ export default function CurrentLocationButton() {
                 </section>
             ): ""}
             <button
-                className="border-b-2 border-slate-300 dark:border-slate-400 hover:bg-slate-100
-                    hover:dark:bg-slate-600 dark:bg-slate-800 rounded-sm p-2"
+                className="plain-btn"
                 onClick={(e) => {getGeolocation(e)}}>
                 <span className="pe-1">
                     <FontAwesomeIcon icon={faLocationCrosshairs} />
@@ -115,10 +114,7 @@ export default function CurrentLocationButton() {
                 {isGeolocationSaved ? "위치 갱신" : "현위치"}
             </button>
             {isGeolocationSaved ? (
-                <button
-                    className="border-b-2 border-slate-300 dark:border-slate-400 hover:bg-slate-100
-                        hover:dark:bg-slate-600 dark:bg-slate-800 rounded-sm p-2"
-                    onClick={(e) => {removeLocationInfo(e)}}>
+                <button className="plain-btn" onClick={(e) => {removeLocationInfo(e)}}>
                     <span className="pe-1">
                         <FontAwesomeIcon icon={faEraser} />
                     </span>

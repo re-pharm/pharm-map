@@ -16,6 +16,8 @@ type Props = {
 */
 
 export default function Header(props: Props) {
+    const inquiryLink = "https://forms.gle/EST5vaZBFGy8DHGE8";
+
     return (
         <header>
             <h1 className="text-2xl mb-1">
@@ -26,9 +28,8 @@ export default function Header(props: Props) {
             </h1>
             <nav id="mainFunctions" className="flex gap-2">
                 {props.isInfoPage ? "" : (<CurrentLocationButton />)}
-                <a href="https://forms.gle/EST5vaZBFGy8DHGE8" target="_blank"
-                    className="border-b-2 border-slate-300 dark:border-slate-400 hover:bg-slate-100
-                        hover:dark:bg-slate-600 dark:bg-slate-800 rounded-sm p-2 no-underline">
+                <a href={inquiryLink} target="_blank"
+                    className="plain-btn-link">
                     <span className="pe-1">
                         <FontAwesomeIcon icon={faPaperPlane} />
                     </span>
