@@ -1,4 +1,4 @@
-import { faRoute, faPhone, faLocationDot, faClock, faCheckDouble, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { faRoute, faPhone, faLocationDot, faClock, faCheckDouble, faInfoCircle, faClockRotateLeft, faFilePen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Data, organizationIcons, organizationType } from "@/app/types/listdata";
 
@@ -29,6 +29,7 @@ const operationDays = ["월", "화", "수", "목", "금", "토", "일", "공휴�
 export default async function PharmBoxInfo(prop: Props) {
     const data = prop.currentData;
     const operationArray: OperationData[] = [];
+    const date = new Date(data ? data.last_updated : Date.now());
 
     if (data && data.type === "pharm") {
         const state = data.location.split(" ")[0];
@@ -157,6 +158,30 @@ export default async function PharmBoxInfo(prop: Props) {
                         )
                         : ""}
                     </ul>
+                </section>
+                {/* 마지막 갱신일 */}
+                <section id="last_updated" className="flex gap-2 mt-2">
+                    <div className="flex items-start">
+                        <FontAwesomeIcon icon={faClockRotateLeft} className="me-2 mt-1" />
+                        <span className="font-semibold">최종 갱신</span>
+                    </div>
+                    <ul>
+                        <li>{date.toLocaleDateString("ko-KR")}</li>
+                    </ul>
+                </section>
+
+                <section id="memo" className="flex gap-2 mt-2">
+                    {data.memo ? (
+                        <>
+                        <div className="flex items-start">
+                            <FontAwesomeIcon icon={faFilePen} className="me-2 mt-1" />
+                            <span className="font-semibold">비고</span>
+                        </div>
+                        <p>
+                            {data.memo}
+                        </p>
+                        </>
+                    ):""}
                 </section>
     
                 {/* 수거함 데이터 관련 주의사항 */}

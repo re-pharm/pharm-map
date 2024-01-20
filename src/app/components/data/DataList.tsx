@@ -56,7 +56,7 @@ export default function DataList(props: Props) {
                     <FontAwesomeIcon icon={faArrowUpWideShort} className="px-1" />
                 </span>
                 <span className="inline-block">
-                    {useGeolocation && useGeolocation.value ? "가까운 순" : "기본 순"}
+                    {useGeolocation && useGeolocation.value ? "가까운 순" : "최신 순"}
                 </span>
             </p>
         </section>

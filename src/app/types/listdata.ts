@@ -7,7 +7,9 @@ export type Data = {
     type: string,
     lat: string,
     lng: string,
-    distance?: number
+    distance?: number,
+    last_updated: string,
+    memo: string | null
 };
 
 type OrganizationType = {
