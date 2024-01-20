@@ -45,20 +45,17 @@ export default async function PharmBoxInfoPage({params, searchParams}: Props) {
                     await fetch(`${process.env.SERVICE_URL
                         }/api/service/supported_region?type=current&state=${
                         params.state}&city=${params.city}`).then((res) => res.json());
-    const boxList = await fetch(`${process.env.SERVICE_URL
-            }/api/service/data?state=${params.state}&city=${params.city}&integrated=${validData.integrated}`)
-            .then(async(result) => await result.json());
-
-    const filterResult = 
-        boxList.data.filter((place:Data) => place.name === searchParams.name);
+    const boxData = await fetch(`${process.env.SERVICE_URL
+            }/api/service/data?state=${params.state}&city=${params.city}&name=${searchParams.name
+            }&integrated=${validData.integrated}`).then(async(result) => await result.json());
 
     return(
         <section id="info" className="flex shadow-lg p-4 rounded-2xl">
-            <PharmBoxInfo currentData={filterResult[0]} />
+            <PharmBoxInfo currentData={boxData} />
             <Kmap latLng={{
-                lat: Number(filterResult[0].lat),
-                lng: Number(filterResult[0].lng)
-            }} data={[filterResult[0]]} />
+                lat: Number(boxData.lat),
+                lng: Number(boxData.lng)
+            }} data={[boxData]} />
         </section>
     );
 }

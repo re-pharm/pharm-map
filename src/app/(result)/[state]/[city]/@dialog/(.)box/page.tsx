@@ -40,20 +40,16 @@ export async function generateMetadata(
 }
 
 export default async function PharmBoxInfoDialog({ params, searchParams }: Params) {
-    const validData =
-                    await fetch(`${process.env.SERVICE_URL
-                        }/api/service/supported_region?type=current&state=${
-                        params.state}&city=${params.city}`).then((res) => res.json());
-    const boxList = await fetch(`${process.env.SERVICE_URL
-            }/api/service/data?state=${params.state}&city=${params.city}&integrated=${validData.integrated}`)
-            .then(async(result) => await result.json());
-
-    const filterResult = 
-        boxList.data.filter((place:Data) => place.name === searchParams.name);
-
+    const validData = await fetch(`${process.env.SERVICE_URL
+        }/api/service/supported_region?type=current&state=${
+        params.state}&city=${params.city}`).then((res) => res.json());
+    const boxData = await fetch(`${process.env.SERVICE_URL
+        }/api/service/data?state=${params.state}&city=${params.city}&name=${searchParams.name
+        }&integrated=${validData.integrated}`).then(async(result) => await result.json());
+   
     return (
         <Dialog state={params.state} city={params.city} name="수거함 정보">
-            <PharmBoxInfo currentData={filterResult[0]} /> 
+            <PharmBoxInfo currentData={boxData} /> 
         </Dialog>
     ); 
 }

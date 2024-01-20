@@ -42,11 +42,13 @@ export default function Page({ params }: Params) {
             if (validData) {
                 //데이터 불러오기
                 const pharmBoxData = 
-                    await fetch(`/api/service/data?${
+                    await fetch(`/api/service/list?${
                         `state=${params.state}&city=${params.city}&integrated=${validData.integrated}`}`)
                         .then(async (data) => await data.json());
+                const latest_date = new Date(pharmBoxData.data[0].last_updated);
+
                 //기준 날짜 설정
-                setDataDate("20230605");
+                setDataDate(latest_date.toLocaleDateString("ko-KR"));
 
                 //위치 정보 여부 확인
                 if (lat && lng) {

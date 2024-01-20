@@ -1,27 +1,36 @@
 import { NextResponse } from "next/server";
 import { sbHeader } from "@/app/types/rest";
 
+type Data = {
+    [index: string]: string
+}
+
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const state: string | null = searchParams.get('state');
     const city: string | null = searchParams.get('city');
-    const name: string | null = searchParams.get('name');
     const integrated: string | null = searchParams.get('integrated');
 
     try {
-        const data = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${state}${
+        const list = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${state}${
             integrated === "true" ? `?sub=eq.${city}&` : `_${city}?`
-        }name=eq.${name}`, sbHeader).then((res) => res.json());
+        }order=last_updated.desc,name.asc`, sbHeader).then((res) => res.json());
+        const data: Data[] = [];
+        
+        list.forEach((place: Data) => {
+            data.push({
+                name: place.name,
+                location: place.address,
+                type: place.type,
+                tel: place.call,
+                lat: place.lat,
+                lng: place.lng,
+                last_updated: place.last_updated
+            });
+        });
 
         return NextResponse.json({
-            name: data[0].name,
-            location: data[0].address,
-            type: data[0].type,
-            tel: data[0].call,
-            lat: data[0].lat,
-            lng: data[0].lng,
-            last_updated: data[0].last_updated,
-            memo: data[0].memo ?? null
+            data: data
         });
     } catch(e) {
         return NextResponse.json({ error: e }, { status: 500 });
