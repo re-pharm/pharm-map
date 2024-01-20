@@ -43,22 +43,25 @@ export default function Header(props: Props) {
                         </span>
                         문의/제보
                     </a>
-                    <Link href={links.dashboard}
+                    {props.isInfoPage ? "" : (
+                        <Link href={links.dashboard}
                         target="_blank" className="plain-btn-link hidden m_menu:inline md:hidden">
-                        <span className="pe-1">
-                            <FontAwesomeIcon icon={faChartLine} />
-                        </span>
-                        현황판
-                    </Link>
+                            <span className="pe-1">
+                                <FontAwesomeIcon icon={faChartLine} />
+                            </span>
+                            현황판
+                        </Link>
+                    )}
                     <a href={links.contributors}
-                        target="_blank" className="plain-btn-link hidden m_menu:inline md:hidden">
+                        target="_blank" className={`plain-btn-link ${
+                            props.isInfoPage ? "" : `hidden m_menu:inline md:hidden`}`}>
                         <span className="pe-1">
                             <FontAwesomeIcon icon={faCodeCompare} />
                         </span>
                         기여자
                     </a>
                 </div>
-                <Menu />
+                {props.isInfoPage ? "" : (<Menu />)}
             </nav>
         </header>
     );
