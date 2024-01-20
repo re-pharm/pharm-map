@@ -27,7 +27,8 @@ export async function GET(request: Request) {
     
     switch(type) {
         case "state":
-            const stateList: ListType[] = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_states`, sbHeader)
+            const stateList: ListType[] = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_states?available=eq.true`, 
+                sbHeader)
                 .then((res) => res.json());
 
             return NextResponse.json(stateList);
@@ -35,7 +36,7 @@ export async function GET(request: Request) {
             if (state !== null) {
                 const cityList: ListType[] = 
                     await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities${
-                            `?state=eq.${state}&select=code,name`
+                            `?state=eq.${state}&available=eq.true&select=code,name`
                         }`, sbHeader).then((res) => res.json());
                 
                 return NextResponse.json(cityList);
@@ -47,7 +48,7 @@ export async function GET(request: Request) {
         case "single":
             const data: DetailType[] = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
                 "state(name,code),name,city:code"
-            }&or=(name.eq.${city},code.eq.${city})`, sbHeader).then((res) => res.json());
+            }&or=(name.eq.${city},code.eq.${city})&available=eq.true`, sbHeader).then((res) => res.json());
 
             const selected: DetailType | null = (data.length === 1 ? data[0] :
                 data.length > 1 ? data.filter((region) => (
