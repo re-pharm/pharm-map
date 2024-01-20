@@ -45,6 +45,7 @@ export default function Page({ params }: Params) {
                     await fetch(`/api/service/list?${
                         `state=${params.state}&city=${params.city}&integrated=${validData.integrated}`}`)
                         .then(async (data) => await data.json());
+
                 const latest_date = new Date(pharmBoxData.data[0].last_updated);
 
                 //기준 날짜 설정

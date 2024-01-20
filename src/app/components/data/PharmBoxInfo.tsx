@@ -90,6 +90,7 @@ export default async function PharmBoxInfo(prop: Props) {
                             <span className="font-semibold">길찾기</span>
                         </a>
                     </li>
+                    {data.tel ? (
                     <li>
                         <a
                             href={`tel:${data.tel}`}
@@ -99,6 +100,7 @@ export default async function PharmBoxInfo(prop: Props) {
                             <span className="font-semibold">전화하기</span> {data.tel}
                         </a>
                     </li>
+                    ):""}
                 </ul>
                 
                 {/* 수거함 주소 */}

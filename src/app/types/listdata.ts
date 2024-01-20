@@ -1,4 +1,4 @@
-import { IconDefinition, faBuildingColumns, faCapsules, faEnvelopesBulk } from "@fortawesome/free-solid-svg-icons";
+import { IconDefinition, faAsterisk, faBuildingColumns, faCapsules, faDumbbell, faEnvelopesBulk, faHandHoldingHeart, faPersonPraying } from "@fortawesome/free-solid-svg-icons";
 
 export type Data = {
     name: string,
@@ -23,11 +23,19 @@ type OrganizationIcons = {
 export const organizationType: OrganizationType = {
     pharm: "약국",
     public: "공공기관",
-    post: "우체통"
+    post: "우체통",
+    gym: "체육시설",
+    welfare: "복지시설",
+    religion: "종교시설",
+    others: "기타"
 }
 
 export const organizationIcons: OrganizationIcons = {
     pharm: faCapsules,
     public: faBuildingColumns,
-    post: faEnvelopesBulk
+    post: faEnvelopesBulk,
+    gym: faDumbbell,
+    welfare: faHandHoldingHeart,
+    religion: faPersonPraying,
+    others: faAsterisk
 }
