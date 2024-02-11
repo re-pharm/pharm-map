@@ -1,7 +1,7 @@
 'use client'
 
 import Script from 'next/script';
-import { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import type { Data } from '@/app/types/listdata';
 import { RegionData } from '@/app/types/listDataWithContext';
@@ -31,8 +31,8 @@ export default function Kmap(prop: Props) {
 
   // 맵에 수거함 위치 설정
   useEffect(() => {
-    function loadPharmBoxInfo(title: string, state: string, city: string, id: number) {
-      router.push(`/${state}/${city}/box?name=${title}&id=${id}`);
+    function loadPharmBoxInfo(title: string, state: string, city: string, id: string) {
+      router.push(`/${state}/${city}/box?id=${id}`);
     }
 
     if (map && prop.data && prop.data.length > 0) {

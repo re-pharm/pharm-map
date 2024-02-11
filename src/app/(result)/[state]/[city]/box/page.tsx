@@ -22,18 +22,25 @@ export async function generateMetadata(
     const validateResult = await fetch(`${process.env.SERVICE_URL
         }/api/service/supported_region?type=single&state=${
         params.state}&city=${params.city}`).then((res) => res.json());
-    
+    const validData = await fetch(`${process.env.SERVICE_URL
+        }/api/service/supported_region?type=current&state=${
+        params.state}&city=${params.city}`).then((res) => res.json());
+    const boxData = await fetch(`${process.env.SERVICE_URL
+        }/api/service/data?state=${params.state}&city=${params.city
+        }&integrated=${validData.integrated}&id=${searchParams.id}`)
+        .then(async(result) => await result.json());
+
     if (validateResult.state.name) {
         return {
-            title: `${searchParams.name} | ${validateResult.state.name} ${validateResult.city.name} | 폐의약품 수거지도`,
+            title: `${boxData.name} | ${validateResult.state.name} ${validateResult.city.name} | 폐의약품 수거지도`,
             description: 
-                `${validateResult.state.name} ${validateResult.city.name}의 폐의약품 수거함이 위치한 ${searchParams.name}의 정보를 확인하세요.`,
+                `${validateResult.state.name} ${validateResult.city.name}의 폐의약품 수거함이 위치한 ${boxData.name}의 정보를 확인하세요.`,
             openGraph: {
                 type: "website",
                 url: "https://pharm.paperbox.pe.kr",
-                title: `${searchParams.name} | ${validateResult.state.name} ${validateResult.city.name} 폐의약품 수거지도`,
+                title: `${boxData.name} | ${validateResult.state.name} ${validateResult.city.name} 폐의약품 수거함`,
                 description:
-                    `${validateResult.state.name} ${validateResult.city.name}의 폐의약품 수거함이 위치한 ${searchParams.name}의 정보를 확인하세요.`
+                    `상세 정보 확인하기`
             }
         }
     } else {
@@ -47,8 +54,8 @@ export default async function PharmBoxInfoPage({params, searchParams}: Props) {
                         }/api/service/supported_region?type=current&state=${
                         params.state}&city=${params.city}`).then((res) => res.json());
     const boxData = await fetch(`${process.env.SERVICE_URL
-            }/api/service/data?state=${params.state}&city=${params.city}&name=${searchParams.name
-            }&integrated=${validData.integrated}&id=${searchParams.id}`)
+            }/api/service/data?state=${params.state}&city=${params.city}&integrated=${validData.integrated
+            }&id=${searchParams.id}`)
             .then(async(result) => await result.json());
 
     return(

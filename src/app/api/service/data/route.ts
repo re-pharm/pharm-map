@@ -1,19 +1,25 @@
 import { NextResponse } from "next/server";
 import { sbHeader } from "@/app/types/rest";
-import { OriginalData } from "@/app/types/listdata";
+import Sqids from "sqids";
 
 export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const state: string | null = searchParams.get('state');
     const city: string | null = searchParams.get('city');
-    const name: string | null = searchParams.get('name');
     const integrated: string | null = searchParams.get('integrated');
     const id: string | null = searchParams.get('id');
+
+    const hash = new Sqids({
+        alphabet: process.env.HASH
+    });
 
     try {
         const data = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${state}${
             integrated === "true" ? `?sub=eq.${city}&` : `_${city}?`
-        }name=eq.${name}&id=eq.${id}`, sbHeader).then((res) => res.json());
+        }${
+            id !== null ? `&id=eq.${hash.decode(id)[0]}` : ""
+        }`, sbHeader)
+        .then((res) => res.json());
 
         return NextResponse.json({
             name: data[0].name,

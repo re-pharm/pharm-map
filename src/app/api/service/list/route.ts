@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { sbHeader } from "@/app/types/rest";
+import Sqids from "sqids";
 
 type Data = {
     [index: string]: string
@@ -10,6 +11,11 @@ export async function GET(request: Request) {
     const state: string | null = searchParams.get('state');
     const city: string | null = searchParams.get('city');
     const integrated: string | null = searchParams.get('integrated');
+    
+    const hash = new Sqids({
+        alphabet: process.env.HASH,
+        minLength: 5
+    });
 
     try {
         const list = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${state}${
@@ -19,7 +25,7 @@ export async function GET(request: Request) {
         
         list.forEach((place: Data) => {
             data.push({
-                id: place.id,
+                id: hash.encode([Number(place.id)]),
                 name: place.name,
                 location: place.address,
                 type: place.type,
