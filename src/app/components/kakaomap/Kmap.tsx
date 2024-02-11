@@ -31,8 +31,8 @@ export default function Kmap(prop: Props) {
 
   // 맵에 수거함 위치 설정
   useEffect(() => {
-    function loadPharmBoxInfo(title: string, state: string, city: string) {
-      router.push(`/${state}/${city}/box?name=${title}`);
+    function loadPharmBoxInfo(title: string, state: string, city: string, id: number) {
+      router.push(`/${state}/${city}/box?name=${title}&id=${id}`);
     }
 
     if (map && prop.data && prop.data.length > 0) {
@@ -59,7 +59,7 @@ export default function Kmap(prop: Props) {
           const city = regionCode.city;
     
           (window as any).kakao.maps.event.addListener(marker, "click", function() {
-            loadPharmBoxInfo(place.name, state, city);
+            loadPharmBoxInfo(place.name, state, city, place.id);
             map.setCenter(new (window as any).kakao.maps.LatLng(
               place.lat, place.lng
             ));

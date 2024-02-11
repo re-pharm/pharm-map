@@ -11,7 +11,8 @@ type Props = {
     }
 
     searchParams: {
-        name: string
+        name: string,
+        id: string
     }
 }
 
@@ -47,7 +48,8 @@ export default async function PharmBoxInfoPage({params, searchParams}: Props) {
                         params.state}&city=${params.city}`).then((res) => res.json());
     const boxData = await fetch(`${process.env.SERVICE_URL
             }/api/service/data?state=${params.state}&city=${params.city}&name=${searchParams.name
-            }&integrated=${validData.integrated}`).then(async(result) => await result.json());
+            }&integrated=${validData.integrated}&id=${searchParams.id}`)
+            .then(async(result) => await result.json());
 
     return(
         <section id="info" className="flex shadow-lg p-4 rounded-2xl">

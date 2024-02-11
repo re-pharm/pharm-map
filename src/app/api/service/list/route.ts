@@ -19,6 +19,7 @@ export async function GET(request: Request) {
         
         list.forEach((place: Data) => {
             data.push({
+                id: place.id,
                 name: place.name,
                 location: place.address,
                 type: place.type,

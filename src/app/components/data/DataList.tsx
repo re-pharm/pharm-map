@@ -63,8 +63,8 @@ export default function DataList(props: Props) {
         <section id="dataList" className="flex items-center justify-center max-h-full flex-col shrink rounded-md overflow-hidden">
             <ul className="overflow-y-scroll w-full flex flex-col gap-4 p-2">
             {currentData.map((place) => (
-                <li key={place.location}>
-                    <Link href={`/${props.state}/${props.city}/box?name=${place.name}`}
+                <li key={place.id}>
+                    <Link href={`/${props.state}/${props.city}/box?name=${place.name}&id=${place.id}`}
                         onClick={(e) => {props.setMapCenter({lat: Number(place.lat), lng: Number(place.lng)})}}
                         className="block p-4 rounded-xl shadow-lg basis-0 shrink w-full text-start
                             no-underline hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-slate-700"

@@ -1,8 +1,22 @@
 import { IconDefinition, faAsterisk, faBuildingColumns, faCapsules, faDumbbell, faEnvelopesBulk, faHandHoldingHeart, faPersonPraying } from "@fortawesome/free-solid-svg-icons";
 
 export type Data = {
+    id: number,
     name: string,
     location: string,
+    tel: string,
+    type: string,
+    lat: string,
+    lng: string,
+    distance?: number,
+    last_updated: string,
+    memo: string | null
+};
+
+export type OriginalData = {
+    id: number,
+    name: string,
+    address: string,
     tel: string,
     type: string,
     lat: string,

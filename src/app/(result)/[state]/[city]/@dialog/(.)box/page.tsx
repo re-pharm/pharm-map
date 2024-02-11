@@ -10,7 +10,8 @@ type Params = {
         city: string,
     },
     searchParams: {
-        name: string
+        name: string,
+        id: string
     }
 }
 
@@ -45,7 +46,8 @@ export default async function PharmBoxInfoDialog({ params, searchParams }: Param
         params.state}&city=${params.city}`).then((res) => res.json());
     const boxData = await fetch(`${process.env.SERVICE_URL
         }/api/service/data?state=${params.state}&city=${params.city}&name=${searchParams.name
-        }&integrated=${validData.integrated}`).then(async(result) => await result.json());
+        }&integrated=${validData.integrated}&id=${searchParams.id}`)
+        .then(async(result) => await result.json());
    
     return (
         <Dialog state={params.state} city={params.city} name="수거함 정보">
