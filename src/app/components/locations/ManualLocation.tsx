@@ -60,7 +60,7 @@ export function ManualLocation() {
         e.preventDefault();
         if (state && city) {
             if (state !== "default" && city !== "default") {
-                router.push(`/${state}/${city}`);
+                router.push(`/${state}/${city}/list`);
             }
         }
     }

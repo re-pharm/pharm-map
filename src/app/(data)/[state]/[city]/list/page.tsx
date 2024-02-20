@@ -1,6 +1,6 @@
 "use client"
 /* Stylesheets */
-import "../../../page.css";
+import "@/app/page.css";
 /* Types and Data */
 import { CurrentLoc, IsRealtimeLocationEnabled } from "@/app/types/locationdata";
 import { Data } from "@/app/types/listdata";

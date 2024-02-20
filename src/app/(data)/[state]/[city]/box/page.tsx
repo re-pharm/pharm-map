@@ -65,7 +65,7 @@ export default async function PharmBoxInfoPage({params, searchParams}: Props) {
                 <Header isInfoPage={true} />
                 <p className="text-lg md:text-2xl mt-[1.25rem]">
                     |&nbsp;
-                    <Link href={`/${params.state}/${params.city}`}
+                    <Link href={`/${params.state}/${params.city}/list`}
                         className="no-underline hover:after:content-['→'] focus:after:content-['→']" >
                         {validData.state.name} {validData.city.name}
                     </Link>

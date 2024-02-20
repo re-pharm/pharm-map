@@ -24,7 +24,7 @@ export default function Dialog(props:Props) {
 
     function closeModal() {
         if(props.state && props.city) {
-            router.push(`/${props.state}/${props.city}`);
+            router.push(`/${props.state}/${props.city}/list`);
         } else {
             router.back();
         }
