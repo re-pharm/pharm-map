@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { metadata } from '@/app/layout';
 import PharmBoxInfo from '@/app/components/data/PharmBoxInfo';
-import { Data } from '@/app/types/listdata';
+import Header from "@/app/components/layouts/Header"
+import Link from "next/link";
 import Kmap from '@/app/components/kakaomap/Kmap';
 
 type Props = {
@@ -50,22 +51,35 @@ export async function generateMetadata(
 
 export default async function PharmBoxInfoPage({params, searchParams}: Props) {
     const validData =
-                    await fetch(`${process.env.SERVICE_URL
-                        }/api/service/supported_region?type=current&state=${
-                        params.state}&city=${params.city}`).then((res) => res.json());
+            await fetch(`${process.env.SERVICE_URL
+                }/api/service/supported_region?type=current&state=${
+                params.state}&city=${params.city}`).then((res) => res.json());
     const boxData = await fetch(`${process.env.SERVICE_URL
             }/api/service/data?state=${params.state}&city=${params.city}&integrated=${validData.integrated
             }&id=${searchParams.id}`)
             .then(async(result) => await result.json());
 
     return(
-        <section id="info" className="flex shadow-lg p-4 rounded-2xl">
-            <PharmBoxInfo currentData={boxData} />
-            <Kmap latLng={{
-                lat: Number(boxData.lat),
-                lng: Number(boxData.lng)
-            }} data={[boxData]} />
-        </section>
+        <div>
+            <section id="regionAndHeader" className="flex gap-2 mb-4">
+                <Header isInfoPage={true} />
+                <p className="text-lg md:text-2xl mt-[1.25rem]">
+                    |&nbsp;
+                    <Link href={`/${params.state}/${params.city}`}
+                        className="no-underline hover:after:content-['→'] focus:after:content-['→']" >
+                        {validData.state.name} {validData.city.name}
+                    </Link>
+                    <span className="hidden md:inline">&nbsp;수거함 정보</span>
+                </p>
+            </section>
+            <section id="info" className="flex shadow-lg p-4 rounded-2xl">
+                <PharmBoxInfo currentData={boxData} />
+                <Kmap latLng={{
+                    lat: Number(boxData.lat),
+                    lng: Number(boxData.lng)
+                }} data={[boxData]} />
+            </section>
+        </div>
     );
 }
 
