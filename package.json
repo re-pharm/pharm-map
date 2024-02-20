@@ -10,10 +10,10 @@
   },
   "dependencies": {
     "@supabase/ssr": "^0.1.0",
-    "@supabase/supabase-js": "^2.39.3",
+    "@supabase/supabase-js": "^2.39.7",
     "@tailwindcss/forms": "0.5.7",
-    "@types/node": "20.11.17",
-    "@types/react": "18.2.55",
+    "@types/node": "20.11.19",
+    "@types/react": "18.2.57",
     "@types/react-dom": "18.2.19",
     "autoprefixer": "10.4.17",
     "eslint": "8.56.0",
