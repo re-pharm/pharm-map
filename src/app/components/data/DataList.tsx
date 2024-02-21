@@ -82,7 +82,7 @@ export default function DataList(props: Props) {
                             ):""}
                         </span>
                         <span className="block">{place.address}</span>
-                        <span className="block">{place.call}</span>
+                        <span className="block">{place.call ?? ""}</span>
                     </Link>
                 </li>
             ))}

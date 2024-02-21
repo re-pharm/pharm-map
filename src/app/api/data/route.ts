@@ -17,7 +17,7 @@ export async function GET(request: Request) {
             `integrated`}&and=(state.eq.${state}, code.eq.${city})`, sbHeader)
             .then((res) => res.json());
         const data = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${state}${
-            option[0].integrated === "true" ? `?sub=eq.${city}&` : `_${city}?`
+            option[0].integrated ? `?sub=eq.${city}&` : `_${city}?`
         }${
             id !== null ? `&id=eq.${hash.decode(id)[0]}` : ""
         }`, sbHeader)
@@ -29,7 +29,7 @@ export async function GET(request: Request) {
                 address: data[0].address,
                 type: data[0].type,
                 memo: data[0].memo ?? null,
-                call: data[0].call,
+                call: data[0].call ?? null,
                 lat: data[0].lat,
                 lng: data[0].lng,
                 last_updated: data[0].last_updated

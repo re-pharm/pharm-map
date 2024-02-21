@@ -21,7 +21,7 @@ export async function GET(request: Request) {
             `integrated,lat,lng`}&and=(state.eq.${state}, code.eq.${city})`, sbHeader)
             .then((res) => res.json());
         const list = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${state}${
-            option[0].integrated === "true" ? `?sub=eq.${city}&` : `_${city}?`
+            option[0].integrated ? `?sub=eq.${city}&` : `_${city}?`
         }order=last_updated.desc,name.asc`, sbHeader).then((res) => res.json());
         const data: Data[] = [];
         
@@ -31,7 +31,7 @@ export async function GET(request: Request) {
                 name: place.name,
                 address: place.address,
                 type: place.type,
-                call: place.call,
+                call: place.call ?? null,
                 lat: place.lat,
                 lng: place.lng,
                 last_updated: place.last_updated
