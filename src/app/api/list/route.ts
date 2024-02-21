@@ -17,7 +17,7 @@ export async function GET(request: Request) {
     });
 
     try {
-        const option = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
+        const info = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
             `lat,lng`}&and=(state.eq.${state}, code.eq.${city})`, sbHeader)
             .then((res) => res.json());
         const list = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${state}?sub=eq.${
@@ -40,8 +40,8 @@ export async function GET(request: Request) {
         return NextResponse.json({
             data: data,
             city: {
-                lat: option[0].lat,
-                lng: option[0].lng
+                lat: info[0].lat,
+                lng: info[0].lng
             }
         });
     } catch(e) {

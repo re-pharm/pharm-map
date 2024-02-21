@@ -1,6 +1,7 @@
 import { IconDefinition, faAsterisk, faBuildingColumns, faCapsules, faDumbbell, faEnvelopesBulk, faHandHoldingHeart, faPersonPraying } from "@fortawesome/free-solid-svg-icons";
 
 export type Data = {
+    origin: string | undefined;
     id: string,
     name: string,
     address: string,

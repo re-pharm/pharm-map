@@ -147,9 +147,11 @@ export default async function PharmBoxInfo(prop: Props) {
                     </div>
                     <ul>
                         <li>
-                            {`${data.address.split(" ")[0].endsWith("도") ? 
-                                data.address.split(" ")[1]
-                                :data.address.split(" ")[0]} 폐의약품 수거함 공공데이터`}
+                            <a href={data.origin} target="blank">
+                                {`${data.address.split(" ")[0].endsWith("도") ? 
+                                    data.address.split(" ")[1]
+                                    :data.address.split(" ")[0]} 폐의약품 수거함 공공데이터`}
+                            </a>
                         </li>
                         {operationArray.length > 0 ? (
                             <li>

@@ -13,6 +13,9 @@ export async function GET(request: Request) {
     });
 
     try {
+        const info = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
+            `origin`}&and=(state.eq.${state}, code.eq.${city})`, sbHeader)
+            .then((res) => res.json());
         const data = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${state}?sub=eq.${city}
         }&id=eq.${hash.decode(id ?? "")[0]}`, sbHeader).then((res) => res.json());
 
@@ -25,7 +28,8 @@ export async function GET(request: Request) {
                 call: data[0].call ?? null,
                 lat: data[0].lat,
                 lng: data[0].lng,
-                last_updated: data[0].last_updated
+                last_updated: data[0].last_updated,
+                origin: info[0].origin
             });
         }
     } catch(e) {
