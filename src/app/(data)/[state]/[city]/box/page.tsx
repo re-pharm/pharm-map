@@ -5,6 +5,7 @@ import Header from "@/app/components/layouts/Header"
 import Link from "next/link";
 import Kmap from '@/app/components/kakaomap/Kmap';
 import { Data } from '@/app/types/listdata';
+import { redirect } from 'next/navigation';
 
 type Props = {
     params: {
@@ -54,6 +55,10 @@ export default async function PharmBoxInfoPage({params, searchParams}: Props) {
     const boxData = await fetch(`${process.env.SERVICE_URL
             }/api/data?state=${params.state}&city=${params.city}&id=${searchParams.id}`)
             .then(async(result) => await result.json());
+    if (!boxData.address) {
+        redirect("/404");
+    }
+    
     const address = boxData.address.split(" ");
 
     return(

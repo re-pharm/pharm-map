@@ -16,8 +16,8 @@ export async function middleware(request: NextRequest) {
     switch (params[3]) {
         case "box":
             const id = request.nextUrl.searchParams.get("id");
-            if (!id) {
-                return NextResponse.redirect(new URL('/', request.url));
+            if (!id || id.length < 5 || !Number.isNaN(Number(id))) {
+                return NextResponse.redirect(new URL('/404', request.url));
             }
         case "list":
             const validate = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
@@ -25,9 +25,9 @@ export async function middleware(request: NextRequest) {
             const available = await validate.json();
             
             if (!validate.ok) {
-                return NextResponse.redirect(new URL('/', request.url));
+                return NextResponse.redirect(new URL('/404', request.url));
             } else if (available.length < 1 || !available[0].available) {
-                return NextResponse.redirect(new URL('/', request.url));
+                return NextResponse.redirect(new URL('/404', request.url));
             }
         default:
             return NextResponse.next();
