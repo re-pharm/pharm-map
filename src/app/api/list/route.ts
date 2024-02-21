@@ -18,11 +18,10 @@ export async function GET(request: Request) {
 
     try {
         const option = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
-            `integrated,lat,lng`}&and=(state.eq.${state}, code.eq.${city})`, sbHeader)
+            `lat,lng`}&and=(state.eq.${state}, code.eq.${city})`, sbHeader)
             .then((res) => res.json());
-        const list = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${state}${
-            option[0].integrated ? `?sub=eq.${city}&` : `_${city}?`
-        }order=last_updated.desc,name.asc`, sbHeader).then((res) => res.json());
+        const list = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${state}?sub=eq.${
+            city}&order=last_updated.desc,name.asc`, sbHeader).then((res) => res.json());
         const data: Data[] = [];
         
         list.forEach((place: Data) => {

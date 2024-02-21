@@ -13,15 +13,8 @@ export async function GET(request: Request) {
     });
 
     try {
-        const option = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
-            `integrated`}&and=(state.eq.${state}, code.eq.${city})`, sbHeader)
-            .then((res) => res.json());
-        const data = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${state}${
-            option[0].integrated ? `?sub=eq.${city}&` : `_${city}?`
-        }${
-            id !== null ? `&id=eq.${hash.decode(id)[0]}` : ""
-        }`, sbHeader)
-        .then((res) => res.json());
+        const data = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${state}?sub=eq.${city}
+        }&id=eq.${hash.decode(id ?? "")[0]}`, sbHeader).then((res) => res.json());
 
         if (data.length > 0) {
             return NextResponse.json({

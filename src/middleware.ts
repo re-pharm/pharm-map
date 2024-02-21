@@ -15,6 +15,10 @@ export async function middleware(request: NextRequest) {
 
     switch (params[3]) {
         case "box":
+            const id = request.nextUrl.searchParams.get("id");
+            if (!id) {
+                return NextResponse.redirect(new URL('/', request.url));
+            }
         case "list":
             const validate = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
                 `available&and=(state.eq.${params[1]}, code.eq.${params[2]})`}`, sbHeader);
