@@ -1,8 +1,5 @@
 import PharmBoxInfo from "@/app/components/data/PharmBoxInfo";
 import Dialog from "@/app/components/layouts/Dialog";
-import { metadata } from "@/app/layout";
-import { Metadata } from "next";
-import { boxInfoMetaData } from "../../box/page";
 
 type Params = { 
     params: {
@@ -11,20 +8,6 @@ type Params = {
     },
     searchParams: {
         id: string
-    }
-}
-
-export async function generateMetadata(
-    {params, searchParams}: Params
-): Promise<Metadata> {
-    const boxData = await fetch(`${process.env.SERVICE_URL
-        }/api/service/data?state=${params.state}&city=${params.city}&id=${searchParams.id}`)
-        .then(async(result) => await result.json());
-    
-    if (boxData.name) {
-        return boxInfoMetaData(params.state, boxData);
-    } else {
-        return metadata;
     }
 }
 
