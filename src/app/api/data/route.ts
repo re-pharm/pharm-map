@@ -16,10 +16,11 @@ export async function GET(request: Request) {
         const info = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
             `origin`}&and=(state.eq.${state}, code.eq.${city})`, sbHeader)
             .then((res) => res.json());
-        const data = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${state}?sub=eq.${city}
-        }&id=eq.${hash.decode(id ?? "")[0]}`, sbHeader).then((res) => res.json());
+        const data = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${state}?id=eq.${
+            hash.decode(id ?? "")[0]}`, sbHeader).then((res) => res.json());
+        
 
-        if (data.length > 0) {
+        if (data.length > 0 && info.length > 0) {
             return NextResponse.json({
                 name: data[0].name,
                 address: data[0].address,
@@ -31,6 +32,8 @@ export async function GET(request: Request) {
                 last_updated: data[0].last_updated,
                 origin: info[0].origin
             });
+        } else {
+            return NextResponse.json({ error: "No info returned" }, { status: 500 });
         }
     } catch(e) {
         return NextResponse.json({ error: e }, { status: 500 });
