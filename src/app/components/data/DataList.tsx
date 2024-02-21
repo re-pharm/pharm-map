@@ -48,7 +48,7 @@ export default function DataList(props: Props) {
                     <FontAwesomeIcon icon={faCalendarCheck} className="px-1" />
                 </span>
                 <span className="inline-block">
-                    {`${props.date} 기준` ?? "-"}
+                    {props.date ? `${props.date} 기준` : "-"}
                 </span>
             </p>
             <p className="rounded-xl shadow-md p-2">
