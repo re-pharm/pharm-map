@@ -19,23 +19,6 @@ type Props = {
     }
 }
 
-export function boxInfoMetaData(state_code:string, boxData:Data) {
-    const address = boxData.address.split(" ");
-
-    return {
-        title: `${boxData.name} | ${address[0]} ${state_code === "sj" ? "":address[1]} | 폐의약품 수거지도`,
-        description: 
-            `${address[0]} ${state_code === "sj" ? "":address[1]} ${boxData.name}의 수거함 정보를 확인하세요.`,
-        openGraph: {
-            type: "website",
-            url: "https://pharm.paperbox.pe.kr",
-            title: `${boxData.name} | ${address[0]} ${state_code === "sj" ? "":address[1]} 폐의약품 수거함`,
-            description:
-                `상세 정보 확인하기`
-        }
-    }
-}
-
 export async function generateMetadata(
     {params, searchParams}: Props
 ): Promise<Metadata> {
@@ -43,9 +26,21 @@ export async function generateMetadata(
         }/api/data?state=${params.state}&city=${params.city
         }&id=${searchParams.id}`)
         .then(async(result) => await result.json());
+    const address = boxData.address.split(" ");
 
     if (boxData.address) {
-        return boxInfoMetaData(params.state, boxData);
+        return {
+            title: `${boxData.name} | ${address[0]} ${params.state === "sj" ? "":address[1]} | 폐의약품 수거지도`,
+            description: 
+                `${address[0]} ${params.state === "sj" ? "":address[1]} ${boxData.name}의 수거함 정보를 확인하세요.`,
+            openGraph: {
+                type: "website",
+                url: "https://pharm.paperbox.pe.kr",
+                title: `${boxData.name} | ${address[0]} ${params.state === "sj" ? "":address[1]} 폐의약품 수거함`,
+                description:
+                    `상세 정보 확인하기`
+            }
+        }
     } else {
         return metadata;
     }
