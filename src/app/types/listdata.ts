@@ -3,21 +3,8 @@ import { IconDefinition, faAsterisk, faBuildingColumns, faCapsules, faDumbbell, 
 export type Data = {
     id: string,
     name: string,
-    location: string,
-    tel: string,
-    type: string,
-    lat: string,
-    lng: string,
-    distance?: number,
-    last_updated: string,
-    memo: string | null
-};
-
-export type OriginalData = {
-    id: number,
-    name: string,
     address: string,
-    tel: string,
+    call: string,
     type: string,
     lat: string,
     lng: string,

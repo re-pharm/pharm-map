@@ -14,7 +14,7 @@ export async function generateMetadata(
     {params}: Params
 ): Promise<Metadata> {
     const validateResult = await fetch(`${process.env.SERVICE_URL
-        }/api/service/supported_region?type=single&state=${
+        }/api/geo/supported?type=single&state=${
         params.state}&city=${params.city}`).then((res) => res.json());
     
     if (validateResult.state.name) {

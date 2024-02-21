@@ -4,6 +4,7 @@ import PharmBoxInfo from '@/app/components/data/PharmBoxInfo';
 import Header from "@/app/components/layouts/Header"
 import Link from "next/link";
 import Kmap from '@/app/components/kakaomap/Kmap';
+import { Data } from '@/app/types/listdata';
 
 type Props = {
     params: {
@@ -17,47 +18,43 @@ type Props = {
     }
 }
 
+export function boxInfoMetaData(state_code:string, boxData:Data) {
+    const address = boxData.address.split(" ");
+
+    return {
+        title: `${boxData.name} | ${address[0]} ${state_code === "sj" ? "":address[1]} | 폐의약품 수거지도`,
+        description: 
+            `${address[0]} ${state_code === "sj" ? "":address[1]} ${boxData.name}의 수거함 정보를 확인하세요.`,
+        openGraph: {
+            type: "website",
+            url: "https://pharm.paperbox.pe.kr",
+            title: `${boxData.name} | ${address[0]} ${state_code === "sj" ? "":address[1]} 폐의약품 수거함`,
+            description:
+                `상세 정보 확인하기`
+        }
+    }
+}
+
 export async function generateMetadata(
     {params, searchParams}: Props
 ): Promise<Metadata> {
-    const validateResult = await fetch(`${process.env.SERVICE_URL
-        }/api/service/supported_region?type=single&state=${
-        params.state}&city=${params.city}`).then((res) => res.json());
-    const validData = await fetch(`${process.env.SERVICE_URL
-        }/api/service/supported_region?type=current&state=${
-        params.state}&city=${params.city}`).then((res) => res.json());
     const boxData = await fetch(`${process.env.SERVICE_URL
-        }/api/service/data?state=${params.state}&city=${params.city
-        }&integrated=${validData.integrated}&id=${searchParams.id}`)
+        }/api/data?state=${params.state}&city=${params.city
+        }&id=${searchParams.id}`)
         .then(async(result) => await result.json());
 
-    if (validateResult.state.name) {
-        return {
-            title: `${boxData.name} | ${validateResult.state.name} ${validateResult.city.name} | 폐의약품 수거지도`,
-            description: 
-                `${validateResult.state.name} ${validateResult.city.name}의 폐의약품 수거함이 위치한 ${boxData.name}의 정보를 확인하세요.`,
-            openGraph: {
-                type: "website",
-                url: "https://pharm.paperbox.pe.kr",
-                title: `${boxData.name} | ${validateResult.state.name} ${validateResult.city.name} 폐의약품 수거함`,
-                description:
-                    `상세 정보 확인하기`
-            }
-        }
+    if (boxData.address) {
+        return boxInfoMetaData(params.state, boxData);
     } else {
         return metadata;
     }
 }
 
 export default async function PharmBoxInfoPage({params, searchParams}: Props) {
-    const validData =
-            await fetch(`${process.env.SERVICE_URL
-                }/api/service/supported_region?type=current&state=${
-                params.state}&city=${params.city}`).then((res) => res.json());
     const boxData = await fetch(`${process.env.SERVICE_URL
-            }/api/service/data?state=${params.state}&city=${params.city}&integrated=${validData.integrated
-            }&id=${searchParams.id}`)
+            }/api/data?state=${params.state}&city=${params.city}&id=${searchParams.id}`)
             .then(async(result) => await result.json());
+    const address = boxData.address.split(" ");
 
     return(
         <div>
@@ -67,7 +64,7 @@ export default async function PharmBoxInfoPage({params, searchParams}: Props) {
                     |&nbsp;
                     <Link href={`/${params.state}/${params.city}/list`}
                         className="no-underline hover:after:content-['→'] focus:after:content-['→']" >
-                        {validData.state.name} {validData.city.name}
+                        {address[0]} {params.state === "sj" ? "": address[1]}
                     </Link>
                     <span className="hidden md:inline">&nbsp;수거함 정보</span>
                 </p>

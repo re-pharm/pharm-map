@@ -21,7 +21,7 @@ export function ManualLocation() {
     
     //"시/도" 지역 불러오기
     async function getStateData() {
-        const stateData = await fetch("/api/service/supported_region?type=state");
+        const stateData = await fetch("/api/geo/supported?type=state");
         const states: StateType[] = await stateData.json();
 
         setStates(states);
@@ -30,7 +30,7 @@ export function ManualLocation() {
     //"시/군/구" 지역 불러오기
     async function getCityData(state: string|null) {
         if (state) {
-            const cityData = await fetch(`/api/service/supported_region?type=city&state=${state}`);
+            const cityData = await fetch(`/api/geo/supported?type=city&state=${state}`);
             const cities: StateType[] = await cityData.json();
 
             setCities(cities);

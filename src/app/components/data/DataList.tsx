@@ -28,7 +28,7 @@ export default function DataList(props: Props) {
         
         if (!initialSound.test(keyword)) {
             setData(props.data.filter((place:Data) => {
-                return place.name.includes(keyword) || place.location.includes(keyword)
+                return place.name.includes(keyword) || place.address.includes(keyword)
             }));
         }
     }
@@ -81,8 +81,8 @@ export default function DataList(props: Props) {
                                 <span className="inline-block ms-2">{place.distance.toFixed(2)}km</span>
                             ):""}
                         </span>
-                        <span className="block">{place.location}</span>
-                        <span className="block">{place.tel}</span>
+                        <span className="block">{place.address}</span>
+                        <span className="block">{place.call}</span>
                     </Link>
                 </li>
             ))}

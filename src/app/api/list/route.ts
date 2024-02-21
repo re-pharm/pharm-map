@@ -10,7 +10,6 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const state: string | null = searchParams.get('state');
     const city: string | null = searchParams.get('city');
-    const integrated: string | null = searchParams.get('integrated');
     
     const hash = new Sqids({
         alphabet: process.env.HASH,
@@ -18,8 +17,11 @@ export async function GET(request: Request) {
     });
 
     try {
+        const option = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
+            `integrated,lat,lng`}&and=(state.eq.${state}, code.eq.${city})`, sbHeader)
+            .then((res) => res.json());
         const list = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${state}${
-            integrated === "true" ? `?sub=eq.${city}&` : `_${city}?`
+            option[0].integrated === "true" ? `?sub=eq.${city}&` : `_${city}?`
         }order=last_updated.desc,name.asc`, sbHeader).then((res) => res.json());
         const data: Data[] = [];
         
@@ -27,9 +29,9 @@ export async function GET(request: Request) {
             data.push({
                 id: hash.encode([Number(place.id)]),
                 name: place.name,
-                location: place.address,
+                address: place.address,
                 type: place.type,
-                tel: place.call,
+                call: place.call,
                 lat: place.lat,
                 lng: place.lng,
                 last_updated: place.last_updated
@@ -37,7 +39,11 @@ export async function GET(request: Request) {
         });
 
         return NextResponse.json({
-            data: data
+            data: data,
+            city: {
+                lat: option[0].lat,
+                lng: option[0].lng
+            }
         });
     } catch(e) {
         return NextResponse.json({ error: e }, { status: 500 });

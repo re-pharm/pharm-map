@@ -6,7 +6,6 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const state: string | null = searchParams.get('state');
     const city: string | null = searchParams.get('city');
-    const integrated: string | null = searchParams.get('integrated');
     const id: string | null = searchParams.get('id');
 
     const hash = new Sqids({
@@ -14,23 +13,28 @@ export async function GET(request: Request) {
     });
 
     try {
+        const option = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
+            `integrated`}&and=(state.eq.${state}, code.eq.${city})`, sbHeader)
+            .then((res) => res.json());
         const data = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${state}${
-            integrated === "true" ? `?sub=eq.${city}&` : `_${city}?`
+            option[0].integrated === "true" ? `?sub=eq.${city}&` : `_${city}?`
         }${
             id !== null ? `&id=eq.${hash.decode(id)[0]}` : ""
         }`, sbHeader)
         .then((res) => res.json());
 
-        return NextResponse.json({
-            name: data[0].name,
-            location: data[0].address,
-            type: data[0].type,
-            tel: data[0].call,
-            lat: data[0].lat,
-            lng: data[0].lng,
-            last_updated: data[0].last_updated,
-            memo: data[0].memo ?? null
-        });
+        if (data.length > 0) {
+            return NextResponse.json({
+                name: data[0].name,
+                address: data[0].address,
+                type: data[0].type,
+                memo: data[0].memo ?? null,
+                call: data[0].call,
+                lat: data[0].lat,
+                lng: data[0].lng,
+                last_updated: data[0].last_updated
+            });
+        }
     } catch(e) {
         return NextResponse.json({ error: e }, { status: 500 });
     }

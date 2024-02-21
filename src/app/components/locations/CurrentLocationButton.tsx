@@ -35,10 +35,10 @@ export default function CurrentLocationButton() {
             navigator.geolocation.getCurrentPosition(async ({ coords }) => {
                 sessionStorage.setItem("lat", coords.latitude.toString());
                 sessionStorage.setItem("lng", coords.longitude.toString());
-                const getCurrentRegion = await fetch(`/api/geo/region?lat=${coords.latitude}&lng=${coords.longitude}`);
+                const getCurrentRegion = await fetch(`/api/geo/coords2address?lat=${coords.latitude}&lng=${coords.longitude}`);
                 const currentRegion = await getCurrentRegion.json();
                 const validateLocation =
-                    await fetch(`/api/service/supported_region?type=geo&state=${currentRegion.state}&city=${currentRegion.city}`);
+                    await fetch(`/api/geo/supported?type=geo&state=${currentRegion.state}&city=${currentRegion.city}`);
                 const validateResult = await validateLocation.json();
 
                 if (validateLocation.ok) {

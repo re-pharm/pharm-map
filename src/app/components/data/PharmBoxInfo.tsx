@@ -32,11 +32,11 @@ export default async function PharmBoxInfo(prop: Props) {
     const date = new Date(data ? data.last_updated : Date.now());
 
     if (data && data.type === "pharm") {
-        const state = data.location.split(" ")[0];
-        const city = data.location.split(" ")[1];
+        const state = data.address.split(" ")[0];
+        const city = data.address.split(" ")[1];
         const name = data.name.replace(/\s+/g, '');
         const operationData =
-            await fetch(`${process.env.SERVICE_URL}/api/service/pharm?state=${state}&city=${city}&name=${name}`);
+            await fetch(`${process.env.SERVICE_URL}/api/pharm?state=${state}&city=${city}&name=${name}`);
         const operationJson = await operationData.json();
 
         if (operationData.ok && operationJson.data) {
@@ -90,14 +90,14 @@ export default async function PharmBoxInfo(prop: Props) {
                             <span className="font-semibold">길찾기</span>
                         </a>
                     </li>
-                    {data.tel ? (
+                    {data.call ? (
                     <li>
                         <a
-                            href={`tel:${data.tel}`}
+                            href={`tel:${data.call}`}
                             className="plain-btn-link"
                         >
                             <FontAwesomeIcon icon={faPhone} className="pe-1" />
-                            <span className="font-semibold">전화하기</span> {data.tel}
+                            <span className="font-semibold">전화하기</span> {data.call}
                         </a>
                     </li>
                     ):""}
@@ -106,7 +106,7 @@ export default async function PharmBoxInfo(prop: Props) {
                 {/* 수거함 주소 */}
                 <p id="location" className="flex">
                     <FontAwesomeIcon icon={faLocationDot} className="pe-2 mt-1" />
-                    <span>{data.location}</span>
+                    <span>{data.address}</span>
                 </p>
     
                 {/* 수거함 소재지의 운영 시간 */}
@@ -147,9 +147,9 @@ export default async function PharmBoxInfo(prop: Props) {
                     </div>
                     <ul>
                         <li>
-                            {`${data.location.split(" ")[0].endsWith("도") ? 
-                                data.location.split(" ")[1]
-                                :data.location.split(" ")[0]} 폐의약품 수거함 공공데이터`}
+                            {`${data.address.split(" ")[0].endsWith("도") ? 
+                                data.address.split(" ")[1]
+                                :data.address.split(" ")[0]} 폐의약품 수거함 공공데이터`}
                         </li>
                         {operationArray.length > 0 ? (
                             <li>
