@@ -42,15 +42,17 @@
 패키지 매니저 및 주요 프레임워크, 언어는 다음과 같습니다.
 
 - Next.js 14 (`Create-Next-App`을 활용한 템플릿 사용)
-- Yarn 4.0.2 (`PnP` 기능 미사용)
+- Yarn 4.8.0 (`PnP` 기능 미사용)
 - TypeScript
-- Node.js 20
+- Node.js 22
 
 따라서, `git clone`하신 후에는 개발 서버 실행 전 `yarn install` 명령어를 실행해주세요. 만약 `yarn`을 찾을 수 없다고 나온다면, `node.js`가 설치되어 있는지 혹은 `corepack`이 설치되어 있는지 확인해주세요.
 
 개발 서버는 `yarn dev`로 실행하시면 작동합니다. 기본 개발 서버 주소는 `localhost:3000`입니다.
 
 CloudFlare Pages 환경에서는 `PnP` 기능을 현재 지원하지 않으므로, 임의로 `PnP` 기능을 활성화하는 커밋을 작성하지 말아주세요. 테스트 시 CloudFlare Pages 환경을 이용하실 때에는, `Workers 및 Pages - 개요 - (테스트 중인 프로젝트 선택) - 함수 - 호환성 플래그` 란에서 `nodejs_compat`을 활성화하세요. 그렇지 않으면 오류가 발생하여 정상적으로 실행할 수 없습니다.
+
+또한, 현재 버전 기준으로 반드시 호환성 버전을 가장 최신(작성일 기준 2024-11)으로 설정하세요. 빌드 후 500 Internal Server Error와 마주할 수 있습니다.
 
 #### .env 파일 설정
 
@@ -269,6 +271,7 @@ API 주소 이름은 명사로 표현하며, 다음과 같은 하위 분류가 �
 - [Kakao Maps SDK for Kakao Open Platform Service](https://apis.map.kakao.com/web/) : [Apache License](https://devtalk.kakao.com/t/api/41598/3)
 - [React.js](https://react.dev): MIT License
 - [SUITE Variable](https://sunn.us/suite/): SIL Open Font License
+- [motion](https://motion.dev): MIT License
 
 **과거 사용하였던 오픈소스 프로젝트 목록입니다.**
 
