@@ -18,19 +18,47 @@
   If we ever want to remove these styles, we need to add an explicit border
   color utility to any element that depends on these defaults.
 */
+
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+
+    body {
+        font-family: "SUITE Variable", "SUITE", "NanumSqaure Neo", "Noto Sans KR", sans-serif;
+        color: rgb(var(--foreground-rgb));
+        background: rgb(var(--background-rgb));
+        word-break: keep-all;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    footer a {
+        display: inline-block;
+    }
+
+    .plain-btn-link {
+        text-decoration: none;
+    }
 }
 
 :root {
     --foreground-rgb: 0, 0, 0;
     --background-rgb: 255, 255, 255;
+}
+
+.plain-btn, .plain-btn-link {
+    @apply border-b-2 border-slate-300 dark:border-slate-400 hover:bg-slate-100 dark:hover:bg-slate-600 dark:bg-slate-800 rounded-xs p-2;
+}
+
+.menu-item {
+    @apply block rounded-md px-2 py-1 hover:bg-slate-200 w-full dark:hover:bg-slate-600 dark:bg-slate-800 no-underline;
 }
 
 @font-face {
@@ -56,29 +84,6 @@
     }
 }
 
-body {
-    font-family: "SUITE Variable", "SUITE", "NanumSqaure Neo", "Noto Sans KR", sans-serif;
-    color: rgb(var(--foreground-rgb));
-    background: rgb(var(--background-rgb));
-    word-break: keep-all;
-}
-
-a {
-    text-decoration: underline;
-}
-
-footer a {
-    display: inline-block;
-}
-
-.plain-btn, .plain-btn-link {
-    @apply border-b-2 border-slate-300 dark:border-slate-400 hover:bg-slate-100 dark:hover:bg-slate-600 dark:bg-slate-800 rounded-xs p-2;
-}
-
-.plain-btn-link {
-    text-decoration: none;
-}
-
-.menu-item {
-    @apply block rounded-md px-2 py-1 hover:bg-slate-200 w-full dark:hover:bg-slate-600 dark:bg-slate-800 no-underline;
+@layer base {
+    
 }
