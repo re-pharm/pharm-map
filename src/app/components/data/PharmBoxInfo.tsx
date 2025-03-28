@@ -67,7 +67,7 @@ export default async function PharmBoxInfo(prop: Props) {
             <div>
                 {/* 수거함 종류 및 이름 */}
                 <h2 className="text-3xl font-semibold flex">
-                    <span className="w-max text-xl rounded-sm dark:bg-slate-900 bg-slate-200 py-1 px-2 mb-1 me-2">
+                    <span className="w-max text-xl rounded-xs dark:bg-slate-900 bg-slate-200 py-1 px-2 mb-1 me-2">
                         <FontAwesomeIcon 
                         icon={organizationIcons[data.type]}
                         className="pe-1" />

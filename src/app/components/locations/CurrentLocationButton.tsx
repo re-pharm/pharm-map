@@ -99,7 +99,7 @@ export default function CurrentLocationButton() {
             {errorMessage ? (
                 <section className="rounded-xl shadow-md p-2 flex z-50 absolute bg-white dark:bg-black items-center">
                     <p>{errorMessage}</p>
-                    <button className="hover:bg-slate-200 hover:dark:bg-slate-600 dark:bg-slate-800 rounded-xl px-2"
+                    <button className="hover:bg-slate-200 dark:hover:bg-slate-600 dark:bg-slate-800 rounded-xl px-2"
                         onClick={(e) => {closeErrorMessage()}}>
                         <FontAwesomeIcon icon={faXmark} />
                     </button>

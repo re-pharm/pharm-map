@@ -70,7 +70,7 @@ export default function DataList(props: Props) {
                             no-underline hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-slate-700"
                         scroll={false}>
                         <span className="block">
-                            <span className="inline-block rounded-sm dark:bg-slate-900 bg-slate-200 py-1 mb-2 px-2 me-2">
+                            <span className="inline-block rounded-xs dark:bg-slate-900 bg-slate-200 py-1 mb-2 px-2 me-2">
                                 <FontAwesomeIcon 
                                     icon={organizationIcons[place.type]}
                                     className="pe-1" />

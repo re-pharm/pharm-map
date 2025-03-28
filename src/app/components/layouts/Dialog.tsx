@@ -39,7 +39,7 @@ export default function Dialog(props:Props) {
                 <p>{props.name ?? "안내"}</p>
                 <form method="dialog">
                     <button
-                        className="no-underline py-0 px-2 mb-1 hover:bg-slate-200 hover:dark:bg-slate-600 rounded-xl">
+                        className="no-underline py-0 px-2 mb-1 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-xl">
                         <FontAwesomeIcon icon={faXmark} />
                     </button>
                 </form>
