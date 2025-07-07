@@ -78,7 +78,7 @@ export function ManualLocation() {
         <form name="manualLocation" className="my-2 flex gap-2">
             <select className="w-full border-0 border-b-2 focus:border-teal-400 focus:ring-transparent
                 bg-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white border-slate-300 dark:border-slate-600"
-                onChange={(e) => sendStateInfo(e.target.value)} value={selectedState}>
+                aria-label="시/도" onChange={(e) => sendStateInfo(e.target.value)} value={selectedState}>
                 <option value="default">시/도</option>
                 {stateList.map((state) => (
                     <option key={state.code} value={state.code}>{state.name}</option>
@@ -86,7 +86,7 @@ export function ManualLocation() {
             </select>
             <select className="w-full border-0 border-b-2 focus:border-teal-400 focus:ring-transparent
                 bg-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white border-slate-300 dark:border-slate-600"
-                value={selectedCity} onChange={(e) => selectCity(e.target.value)} autoFocus>
+                aria-label="시/군/구" value={selectedCity} onChange={(e) => selectCity(e.target.value)} autoFocus>
                 <option value="default">시/군/구</option>
                 {cityList.length > 0 && cityList.map((city) => (
                     <option key={city.code} value={city.code}>{city.name}</option>
