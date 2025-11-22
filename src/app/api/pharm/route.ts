@@ -22,7 +22,7 @@ export async function GET(request: Request) {
         }, { status: 400 });
     }
 
-    const pharmInfo = await fetch(`http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyListInfoInqire?serviceKey=${process.env.DATA_GO_KR_REST_KEY}&Q0=${encodeURIComponent(state)}&Q1=${encodeURIComponent(city)}&QT=1&QN=${encodeURIComponent(place)}&ORD=NAME&pageNo=1&numOfRows=10`).then((res) => res.text());
+    const pharmInfo = await fetch(`http://apis.data.go.kr/B552657/ErmctInsttInfoInqireService/getParmacyListInfoInqire?serviceKey=${encodeURIComponent(process.env.DATA_GO_KR_REST_KEY as string)}&Q0=${encodeURIComponent(state)}&Q1=${encodeURIComponent(city)}&QT=1&QN=${encodeURIComponent(place)}&ORD=NAME&pageNo=1&numOfRows=10`).then((res) => res.text());
     const parser = new XMLParser();
     const parsedPharmInfo = parser.parse(pharmInfo);
 
@@ -43,6 +43,10 @@ export async function GET(request: Request) {
     } else if (parsedPharmInfo["OpenAPI_ServiceResponse"]) {
         return NextResponse.json({
             error: parsedPharmInfo["OpenAPI_ServiceResponse"].cmmMsgHeader
+        }, { status: 500 });
+    } else {
+        return NextResponse.json({
+           error: "Unknown Error from Public API Service"
         }, { status: 500 });
     }
 }
