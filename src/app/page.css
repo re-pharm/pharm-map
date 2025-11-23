@@ -1,3 +1,10 @@
-.blockText {
-    display: block;
+#mainData {
+    width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+    #mainData {
+        min-width: 28rem;
+        max-width: 28rem;
+    }
 }

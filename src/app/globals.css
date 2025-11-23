@@ -1,46 +1,90 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin "@tailwindcss/forms";
+
+@theme {
+  --breakpoint-*: initial;
+  --breakpoint-m_menu: 525px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --breakpoint-2xl: 1536px;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+
+    body {
+        font-family: "SUITE Variable", "SUITE", "NanumSqaure Neo", "Noto Sans KR", sans-serif;
+        color: rgb(var(--foreground-rgb));
+        background: rgb(var(--background-rgb));
+        word-break: keep-all;
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    footer a {
+        display: inline-block;
+    }
+
+    .plain-btn-link {
+        text-decoration: none;
+    }
+}
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-rgb: 255, 255, 255;
+    --foreground-rgb: 0, 0, 0;
+    --background-rgb: 255, 255, 255;
+}
+
+.plain-btn, .plain-btn-link {
+    @apply border-b-2 border-slate-300 dark:border-slate-400 hover:bg-slate-100 dark:hover:bg-slate-600 dark:bg-slate-800 rounded-xs p-2;
+}
+
+.menu-item {
+    @apply block rounded-md px-2 py-1 hover:bg-slate-200 w-full dark:hover:bg-slate-600 dark:bg-slate-800 no-underline;
 }
 
 @font-face {
-  font-family: SUITE Variable;
-  src: url("/font/SUITE-Variable.woff2") format("woff2");
-  font-style: normal;
-  font-display: swap;
-  font-feature-settings: "ss17", "ss18", "tnum";
+    font-family: SUITE Variable;
+    src: url("/font/SUITE-Variable.woff2") format("woff2");
+    font-style: normal;
+    font-display: swap;
+    font-feature-settings: "ss17", "ss18", "tnum";
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-rgb: 0, 0, 0;
-  }
+    :root {
+        --foreground-rgb: 255, 255, 255;
+        --background-rgb: 0, 0, 0;
+    }
 
-  select, input {
-    color: rgb(var(--background-rgb));
-  }
+    select, input {
+        color: rgb(var(--background-rgb));
+    }
 
-  .shadow-lg {
-    background: rgb(55 65 81);
-  }
+    .shadow-lg {
+        background: rgb(55 65 81);
+    }
 }
 
-body {
-  font-family: "SUITE Variable", "SUITE", "NanumSqaure Neo", "Noto Sans KR", sans-serif;
-  color: rgb(var(--foreground-rgb));
-  background: rgb(var(--background-rgb));
-  word-break: keep-all;
-}
-
-a {
-  text-decoration: underline;
-}
-
-footer a {
-  display: inline-block;
+@layer base {
+    
 }
