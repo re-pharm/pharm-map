@@ -28,10 +28,10 @@ export default function Header(props: Props) {
     return (
         <header>
             <h1 className="text-2xl mb-1">
-                <a href="/" className="no-underline">
+                <Link href="/" className="no-underline">
                     <span className="block text-sm">우리동네</span>
                     폐의약품 수거지도 💊
-                </a>
+                </Link>
             </h1>
             <nav id="mainFunctions" className="flex justify-between">
                 <div className="flex gap-2">
