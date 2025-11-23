@@ -1,5 +1,8 @@
 import PharmBoxInfo from "@/app/components/data/PharmBoxInfo";
+import PharmBoxWrapper from "@/app/components/data/PharmBoxWrapper";
 import Dialog from "@/app/components/layouts/Dialog";
+import { Suspense } from "react";
+import Loading from "./loading";
 
 type Params = { 
     params: Promise<{
@@ -14,13 +17,12 @@ type Params = {
 export default async function PharmBoxInfoDialog(props: Params) {
     const searchParams = await props.searchParams;
     const params = await props.params;
-    const boxData = await fetch(`${process.env.SERVICE_URL
-    }/api/data?state=${params.state}&city=${params.city}&id=${searchParams.id}`)
-    .then(async(result) => await result.json());
 
     return (
         <Dialog state={params.state} city={params.city} name="수거함 정보">
-            <PharmBoxInfo currentData={boxData} /> 
+            <Suspense fallback={<Loading />}>
+                <PharmBoxWrapper state={params.state} city={params.city} id={searchParams.id} isDialog={true} />
+            </Suspense>
         </Dialog>
     );
 }

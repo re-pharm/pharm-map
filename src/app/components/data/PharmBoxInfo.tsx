@@ -29,7 +29,6 @@ const operationDays = ["월", "화", "수", "목", "금", "토", "일", "공휴�
 export default async function PharmBoxInfo(prop: Props) {
     const data = prop.currentData;
     const operationArray: OperationData[] = [];
-    const date = new Date(data ? data.last_updated : Date.now());
 
     if (data && data.type === "pharm") {
         const state = data.address.split(" ")[0];
@@ -63,6 +62,7 @@ export default async function PharmBoxInfo(prop: Props) {
     }
 
     if (data) {
+        const date = new Date(data.last_updated);
         return (
             <div>
                 {/* 수거함 종류 및 이름 */}

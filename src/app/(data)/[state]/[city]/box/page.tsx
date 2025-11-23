@@ -4,8 +4,10 @@ import PharmBoxInfo from '@/app/components/data/PharmBoxInfo';
 import Header from "@/app/components/layouts/Header"
 import Link from "next/link";
 import Kmap from '@/app/components/kakaomap/Kmap';
-import { Data } from '@/app/types/listdata';
 import { redirect } from 'next/navigation';
+import Loading from '../@dialog/(.)box/loading';
+import { Suspense } from 'react';
+import PharmBoxWrapper from '@/app/components/data/PharmBoxWrapper';
 
 type Props = {
     params: Promise<{
@@ -62,7 +64,7 @@ export default async function PharmBoxInfoPage(props: Props) {
         <div>
             <section id="regionAndHeader" className="flex gap-2 mb-4">
                 <Header isInfoPage={true} />
-                <p className="text-lg md:text-2xl mt-[1.25rem]">
+                <p className="text-lg md:text-2xl mt-5">
                     |&nbsp;
                     <Link href={`/${params.state}/${params.city}/list`}
                         className="no-underline hover:after:content-['→'] focus:after:content-['→']" >
@@ -72,11 +74,9 @@ export default async function PharmBoxInfoPage(props: Props) {
                 </p>
             </section>
             <section id="info" className="flex shadow-lg p-4 rounded-2xl">
-                <PharmBoxInfo currentData={boxData} />
-                <Kmap latLng={{
-                    lat: Number(boxData.lat),
-                    lng: Number(boxData.lng)
-                }} data={[boxData]} />
+                <Suspense fallback={<Loading />}>
+                    <PharmBoxWrapper state={params.state} city={params.city} id={searchParams.id} isDialog={false} />
+                </Suspense>
             </section>
         </div>
     );

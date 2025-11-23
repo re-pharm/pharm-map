@@ -4,7 +4,7 @@ import { CurrentLoc, IsRealtimeLocationEnabled } from "@/app/types/locationdata"
 import { faCalendarCheck, faArrowUpWideShort } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { Dispatch, SetStateAction, useContext, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useContext, useMemo, useState } from "react";
 
 type Props = {
     state: string,
@@ -16,21 +16,20 @@ type Props = {
 
 export default function DataList(props: Props) {
     const useGeolocation = useContext(IsRealtimeLocationEnabled);
-    const [currentData, setData] = useState<Data[]>(props.data);
+    const [searchKeyword, setSearchKeyword] = useState<string>("");
 
-    useEffect(() => {
-        setData(props.data);
-    }, [props.data]);
+    const currentData = useMemo(() => {
+        if (!searchKeyword) return props.data;
+        const initialSound = new RegExp("[ㄱ-ㅎ|ㅏ-ㅣ|\\s]");
+        if (initialSound.test(searchKeyword)) return props.data;
+        return props.data.filter((place:Data) => {
+            return place.name.includes(searchKeyword) || place.address.includes(searchKeyword)
+        });
+    }, [props.data, searchKeyword]);
 
     // 데이터 필터링(검색)
     function search(keyword: string) {
-        const initialSound = new RegExp("[ㄱ-ㅎ|ㅏ-ㅣ|/\s/g]");
-        
-        if (!initialSound.test(keyword)) {
-            setData(props.data.filter((place:Data) => {
-                return place.name.includes(keyword) || place.address.includes(keyword)
-            }));
-        }
+        setSearchKeyword(keyword);
     }
 
     return(
