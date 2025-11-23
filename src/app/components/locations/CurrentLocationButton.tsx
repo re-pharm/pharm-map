@@ -9,7 +9,6 @@ import { useContext, useEffect, useState } from "react";
 export default function CurrentLocationButton() {
     const router = useRouter(); //페이지 이동
     const useGeolocation = useContext(IsRealtimeLocationEnabled);
-    const [isGeolocationSaved, enableGeolocation] = useState<Boolean>(false);
     const [errorMessage, setErrorMessage] = useState<String|null>(null);
     const [timer, setTimer] = useState<NodeJS.Timeout|null>(null);
 
@@ -48,7 +47,6 @@ export default function CurrentLocationButton() {
                     if (useGeolocation) {
                         useGeolocation.set(true);
                     }
-                    enableGeolocation(true);
                 } else {
                     openErrorMessage(`${validateResult.error}`);
                 }
@@ -77,14 +75,6 @@ export default function CurrentLocationButton() {
         }
     }
 
-    useEffect(() => {
-        if (useGeolocation && useGeolocation.value) {
-            enableGeolocation(true)
-        } else {
-            enableGeolocation(false);
-        }
-    }, [useGeolocation])
-
     function removeLocationInfo(e: React.MouseEvent<HTMLButtonElement>) {
         sessionStorage.removeItem("lat");
         sessionStorage.removeItem("lng");
@@ -111,9 +101,9 @@ export default function CurrentLocationButton() {
                 <span className="pe-1">
                     <FontAwesomeIcon icon={faLocationCrosshairs} />
                 </span>
-                {isGeolocationSaved ? "위치 갱신" : "현위치"}
+                {useGeolocation && useGeolocation.value ? "위치 갱신" : "현위치"}
             </button>
-            {isGeolocationSaved ? (
+            {useGeolocation && useGeolocation.value ? (
                 <button className="plain-btn" onClick={(e) => {removeLocationInfo(e)}}>
                     <span className="pe-1">
                         <FontAwesomeIcon icon={faEraser} />
