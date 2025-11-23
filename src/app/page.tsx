@@ -33,7 +33,7 @@ export default function Home() {
                     </p>
                     </section>
                     <section id="dataList" className="flex items-center h-full justify-center flex-col rounded-md shadow-lg">
-                        <FontAwesomeIcon icon={faInfoCircle} className="block" />
+                        <FontAwesomeIcon icon={faInfoCircle} />
                         <p className="text-center m-4">
                             &apos;현위치&apos;를 눌러 확인하시거나,
                             <br />
@@ -43,8 +43,7 @@ export default function Home() {
                 </main>
             </div>
             <div id="mapDummy"
-                className="w-full hidden md:flex md:flex-col
-                    shadow-lg rounded-xl justify-center">
+                className="w-full hidden md:flex md:flex-col shadow-lg rounded-xl justify-center items-center">
                 <FontAwesomeIcon icon={faMap} className="block" />
                 <p className="text-center m-4">
                     &apos;현위치&apos;를 눌러 확인하시거나,
