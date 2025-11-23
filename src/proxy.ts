@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { sbHeader } from "./app/types/rest";
-import type { NextRequest } from "next/server";
+import { NextRequest } from "next/server";
 
 // 지역 및 ID가 유효한 데이터인지 검증하는 역할
 export async function proxy(request: NextRequest) {
@@ -16,18 +16,19 @@ export async function proxy(request: NextRequest) {
     switch (params[3]) {
         case "box":
             const id = request.nextUrl.searchParams.get("id");
+
             if (!id || id.length < 5 || !Number.isNaN(Number(id))) {
-                return NextResponse.redirect(new URL('/404', request.url));
+                return NextResponse.error();
             }
         case "list":
             const validate = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
                 `available&and=(state.eq.${params[1]}, code.eq.${params[2]})`}`, sbHeader);
-            const available = await validate.json();
-            
+            const available = await validate.json();            
+
             if (!validate.ok) {
-                return NextResponse.redirect(new URL('/404', request.url));
+                return NextResponse.error();
             } else if (available.length < 1 || !available[0].available) {
-                return NextResponse.redirect(new URL('/404', request.url));
+                return NextResponse.error();
             }
         default:
             return NextResponse.next();
