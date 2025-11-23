@@ -1,6 +1,7 @@
 import { Suspense } from "react";
-import DialogFallback from "@/app/components/layouts/DialogFallback";
-import DialogWrapper from "@/app/components/layouts/DialogWrapper";
+import Dialog from "@/app/components/layouts/Dialog";
+import Loading from "./loading";
+import PharmBoxWrapper from "@/app/components/data/PharmBoxWrapper";
 
 type Params = { 
     params: Promise<{
@@ -13,10 +14,15 @@ type Params = {
 }
 
 export default async function PharmBoxInfoDialog(props: Params) {
+    const params = await props.params;
+    const searchParams = await props.searchParams;
+
     return (
-        <Suspense fallback={<DialogFallback />}>
-            <DialogWrapper params={props.params} searchParams={props.searchParams} />
-        </Suspense>
+        <Dialog state={params.state} city={params.city} id={searchParams.id} name="수거함 정보">
+            <Suspense fallback={<Loading />}>
+                <PharmBoxWrapper state={params.state} city={params.city} id={searchParams.id} isDialog={true} />
+            </Suspense>
+        </Dialog>
     );
 }
 

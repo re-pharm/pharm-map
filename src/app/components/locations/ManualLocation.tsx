@@ -78,15 +78,15 @@ export function ManualLocation() {
         <form name="manualLocation" className="my-2 flex gap-2">
             <select className="w-full border-0 border-b-2 focus:border-teal-400 focus:ring-transparent
                 bg-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white border-slate-300 dark:border-slate-600"
-                aria-label="시/도" onChange={(e) => sendStateInfo(e.target.value)} value={selectedState}>
+                aria-label="시/도" onChange={(e) => sendStateInfo(e.target.value)} value={selectedState} autoFocus={selectedState ? false : true}>
                 <option value="default">시/도</option>
                 {stateList.map((state) => (
                     <option key={state.code} value={state.code}>{state.name}</option>
                 ))}
             </select>
             <select className="w-full border-0 border-b-2 focus:border-teal-400 focus:ring-transparent
-                bg-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white border-slate-300 dark:border-slate-600"
-                aria-label="시/군/구" value={selectedCity} onChange={(e) => selectCity(e.target.value)} autoFocus>
+                bg-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-slate-700 dark:text-white border-slate-300 dark:border-slate-600 disabled:bg-gray-200"
+                aria-label="시/군/구" value={selectedCity} onChange={(e) => selectCity(e.target.value)} autoFocus={selectedState ? true : false} disabled={selectedState ? false : true}>
                 <option value="default">시/군/구</option>
                 {cityList.length > 0 && cityList.map((city) => (
                     <option key={city.code} value={city.code}>{city.name}</option>

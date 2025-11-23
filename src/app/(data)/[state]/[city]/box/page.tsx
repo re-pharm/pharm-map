@@ -19,33 +19,6 @@ type Props = {
     }>
 }
 
-export async function generateMetadata(props: Props): Promise<Metadata> {
-    const searchParams = await props.searchParams;
-    const params = await props.params;
-    const boxData = await fetch(`${process.env.SERVICE_URL
-        }/api/data?state=${params.state}&city=${params.city
-        }&id=${searchParams.id}`)
-        .then(async(result) => await result.json());
-    const address = boxData.address.split(" ");
-
-    if (boxData.address) {
-        return {
-            title: `${boxData.name} | ${address[0]} ${params.state === "sj" ? "":address[1]} | 폐의약품 수거지도`,
-            description: 
-                `${address[0]} ${params.state === "sj" ? "":address[1]} ${boxData.name}의 수거함 정보를 확인하세요.`,
-            openGraph: {
-                type: "website",
-                url: "https://pharm.paperbox.pe.kr",
-                title: `${boxData.name} | ${address[0]} ${params.state === "sj" ? "":address[1]} 폐의약품 수거함`,
-                description:
-                    `상세 정보 확인하기`
-            }
-        }
-    } else {
-        return metadata;
-    }
-}
-
 export default async function PharmBoxInfoPage(props: Props) {
     const searchParams = await props.searchParams;
     const params = await props.params;
