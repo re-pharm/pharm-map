@@ -9,22 +9,22 @@ type Props = {
     children: React.ReactNode,
     state?: string,
     city?: string,
-    name?: string
+    name?: string,
+    id?: string,
+    fallback?: boolean
 }
 
 export default function Dialog(props:Props) {
     const router = useRouter();
     const dialog = useRef<HTMLDialogElement>(null);
-    const path = usePathname();
     const [visible, setVisible] = useState(false);
 
     useLayoutEffect(() => {
-        if (dialog && dialog.current && path.includes("/box")) {
+        if (dialog && dialog.current && (props.id || props.fallback)) {
             dialog.current.showModal();
-            // allow browser to paint then trigger motion enter animation
             requestAnimationFrame(() => setVisible(true));
         }
-    }, [dialog, path]);
+    }, [dialog, props.id, props.fallback]);
 
     function closeModal() {
         // trigger exit animation, then close dialog and navigate after animation
@@ -34,7 +34,7 @@ export default function Dialog(props:Props) {
                 dialog.current.close();
             }
             if(props.state && props.city) {
-                router.push(`/${props.state}/${props.city}/list`);
+                router.push(`/${props.state}/${props.city}/list`, { scroll: false });
             } else {
                 router.back();
             }
