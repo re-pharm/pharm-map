@@ -1,12 +1,10 @@
 import type { Metadata } from 'next';
-import { metadata } from '@/app/layout';
-import PharmBoxInfo from '@/app/components/data/PharmBoxInfo';
-import Header from "@/app/components/layouts/Header"
 import Link from "next/link";
-import Kmap from '@/app/components/kakaomap/Kmap';
 import { redirect } from 'next/navigation';
-import Loading from '../@dialog/(.)box/loading';
 import { Suspense } from 'react';
+import { metadata } from '@/app/layout';
+import Header from "@/app/components/layouts/Header"
+import Loading from '@/app/components/layouts/Loading';
 import PharmBoxWrapper from '@/app/components/data/PharmBoxWrapper';
 
 type Props = {

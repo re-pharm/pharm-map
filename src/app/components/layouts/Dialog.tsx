@@ -1,5 +1,5 @@
 "use client";
-import Loading from "@/app/(data)/[state]/[city]/@dialog/(.)box/loading";
+import Loading from "@/app/components/layouts/Loading";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { usePathname, useRouter } from "next/navigation";

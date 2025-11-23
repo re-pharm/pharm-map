@@ -36,7 +36,7 @@ export default function RootLayout({
         <div id="main" className="flex h-full px-4 pt-4 gap-4 md:px-8 md:pt-8 md:gap-8">
           {children}
         </div>
-        <footer className="mx-4 md:mx-8 my-2 md:my-4 h-[1.5rem]">
+        <footer className="mx-4 md:mx-8 my-2 md:my-4 h-6">
           <p className="flex flex-wrap gap-2">
             <span className="plain-text">© 2023-25 Re:Pharm 프로젝트 및&nbsp;
               <a href="https://github.com/re-pharm/pharm-map/graphs/contributors" target="_blank">기여자</a>.
