@@ -3,7 +3,7 @@ import { sbHeader } from "./app/types/rest";
 import type { NextRequest } from "next/server";
 
 // 지역 및 ID가 유효한 데이터인지 검증하는 역할
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
     const params = request.nextUrl.pathname.split("/");
     
     if (params.length === 3) {
@@ -37,5 +37,3 @@ export async function middleware(request: NextRequest) {
 export const config = {
     matcher: '/((?!api|dashboard|about|_next/static|_next/image|font|capsule.svg).*)',
 }
-
-export const runtime = 'experimental-edge';

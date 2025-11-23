@@ -1,11 +1,12 @@
 import './globals.css'
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
-config.autoAddCss = false;
 import type { Metadata } from 'next'
 import Link from 'next/link';
 import { faArrowUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+config.autoAddCss = false;
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://pharm.paperbox.pe.kr"),
@@ -28,10 +29,8 @@ export default function RootLayout({
     <html lang="ko">
       <body>
         <Link href="#mainData" className="h-px w-px block overflow-hidden">본문 바로가기</Link>
-        <Link className="fixed m-4 px-4 py-2 bg-slate-50 dark:bg-slate-800
-            bottom-0 right-0 shadow-lg rounded-2xl md:hidden" aria-label="맨 위로 이동"
-            href="#main"
-        >
+        <Link aria-label="맨 위로 이동" href="#main"
+          className="fixed m-4 px-4 py-2 bg-slate-50 dark:bg-slate-800 bottom-0 right-0 shadow-lg rounded-2xl md:hidden">
           <FontAwesomeIcon icon={faArrowUp} />
         </Link>
         <div id="main" className="flex h-full px-4 pt-4 gap-4 md:px-8 md:pt-8 md:gap-8">

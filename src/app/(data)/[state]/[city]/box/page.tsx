@@ -8,20 +8,20 @@ import { Data } from '@/app/types/listdata';
 import { redirect } from 'next/navigation';
 
 type Props = {
-    params: {
+    params: Promise<{
         state: string,
         city: string
-    }
+    }>
 
-    searchParams: {
+    searchParams: Promise<{
         name: string,
         id: string
-    }
+    }>
 }
 
-export async function generateMetadata(
-    {params, searchParams}: Props
-): Promise<Metadata> {
+export async function generateMetadata(props: Props): Promise<Metadata> {
+    const searchParams = await props.searchParams;
+    const params = await props.params;
     const boxData = await fetch(`${process.env.SERVICE_URL
         }/api/data?state=${params.state}&city=${params.city
         }&id=${searchParams.id}`)
@@ -46,14 +46,16 @@ export async function generateMetadata(
     }
 }
 
-export default async function PharmBoxInfoPage({params, searchParams}: Props) {
+export default async function PharmBoxInfoPage(props: Props) {
+    const searchParams = await props.searchParams;
+    const params = await props.params;
     const boxData = await fetch(`${process.env.SERVICE_URL
             }/api/data?state=${params.state}&city=${params.city}&id=${searchParams.id}`)
             .then(async(result) => await result.json());
     if (!boxData.address) {
         redirect("/404");
     }
-    
+
     const address = boxData.address.split(" ");
 
     return(

@@ -12,6 +12,7 @@ export async function GET(request: Request) {
     });
     if (addressData.ok) {
         const addressJson = await addressData.json();
+
         return NextResponse.json({
             state: addressJson.documents[0]["region_1depth_name"],
             city: addressJson.documents[0]["region_2depth_name"].split(' ')[0]

@@ -2,21 +2,20 @@ import type { Metadata } from 'next';
 import { metadata } from '@/app/layout';
 
 type Params = {
-    params: {
+    params: Promise<{
         state: string,
         city: string
-    },
+    }>,
     children: React.ReactNode,
     dialog: React.ReactNode
 }
 
-export async function generateMetadata(
-    {params}: Params
-): Promise<Metadata> {
+export async function generateMetadata(props: Params): Promise<Metadata> {
+    const params = await props.params;
     const validateResult = await fetch(`${process.env.SERVICE_URL
         }/api/geo/supported?type=single&state=${
         params.state}&city=${params.city}`).then((res) => res.json());
-    
+
     if (validateResult.state.name) {
         return {
             title: `${validateResult.state.name} ${validateResult.city.name} | 폐의약품 수거지도`,

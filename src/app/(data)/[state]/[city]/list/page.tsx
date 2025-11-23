@@ -13,15 +13,16 @@ import Header from "@/app/components/layouts/Header";
 import DataList from "@/app/components/data/DataList";
 import { ManualLocation } from "@/app/components/locations/ManualLocation";
 /* External Libraries */
-import { useEffect, useState } from "react";
+import { useEffect, useState, use } from "react";
 
-type Params = { params: {
+type Params = { params: Promise<{
     state: string,
     city: string
-}};
+}>};
 
 // 페이지 시작점
-export default function Page({ params }: Params) {
+export default function Page(props: Params) {
+    const params = use(props.params);
     const [data, setData] = useState<Data[]>([]);
     const [date, setDataDate] = useState<string|undefined>(undefined);
     const [defaultLoc, setDefaultLocation] = useState<CurrentLoc|undefined>({ lat: 37.65841, lng: 126.83196});
