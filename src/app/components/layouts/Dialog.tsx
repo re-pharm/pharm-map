@@ -1,4 +1,5 @@
 "use client";
+import Loading from "@/app/(data)/[state]/[city]/@dialog/(.)box/loading";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { usePathname, useRouter } from "next/navigation";
@@ -33,7 +34,7 @@ export default function Dialog(props:Props) {
     return (
         <dialog ref={dialog} onClose={(e) => closeModal()}
         className="shadow-lg rounded-xl p-4 max-w-[calc(100%-1rem)] w-full md:w-min z-50 
-            inset-y-1/4 md:inset-x-1/2 mx-2
+            md:inset-y-1/6 md:inset-x-1/2 mx-2 my-2 md:my-auto
             dark:text-white lg:backdrop:opacity-50 dark:backdrop:opacity-80">
             <section id="dialogButtons"
                 className="flex text-xl w-full justify-between items-center mb-2">
