@@ -45,17 +45,19 @@ export default async function PharmBoxInfo(prop: Props) {
                 data = operationJson.data.find((data:PharmData) => data.dutyName === name);    
             }
 
-            for (let i = 1; i < 9; i++) {
-                if(data[`dutyTime${i}s`]) {
-                    operationArray.push({
-                        start: data[`dutyTime${i}s`],
-                        end: data[`dutyTime${i}c`]
-                    });    
-                } else {
-                    operationArray.push({
-                        start: NaN,
-                        end: NaN
-                    }); 
+            if (data) {
+                for (let i = 1; i < 9; i++) {
+                    if(data[`dutyTime${i}s`]) {
+                        operationArray.push({
+                            start: data[`dutyTime${i}s`],
+                            end: data[`dutyTime${i}c`]
+                        });    
+                    } else {
+                        operationArray.push({
+                            start: NaN,
+                            end: NaN
+                        }); 
+                    }
                 }
             }
         }
