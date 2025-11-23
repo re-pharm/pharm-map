@@ -1,8 +1,7 @@
-import PharmBoxInfo from "@/app/components/data/PharmBoxInfo";
-import PharmBoxWrapper from "@/app/components/data/PharmBoxWrapper";
-import Dialog from "@/app/components/layouts/Dialog";
 import { Suspense } from "react";
-import Loading from "./loading";
+import Dialog from "@/app/components/layouts/Dialog";
+import Loading from "@/app/components/layouts/Loading";
+import PharmBoxWrapper from "@/app/components/data/PharmBoxWrapper";
 
 type Params = { 
     params: Promise<{
