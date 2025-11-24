@@ -1,11 +1,10 @@
 import type { Metadata } from 'next';
 import Link from "next/link";
 import { redirect } from 'next/navigation';
-import { Suspense } from 'react';
 import { metadata } from '@/app/layout';
 import Header from "@/app/components/layouts/Header"
-import Loading from '@/app/components/layouts/Loading';
-import PharmBoxWrapper from '@/app/components/data/PharmBoxWrapper';
+import PharmBoxInfo from '@/app/components/data/PharmBoxInfo';
+import Kmap from '@/app/components/kakaomap/Kmap';
 
 type Props = {
     params: Promise<{
@@ -72,9 +71,11 @@ export default async function PharmBoxInfoPage(props: Props) {
                 </p>
             </section>
             <section id="info" className="flex shadow-lg p-4 rounded-2xl">
-                <Suspense fallback={<Loading />}>
-                    <PharmBoxWrapper state={params.state} city={params.city} id={searchParams.id} isDialog={false} />
-                </Suspense>
+                <PharmBoxInfo currentData={boxData} />
+                <Kmap latLng={{
+                    lat: Number(boxData.lat),
+                    lng: Number(boxData.lng)
+                }} data={[boxData]} />
             </section>
         </div>
     );
