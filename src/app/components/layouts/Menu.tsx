@@ -23,8 +23,9 @@ export default function Menu() {
             </span>
             더 보기
         </button>
-        <dialog ref={dialog} className="z-50 rounded-xl shadow-lg bg-slate-50 dark:bg-slate-800
-            mt-[7.5rem] md:mt-[8.5rem] md:ms-96 md:me-auto me-4"
+        <dialog ref={dialog} className="z-50 rounded-xl shadow-lg  
+            mt-30 md:mt-34 md:ms-87 md:me-auto me-4 right-0 left-auto md:right-auto
+            bg-slate-50 dark:bg-slate-800 dark:text-slate-50"
             onClick={(e) => closeModal(e)}>
             <ul className="w-max flex flex-col gap-2 p-4">
                 <li className="block sm:hidden">
