@@ -6,7 +6,7 @@ import { CurrentLoc, IsRealtimeLocationEnabled } from "@/app/types/locationdata"
 import { Data } from "@/app/types/listdata";
 import { RegionData } from "@/app/types/listDataWithContext";
 /* Functions */
-import { insertDistanceInfo, sortDistance } from "@/app/functions/data/calcDistance";
+import { insertDistanceInfo, sortDistance } from "@/app/utils/data/calcDistance";
 /* Components */
 import Kmap from "@/app/components/kakaomap/Kmap";
 import Header from "@/app/components/layouts/Header";
