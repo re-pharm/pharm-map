@@ -1,9 +1,11 @@
 "use client";
-import { faEllipsis, faPaperPlane, faChartLine, faCodeCompare } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
-import { links } from "./Header";
+import { motion } from "motion/react";
 import { MouseEvent, useRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEllipsis, faPaperPlane, faChartLine, faCodeCompare } from "@fortawesome/free-solid-svg-icons";
+
+import { links } from "./Header";
 
 export default function Menu() {
     const dialog = useRef<HTMLDialogElement>(null);
@@ -23,9 +25,10 @@ export default function Menu() {
             </span>
             더 보기
         </button>
-        <dialog ref={dialog} className="z-50 rounded-xl shadow-lg  
-            mt-30 md:mt-34 md:ms-87 md:me-auto me-4 right-0 left-auto md:right-auto
-            bg-slate-50 dark:bg-slate-800 dark:text-slate-50"
+        <motion.dialog ref={dialog} initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1, transition: { duration: 0.2 } }} 
+            className="z-50 rounded-xl shadow-lg bg-slate-50 dark:bg-slate-800 dark:text-slate-50
+            mt-30 md:mt-34 md:ms-87 md:me-auto me-4 right-0 left-auto md:right-auto"
             onClick={(e) => closeModal(e)}>
             <ul className="w-max flex flex-col gap-2 p-4">
                 <li className="block sm:hidden">
@@ -56,7 +59,7 @@ export default function Menu() {
                     </a>
                 </li>
             </ul>
-        </dialog>
+        </motion.dialog>
         </>
     );
 }
