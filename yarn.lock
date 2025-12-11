@@ -342,13 +342,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@fortawesome/react-fontawesome@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "@fortawesome/react-fontawesome@npm:3.1.0"
+"@fortawesome/react-fontawesome@npm:^3.1.1":
+  version: 3.1.1
+  resolution: "@fortawesome/react-fontawesome@npm:3.1.1"
   peerDependencies:
     "@fortawesome/fontawesome-svg-core": ~6 || ~7
     react: ^18.0.0 || ^19.0.0
-  checksum: 10/3f7f1f77210f5b677ee5c2b11f2eb9afc2974a7c923745ce409ee0785a6f459f341db8666043e499d8a01870c8e4d59befdce44e8adc953d2322f1612b38522e
+  checksum: 10/23f39153719933b58010d52b1c3bc91bf1bb4b925a6c62f97c94fb08b33dba18f1203aabca287b14bf6f35b78bfb3264ff29ae9e79b35e4ae5390a15ea02d0a7
   languageName: node
   linkType: hard
 
@@ -665,74 +665,74 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@next/env@npm:16.0.3":
-  version: 16.0.3
-  resolution: "@next/env@npm:16.0.3"
-  checksum: 10/58337c13ee514d4a9de5721697cebde0a420b507fbf41b133b604943f7ed5e754b90af4a8c16142f11ae73e81e8cea4a93ef638c8269103e000f74784cea0030
+"@next/env@npm:16.0.8":
+  version: 16.0.8
+  resolution: "@next/env@npm:16.0.8"
+  checksum: 10/6a7010eb46bf2cfd62c2476ff37f94d6f98065fa20474a3f14bf6da0c10e7c34b5d3dd23994ca435c5fbe69113a04ee25acc3e9b5de617425cba6bff8ed03a1a
   languageName: node
   linkType: hard
 
-"@next/eslint-plugin-next@npm:16.0.3":
-  version: 16.0.3
-  resolution: "@next/eslint-plugin-next@npm:16.0.3"
+"@next/eslint-plugin-next@npm:16.0.8":
+  version: 16.0.8
+  resolution: "@next/eslint-plugin-next@npm:16.0.8"
   dependencies:
     fast-glob: "npm:3.3.1"
-  checksum: 10/b60a994ffd998487467bea33753136883e28d5d7ce6709ceb9105469135f2115ea206bd466f3be94ec94d3c7acd6cf07bce945f8400c66b97e84198b7dc0abcb
+  checksum: 10/5fb0c52933efb1fd5a6fcf8a6499ad59069f861cc19fb24ef681c74bbac83c17a8e173d531efaf56d8b42acbb616f06d4880593bc9f77afb88ea6f9dbb315ebb
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-arm64@npm:16.0.3":
-  version: 16.0.3
-  resolution: "@next/swc-darwin-arm64@npm:16.0.3"
+"@next/swc-darwin-arm64@npm:16.0.8":
+  version: 16.0.8
+  resolution: "@next/swc-darwin-arm64@npm:16.0.8"
   conditions: os=darwin & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-darwin-x64@npm:16.0.3":
-  version: 16.0.3
-  resolution: "@next/swc-darwin-x64@npm:16.0.3"
+"@next/swc-darwin-x64@npm:16.0.8":
+  version: 16.0.8
+  resolution: "@next/swc-darwin-x64@npm:16.0.8"
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-gnu@npm:16.0.3":
-  version: 16.0.3
-  resolution: "@next/swc-linux-arm64-gnu@npm:16.0.3"
+"@next/swc-linux-arm64-gnu@npm:16.0.8":
+  version: 16.0.8
+  resolution: "@next/swc-linux-arm64-gnu@npm:16.0.8"
   conditions: os=linux & cpu=arm64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-arm64-musl@npm:16.0.3":
-  version: 16.0.3
-  resolution: "@next/swc-linux-arm64-musl@npm:16.0.3"
+"@next/swc-linux-arm64-musl@npm:16.0.8":
+  version: 16.0.8
+  resolution: "@next/swc-linux-arm64-musl@npm:16.0.8"
   conditions: os=linux & cpu=arm64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-gnu@npm:16.0.3":
-  version: 16.0.3
-  resolution: "@next/swc-linux-x64-gnu@npm:16.0.3"
+"@next/swc-linux-x64-gnu@npm:16.0.8":
+  version: 16.0.8
+  resolution: "@next/swc-linux-x64-gnu@npm:16.0.8"
   conditions: os=linux & cpu=x64 & libc=glibc
   languageName: node
   linkType: hard
 
-"@next/swc-linux-x64-musl@npm:16.0.3":
-  version: 16.0.3
-  resolution: "@next/swc-linux-x64-musl@npm:16.0.3"
+"@next/swc-linux-x64-musl@npm:16.0.8":
+  version: 16.0.8
+  resolution: "@next/swc-linux-x64-musl@npm:16.0.8"
   conditions: os=linux & cpu=x64 & libc=musl
   languageName: node
   linkType: hard
 
-"@next/swc-win32-arm64-msvc@npm:16.0.3":
-  version: 16.0.3
-  resolution: "@next/swc-win32-arm64-msvc@npm:16.0.3"
+"@next/swc-win32-arm64-msvc@npm:16.0.8":
+  version: 16.0.8
+  resolution: "@next/swc-win32-arm64-msvc@npm:16.0.8"
   conditions: os=win32 & cpu=arm64
   languageName: node
   linkType: hard
 
-"@next/swc-win32-x64-msvc@npm:16.0.3":
-  version: 16.0.3
-  resolution: "@next/swc-win32-x64-msvc@npm:16.0.3"
+"@next/swc-win32-x64-msvc@npm:16.0.8":
+  version: 16.0.8
+  resolution: "@next/swc-win32-x64-msvc@npm:16.0.8"
   conditions: os=win32 & cpu=x64
   languageName: node
   linkType: hard
@@ -785,75 +785,76 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@supabase/auth-js@npm:2.84.0":
-  version: 2.84.0
-  resolution: "@supabase/auth-js@npm:2.84.0"
+"@supabase/auth-js@npm:2.87.1":
+  version: 2.87.1
+  resolution: "@supabase/auth-js@npm:2.87.1"
   dependencies:
     tslib: "npm:2.8.1"
-  checksum: 10/d899c3c8e3bf375d86e240d1f41443a08bd2a98e701ad5af3ce349cab965693e15b2edc983e5515552efa9355b6e0c56d645e542d0d63c1c71d3964af3f8410c
+  checksum: 10/534a79ff9b10ca597a764bf594f37113b852ba48c5fc0a70ac560fa34a4645be72046b228da604bd22aa9a1258a0e9854f4e63eb830eac2bebb88983864b35c1
   languageName: node
   linkType: hard
 
-"@supabase/functions-js@npm:2.84.0":
-  version: 2.84.0
-  resolution: "@supabase/functions-js@npm:2.84.0"
+"@supabase/functions-js@npm:2.87.1":
+  version: 2.87.1
+  resolution: "@supabase/functions-js@npm:2.87.1"
   dependencies:
     tslib: "npm:2.8.1"
-  checksum: 10/c30f4eaf1e2176e7b329f60894d5066988300680f47e111c4a7e9ae31b845163fa7dfc45df04421c92c438673952da4c71db6556c6baf1722ca96637ef9d6bae
+  checksum: 10/34f418c07aebd3008c1471a07ee2a8884cd01b13d28ea60b96fa80130dc622951250d0d11eaeaf48db51f72009875db975002ece103898c23bcc2d4237f4dbb8
   languageName: node
   linkType: hard
 
-"@supabase/postgrest-js@npm:2.84.0":
-  version: 2.84.0
-  resolution: "@supabase/postgrest-js@npm:2.84.0"
+"@supabase/postgrest-js@npm:2.87.1":
+  version: 2.87.1
+  resolution: "@supabase/postgrest-js@npm:2.87.1"
   dependencies:
     tslib: "npm:2.8.1"
-  checksum: 10/d04239dd6b3444561df611b27bda90849c49cdcc166df9426470364631f6533d55cb44c7826c948995d7df120a50e3f5c45773097205c1f2f7244057e78277c4
+  checksum: 10/e8c055bdb6083546f847cfe53f54baa5e2466a6500c24661747ab025e45086ed173a064788796a9d6b647cedce50283f90cd1ebd391ce2ce20e7b50f370e7808
   languageName: node
   linkType: hard
 
-"@supabase/realtime-js@npm:2.84.0":
-  version: 2.84.0
-  resolution: "@supabase/realtime-js@npm:2.84.0"
+"@supabase/realtime-js@npm:2.87.1":
+  version: 2.87.1
+  resolution: "@supabase/realtime-js@npm:2.87.1"
   dependencies:
     "@types/phoenix": "npm:^1.6.6"
     "@types/ws": "npm:^8.18.1"
     tslib: "npm:2.8.1"
     ws: "npm:^8.18.2"
-  checksum: 10/0cf088817f5fe6ce3ebfd07e7f033e2c6a23d7eb6952f279e65706881905a738455ad4c547f339fb1fc3c1d0caf646ce8c1ad4c56a4b1c5eabd0c1b266a11a16
+  checksum: 10/e36d75f89afaa1137b2f5324afe9a17ed43248f2fb82a4be0cf14bad57b0b4cc84dce1650a0448ccbf44f9197e35bc764f0a2b94e8ffff898f56cd41a448b58b
   languageName: node
   linkType: hard
 
-"@supabase/ssr@npm:^0.7.0":
-  version: 0.7.0
-  resolution: "@supabase/ssr@npm:0.7.0"
+"@supabase/ssr@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "@supabase/ssr@npm:0.8.0"
   dependencies:
     cookie: "npm:^1.0.2"
   peerDependencies:
-    "@supabase/supabase-js": ^2.43.4
-  checksum: 10/d309a978c8c80177476e4dff67a929ecf8bbcfac4e5b903bf2d0c819634f500fe1389dc68a00980fc009472330d20cb3b2299d1a086fe07d81c6b06834efd4f8
+    "@supabase/supabase-js": ^2.76.1
+  checksum: 10/db03236c12de8b15d279c0f24cf3a0432e50ed5e44c4eae0e42ec10a46b246a6aa55358051fabb2716b660ebb680bb9616d87afc58cff12a884992331bccb4ff
   languageName: node
   linkType: hard
 
-"@supabase/storage-js@npm:2.84.0":
-  version: 2.84.0
-  resolution: "@supabase/storage-js@npm:2.84.0"
+"@supabase/storage-js@npm:2.87.1":
+  version: 2.87.1
+  resolution: "@supabase/storage-js@npm:2.87.1"
   dependencies:
+    iceberg-js: "npm:^0.8.1"
     tslib: "npm:2.8.1"
-  checksum: 10/62d4cda1c837a6deae371f59c5b6b44e15da7bb54ac02fdc2ecb32fc48dc59868736e002b19d3a6feb4ce034446eb20d68678a2f7ff865aabff432af38efe179
+  checksum: 10/aefa50adbe4549fa3e3e54a47695f0d5cbfd5668336698025c6a5d75a5f0851a704741150ab08c17edcedde3fcda785c638c235f536d1db2e321a70558dea690
   languageName: node
   linkType: hard
 
-"@supabase/supabase-js@npm:^2.84.0":
-  version: 2.84.0
-  resolution: "@supabase/supabase-js@npm:2.84.0"
+"@supabase/supabase-js@npm:^2.87.1":
+  version: 2.87.1
+  resolution: "@supabase/supabase-js@npm:2.87.1"
   dependencies:
-    "@supabase/auth-js": "npm:2.84.0"
-    "@supabase/functions-js": "npm:2.84.0"
-    "@supabase/postgrest-js": "npm:2.84.0"
-    "@supabase/realtime-js": "npm:2.84.0"
-    "@supabase/storage-js": "npm:2.84.0"
-  checksum: 10/b80d506c45ef853ca520a8fe39b158f01743676990e46fccd3e0c6bb87dec245c8fe0758619d88102fcdac1fc82422d111b19f42d954eb71d39df569c540b8fc
+    "@supabase/auth-js": "npm:2.87.1"
+    "@supabase/functions-js": "npm:2.87.1"
+    "@supabase/postgrest-js": "npm:2.87.1"
+    "@supabase/realtime-js": "npm:2.87.1"
+    "@supabase/storage-js": "npm:2.87.1"
+  checksum: 10/f8015e7f4b66328369f759da665deaf0f133519bb31b94f964301c1a4036af1e5be4aa94a1060f695cad38afb5d401d383221e8bf861e113b1e937a223ee5758
   languageName: node
   linkType: hard
 
@@ -1105,12 +1106,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:19.2.6":
-  version: 19.2.6
-  resolution: "@types/react@npm:19.2.6"
+"@types/react@npm:19.2.7":
+  version: 19.2.7
+  resolution: "@types/react@npm:19.2.7"
   dependencies:
     csstype: "npm:^3.2.2"
-  checksum: 10/d611fd7d43c9a76f4a884ac2c0da6de582db26cfbcf3b08e8214a93facb37d27d1077118e98fc7c76a2e5dd5351f58834cc4d171ef0d8d75cc95fdf4d345f576
+  checksum: 10/dc0b756eee2c9782d282ae47eaa8d537b2a569eb889a6808c4b172d70fb690b2b1d8fe6239db451aa1c90d2a947cc21c9b537ce177ba9e6121468e403e4079c5
   languageName: node
   linkType: hard
 
@@ -2318,11 +2319,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-config-next@npm:16.0.3":
-  version: 16.0.3
-  resolution: "eslint-config-next@npm:16.0.3"
+"eslint-config-next@npm:16.0.8":
+  version: 16.0.8
+  resolution: "eslint-config-next@npm:16.0.8"
   dependencies:
-    "@next/eslint-plugin-next": "npm:16.0.3"
+    "@next/eslint-plugin-next": "npm:16.0.8"
     eslint-import-resolver-node: "npm:^0.3.6"
     eslint-import-resolver-typescript: "npm:^3.5.2"
     eslint-plugin-import: "npm:^2.32.0"
@@ -2337,7 +2338,7 @@ __metadata:
   peerDependenciesMeta:
     typescript:
       optional: true
-  checksum: 10/0c9963480401c4fa972fb9bb7252298956219e4c31b9f413315d7a03b1546aa57a82dc441d4d5a4164776a44afc4464f44f2d53cf088394879a0bee9189331e7
+  checksum: 10/34fa9136d78d6ef73c36afc14e89d21409e7c03e9736fa99c33b48395a9ffba5be6f37db392c520c9d5a4525f75f9e60de5aad7c630b8d0eb78d403e560568d5
   languageName: node
   linkType: hard
 
@@ -2792,9 +2793,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^12.23.24":
-  version: 12.23.24
-  resolution: "framer-motion@npm:12.23.24"
+"framer-motion@npm:^12.23.26":
+  version: 12.23.26
+  resolution: "framer-motion@npm:12.23.26"
   dependencies:
     motion-dom: "npm:^12.23.23"
     motion-utils: "npm:^12.23.6"
@@ -2810,7 +2811,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10/c46015626d140557f3f225ffeaea14146988a42a99b33e46e3efbab88814343867a63014544169283b9518e1a3abed231ccefd890e601cf66b6c43425b0465e2
+  checksum: 10/29d51ac57ce8c2599664bf706d7a83c2aba4fe1dee1c0c7d75d5c45c120b1c2ca5d257c3ff608992b26bf8e9cf258cacf231b0873d7b16f01c5eeb42b9831f78
   languageName: node
   linkType: hard
 
@@ -3207,6 +3208,13 @@ __metadata:
   version: 4.3.1
   resolution: "human-signals@npm:4.3.1"
   checksum: 10/fa59894c358fe9f2b5549be2fb083661d5e1dff618d3ac70a49ca73495a72e873fbf6c0878561478e521e17d498292746ee391791db95ffe5747bfb5aef8765b
+  languageName: node
+  linkType: hard
+
+"iceberg-js@npm:^0.8.1":
+  version: 0.8.1
+  resolution: "iceberg-js@npm:0.8.1"
+  checksum: 10/9be7b4fe966f33341695e3506ae810bf8fb8800a47819570a0c6930b834c15424b9bbd315c191f3bf5c137b623e144e10630ba898059262dc8244abdbeb0a338
   languageName: node
   linkType: hard
 
@@ -4081,11 +4089,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"motion@npm:^12.23.24":
-  version: 12.23.24
-  resolution: "motion@npm:12.23.24"
+"motion@npm:^12.23.26":
+  version: 12.23.26
+  resolution: "motion@npm:12.23.26"
   dependencies:
-    framer-motion: "npm:^12.23.24"
+    framer-motion: "npm:^12.23.26"
     tslib: "npm:^2.4.0"
   peerDependencies:
     "@emotion/is-prop-valid": "*"
@@ -4098,7 +4106,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10/d63d951676058001c6f234a6bdf8ed5a8fd222a38c1871ef209ed1fd87f2a288ec0e267fa616d80ac8837d0836a5f93ae85a80d773314517f19f304f25b81c3d
+  checksum: 10/c5e683d2c67e55816587cbbd451c5600dc0602aa04108ab0bf8d4472befd490e90b3177362dbc8b9f96316ec16383924cc574eb7c9e031540f1e88e64a2704ae
   languageName: node
   linkType: hard
 
@@ -4141,19 +4149,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"next@npm:16.0.3":
-  version: 16.0.3
-  resolution: "next@npm:16.0.3"
+"next@npm:16.0.8":
+  version: 16.0.8
+  resolution: "next@npm:16.0.8"
   dependencies:
-    "@next/env": "npm:16.0.3"
-    "@next/swc-darwin-arm64": "npm:16.0.3"
-    "@next/swc-darwin-x64": "npm:16.0.3"
-    "@next/swc-linux-arm64-gnu": "npm:16.0.3"
-    "@next/swc-linux-arm64-musl": "npm:16.0.3"
-    "@next/swc-linux-x64-gnu": "npm:16.0.3"
-    "@next/swc-linux-x64-musl": "npm:16.0.3"
-    "@next/swc-win32-arm64-msvc": "npm:16.0.3"
-    "@next/swc-win32-x64-msvc": "npm:16.0.3"
+    "@next/env": "npm:16.0.8"
+    "@next/swc-darwin-arm64": "npm:16.0.8"
+    "@next/swc-darwin-x64": "npm:16.0.8"
+    "@next/swc-linux-arm64-gnu": "npm:16.0.8"
+    "@next/swc-linux-arm64-musl": "npm:16.0.8"
+    "@next/swc-linux-x64-gnu": "npm:16.0.8"
+    "@next/swc-linux-x64-musl": "npm:16.0.8"
+    "@next/swc-win32-arm64-msvc": "npm:16.0.8"
+    "@next/swc-win32-x64-msvc": "npm:16.0.8"
     "@swc/helpers": "npm:0.5.15"
     caniuse-lite: "npm:^1.0.30001579"
     postcss: "npm:8.4.31"
@@ -4196,7 +4204,7 @@ __metadata:
       optional: true
   bin:
     next: dist/bin/next
-  checksum: 10/f3e0ca344561e88b62461025af70d1f0a504d88fa1c041d68f1e60eef3e65a4f70404497010db505c19f2dc982a5f00fe8e0516f4e596170b3d4533a44560f0e
+  checksum: 10/866ffc765cff778aceaef2287e4f8ee63166ae7d4646420e911baae25e360db97c10cbcf2748bbb8a547dc4a73ae6fb4d545597094762c8dca1873568ef14987
   languageName: node
   linkType: hard
 
@@ -4488,22 +4496,22 @@ __metadata:
   dependencies:
     "@fortawesome/fontawesome-svg-core": "npm:^7.1.0"
     "@fortawesome/free-solid-svg-icons": "npm:^7.1.0"
-    "@fortawesome/react-fontawesome": "npm:^3.1.0"
-    "@supabase/ssr": "npm:^0.7.0"
-    "@supabase/supabase-js": "npm:^2.84.0"
+    "@fortawesome/react-fontawesome": "npm:^3.1.1"
+    "@supabase/ssr": "npm:^0.8.0"
+    "@supabase/supabase-js": "npm:^2.87.1"
     "@tailwindcss/forms": "npm:0.5.10"
     "@tailwindcss/postcss": "npm:^4.1.17"
     "@types/node": "npm:24.10.1"
-    "@types/react": "npm:19.2.6"
+    "@types/react": "npm:19.2.7"
     "@types/react-dom": "npm:19.2.3"
     eslint: "npm:^9.39.1"
-    eslint-config-next: "npm:16.0.3"
+    eslint-config-next: "npm:16.0.8"
     fast-xml-parser: "npm:^5.3.2"
-    motion: "npm:^12.23.24"
-    next: "npm:16.0.3"
+    motion: "npm:^12.23.26"
+    next: "npm:16.0.8"
     postcss: "npm:^8.5.6"
-    react: "npm:19.2.0"
-    react-dom: "npm:19.2.0"
+    react: "npm:19.2.1"
+    react-dom: "npm:19.2.1"
     sqids: "npm:^0.3.0"
     tailwindcss: "npm:4.1.17"
     typescript: "npm:^5.9.3"
@@ -4582,14 +4590,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:19.2.0":
-  version: 19.2.0
-  resolution: "react-dom@npm:19.2.0"
+"react-dom@npm:19.2.1":
+  version: 19.2.1
+  resolution: "react-dom@npm:19.2.1"
   dependencies:
     scheduler: "npm:^0.27.0"
   peerDependencies:
-    react: ^19.2.0
-  checksum: 10/3dbba071b9b1e7a19eae55f05c100f6b44f88c0aee72397d719ae338248ca66ed5028e6964c1c14870cc3e1abcecc91b22baba6dc2072f819dea81a9fd72f2fd
+    react: ^19.2.1
+  checksum: 10/cceea7104bd3ad52e2f6377f47c4b346244c1263917fd95745e31647ff8ab23b16f719c2bfc8bcf2a6c802ecb9c9e81f08b09e3447e1f49bc27368283ed299ba
   languageName: node
   linkType: hard
 
@@ -4600,10 +4608,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:19.2.0":
-  version: 19.2.0
-  resolution: "react@npm:19.2.0"
-  checksum: 10/e13bcdb8e994c3cfa922743cb75ca8deb60531bf02f584d2d8dab940a8132ce8a2e6ef16f8ed7f372b4072e7a7eeff589b2812dabbedfa73e6e46201dac8a9d0
+"react@npm:19.2.1":
+  version: 19.2.1
+  resolution: "react@npm:19.2.1"
+  checksum: 10/7c7ab0f40b98e87e1466bea8c28564c5f3c384506cbda93d24788d32b40bf6059c991687c7e90a396b11f09223a779a81b1188af9acd839aaa0a672987c13107
   languageName: node
   linkType: hard
 
