@@ -18,7 +18,7 @@ export default async function signInPage({ searchParams }:SearchParams) {
   }
 
   return (
-    <div >
+    <div>
       <section id="heading" className="flex gap-2 mb-4 w-full">
         <Header isInfoPage={true} />
         <h2 className="text-lg md:text-2xl mt-5">
