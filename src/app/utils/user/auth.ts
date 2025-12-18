@@ -7,8 +7,14 @@ export const auth = betterAuth({
     provider: "pg",
   }),
   emailAndPassword: { enabled: false },
-  socialProviders: { github: {
-    clientId: process.env.GITHUB_CLIENT_ID as string,
-    clientSecret: process.env.GITHUB_CLIENT_SECRET as string
-  }}
+  socialProviders: { 
+    github: {
+      clientId: process.env.GITHUB_CLIENT_ID as string,
+      clientSecret: process.env.GITHUB_CLIENT_SECRET as string
+    },
+    kakao: {
+      clientId: process.env.KAKAO_REST_KEY as string,
+      clientSecret: process.env.KAKAO_CLIENT_SECRET as string
+    }
+  }
 })
