@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "push": "drizzle-kit push"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^7.1.0",
