@@ -39,35 +39,54 @@
 
 본 프로젝트는 다음 환경에서 배포할 것을 가정하고 제작되었습니다.
 
-- CloudFlare Pages
-- Supabase
+- Node.js server
+- PostgreSQL DB
 
 패키지 매니저 및 주요 프레임워크, 언어는 다음과 같습니다.
 
-- Next.js 14 (`Create-Next-App`을 활용한 템플릿 사용)
-- Yarn 4.8.0 (`PnP` 기능 미사용)
+- Next.js 16 (`Create-Next-App`을 활용한 템플릿 사용)
+- Yarn 4.12.0 (`PnP` 기능 미사용)
 - TypeScript
-- Node.js 22
+- Node.js 24
+- Drizzle ORM with Better-Auth
+
 
 따라서, `git clone`하신 후에는 개발 서버 실행 전 `yarn install` 명령어를 실행해주세요. 만약 `yarn`을 찾을 수 없다고 나온다면, `node.js`가 설치되어 있는지 혹은 `corepack`이 설치되어 있는지 확인해주세요.
 
 개발 서버는 `yarn dev`로 실행하시면 작동합니다. 기본 개발 서버 주소는 `localhost:3000`입니다.
 
-CloudFlare Pages 환경에서는 `PnP` 기능을 현재 지원하지 않으므로, 임의로 `PnP` 기능을 활성화하는 커밋을 작성하지 말아주세요. 테스트 시 CloudFlare Pages 환경을 이용하실 때에는, `Workers 및 Pages - 개요 - (테스트 중인 프로젝트 선택) - 함수 - 호환성 플래그` 란에서 `nodejs_compat`을 활성화하세요. 그렇지 않으면 오류가 발생하여 정상적으로 실행할 수 없습니다.
-
-또한, 현재 버전 기준으로 반드시 호환성 버전을 가장 최신(작성일 기준 2024-11)으로 설정하세요. 빌드 후 500 Internal Server Error와 마주할 수 있습니다.
+> [!IMPORTANT]
+> 버전 `3.0` 잎싹부터 종전 Supabase 방식에서 PostgreSQL DB + Better Auth로 전환됨에 따라, 데이터베이스 생성 절차가 간소화되었습니다. 이제 로컬 테스트를 위해 Supabase 인스턴스를 생성할 필요 없이 접속 정보, 데이터베이스만 환경 변수에 제대로 기입했다면 `npx drizzle-kit push` 한 번으로 필요한 테이블을 만들 수 있습니다.
 
 #### .env 파일 설정
 
 `.env` 파일 혹은 `.env.local` 파일로 특정한 키를 설정해야만 온전히 테스트가 가능합니다.
 
-- `NEXT_PUBLIC_KAKAO_MAP_KEY`: 카카오맵 SDK에서 지도를 불러오기 위한 키입니다. 내 애플리케이션의 *JavaScript 키*를 사용하시면 됩니다.
-- `KAKAO_REST_KEY`: 카카오 지도/로컬 API에서 현재 주소를 불러와, 현 위치 주변의 폐의약품 보관함을 불러오는 목적으로 사용합니다.
-- `DATA_GO_KR_REST_KEY`: 공공데이터 포털에서 제공받은 데이터를 불러올 때 사용하는 API 키입니다. **인코딩된 값으로 저장**해야 정상 작동합니다.
+| 환경 변수명 | 설명 |
+| -- | ---- |
+| `NEXT_PUBLIC_KAKAO_MAP_KEY` | 카카오맵 SDK에서 지도를 불러오기 위한 키입니다. 내 애플리케이션의 *JavaScript 키*를 사용하시면 됩니다. |
+| `KAKAO_REST_KEY` | 카카오 지도/로컬 API에서 현재 주소를 불러와, 현 위치 주변의 폐의약품 보관함을 불러오는 목적으로 사용합니다. |
+| `DATA_GO_KR_REST_KEY` | 공공데이터 포털에서 제공받은 데이터를 불러올 때 사용하는 API 키입니다. **인코딩된 값으로 저장**해야 정상 작동합니다. |
+| `DATABASE_URL` | PostgreSQL 데이터베이스 연결을 위한 주소입니다. `postgresql://계정명:비밀번호@주소/데이터베이스명` 과 같이 입력합니다. |
+| `HASH` | Sqids 관련하여 주소 형식을 일치시키기 위해 사용합니다. |
+| `BETTER_AUTH_SECRET` | Better Auth 관련하여 계정 정보 암호화 등에 사용합니다. |
 
 `.env.local`에는 아래 값을 반드시 넣어주세요.
 
 - `SERVICE_URL`: 현재 주소에서 테스트를 위한 값입니다. 일반적으로 로컬 서버의 경우, `http://localhost:3000` 주소로 입력하시면 됩니다.
+
+> [!CAUTION]
+> `HASH`, `BETTER_AUTH_SECRET` 값은 데이터 무결성 및 보안에 중대한 영향을 주므로 다룰 때 각별히 주의하시고, 외부에 유출되지 않도록 하시기 바랍니다.
+
+<details>
+  <summary>`3.0`부터 사용 중지되는 환경 변수</summary>
+  
+  | 환경 변수명 | 설정 |
+  | -- | --- |
+  | `SUPABASE_ANON_PUBLIC_KEY` | Supabase 접속에 필요한 키를 입력합니다.
+  | `SUPABASE_URL` | Supabase 접속 URL입니다. `https://` 부터 시작하여 `/` 없이 끝납니다. |
+
+</details>
 
 #### 작명 규칙
 
@@ -83,7 +102,7 @@ CloudFlare Pages 환경에서는 `PnP` 기능을 현재 지원하지 않으므�
 
 | 종류 | 설명 |
 | --- | --- |
-| `init` | 프로젝트를 초기화할 때, 라이브러리를 신규 추가할 때 사용해요 |
+| `init` | 프로젝트 초기화, 라이브러리 추가/삭제/업데이트에 사용해요 |
 | `fix` | 버그를 수정하였을 때 사용해요. 이때 작업한 내용에는 **무엇을 고쳤다**, 가 아닌 **무엇이 문제다**를 써주세요. |
 | `feat` | 새로운 기능을 추가하였을 때 사용해요. |
 | `cont` | 공공데이터, 프로젝트 내부 문서 등 데이터나 문서를 추가하였을 때 사용해요. |
@@ -97,8 +116,14 @@ CloudFlare Pages 환경에서는 `PnP` 기능을 현재 지원하지 않으므�
 | 종류 | 설명 |
 | --- | --- |
 | `main` | 현재 서비스에 적용되는 소스에요. |
-| `dev` | 현재 개발 중인 내용에 적용되는 소스에요. |
+| `dev/코드네임명` | 현재 개발 중인 내용에 적용되는 소스에요. |
 | `커밋종류/간단 설명` | `init`을 제외하고 특정한 기능을 테스트할 목적으로 사용하는 브랜치에요. 일반적인 경우 개발은 `dev`에서 이뤄지고, 적용되지 않을 가능성이 높거나 버그 가능성으로 연구가 필요한 경우 사용해요. |
+
+<details>
+  <summary>변경 이력</summary>
+
+   - **2025.12.11** `dev` 분기를 세분화했어요. 
+</details>
 
 #### PR 작성 및 반영
 
@@ -119,7 +144,8 @@ CloudFlare Pages 환경에서는 `PnP` 기능을 현재 지원하지 않으므�
 - 아직 개발을 시작하지 않은 기능에 대한 개발 문서 작성
 - `.env` 파일을 임의로 포함하여 제출
 - 최종적으로 반영 혹은 도입하지 않기로 결정한 기능에 대한 PR
-  - 단, 도입을 보류한 경우에는 차후 논의할 수 있으며, 도입하지 않기로 결정하였더라도 이슈 트래커 등을 사용하여 사전에 충분히 논의하여 현재는 도입이 가능하다고 결론지어진 경우 반영 가능합니다.
+
+> 단, 도입을 보류한 경우에는 차후 논의할 수 있으며, 도입하지 않기로 결정하였더라도 이슈 트래커 등을 사용하여 사전에 충분히 논의하여 현재는 도입이 가능하다고 결론지어진 경우 반영 가능합니다.
 
 #### 버전 결정 규칙
 
@@ -193,6 +219,7 @@ API 주소 이름은 명사로 표현하며, 다음과 같은 하위 분류가 �
 
 이때, type에는 아래 종류가 가능합니다.
 
+- **apt** 아파트 등 공동주택
 - **public** 공공기관, 보건소, 보건지소
 - **pharm** 약국
 - **post** 우체통
@@ -275,7 +302,10 @@ API 주소 이름은 명사로 표현하며, 다음과 같은 하위 분류가 �
 - [React.js](https://react.dev): MIT License
 - [SUITE Variable](https://sunn.us/suite/): SIL Open Font License
 - [motion](https://motion.dev): MIT License
+- [Drizzle ORM](https://github.com/drizzle-team/drizzle-orm) : Apache 2.0 License
+- [Better Auth](https://github.com/better-auth/better-auth): MIT License
 
 **과거 사용하였던 오픈소스 프로젝트 목록입니다.**
 
 - [@material/web](https://github.com/material-components/material-web/tree/main) v1.0.0-pre16 : Apache 2.0 License
+- [Supabase SDK](https://github.com/supabase/supabase-js?tab=MIT-1-ov-file#readme) ~ v.2.87.1 : MIT License
