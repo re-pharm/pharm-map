@@ -78,18 +78,12 @@ export const userRelations = defineRelations({ user, session, account }, (r) => 
     sessions: r.many.session(),
     accounts: r.many.account(),
   },
-}));
-
-export const sessionRelations = defineRelations({ session, user }, (r) => ({
   session: {
     user: r.one.user({
       from: r.session.userId,
       to: r.user.id
     })
   },
-}));
-
-export const accountRelations = defineRelations({ account, user }, (r) => ({
   account: {
     user: r.one.user({
       from: r.account.userId,
@@ -97,3 +91,11 @@ export const accountRelations = defineRelations({ account, user }, (r) => ({
     })
   },
 }));
+
+// export const sessionRelations = defineRelations({ session, user }, (r) => ({
+  
+// }));
+
+// export const accountRelations = defineRelations({ account, user }, (r) => ({
+  
+// }));
