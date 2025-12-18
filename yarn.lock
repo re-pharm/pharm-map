@@ -643,7 +643,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint-community/eslint-utils@npm:^4.7.0, @eslint-community/eslint-utils@npm:^4.8.0":
+"@eslint-community/eslint-utils@npm:^4.7.0, @eslint-community/eslint-utils@npm:^4.8.0, @eslint-community/eslint-utils@npm:^4.9.0":
   version: 4.9.0
   resolution: "@eslint-community/eslint-utils@npm:4.9.0"
   dependencies:
@@ -1280,6 +1280,22 @@ __metadata:
   version: 1.0.0
   resolution: "@standard-schema/spec@npm:1.0.0"
   checksum: 10/aee780cc1431888ca4b9aba9b24ffc8f3073fc083acc105e3951481478a2f4dc957796931b2da9e2d8329584cf211e4542275f188296c1cdff3ed44fd93a8bc8
+  languageName: node
+  linkType: hard
+
+"@stylistic/eslint-plugin@npm:^5.6.1":
+  version: 5.6.1
+  resolution: "@stylistic/eslint-plugin@npm:5.6.1"
+  dependencies:
+    "@eslint-community/eslint-utils": "npm:^4.9.0"
+    "@typescript-eslint/types": "npm:^8.47.0"
+    eslint-visitor-keys: "npm:^4.2.1"
+    espree: "npm:^10.4.0"
+    estraverse: "npm:^5.3.0"
+    picomatch: "npm:^4.0.3"
+  peerDependencies:
+    eslint: ">=9.0.0"
+  checksum: 10/1d6a11f98f14fbb20e09c3b6a7fc6cdd2aeceb02ed7cd62becb4fc21a520d314ea45ebf979e9c1e792ca386da282aca2d7a3b991b200d3050f0236735b8f882a
   languageName: node
   linkType: hard
 
@@ -5759,6 +5775,7 @@ __metadata:
     "@fortawesome/fontawesome-svg-core": "npm:^7.1.0"
     "@fortawesome/free-solid-svg-icons": "npm:^7.1.0"
     "@fortawesome/react-fontawesome": "npm:^3.1.1"
+    "@stylistic/eslint-plugin": "npm:^5.6.1"
     "@tailwindcss/forms": "npm:0.5.10"
     "@tailwindcss/postcss": "npm:^4.1.17"
     "@types/node": "npm:24.10.1"
