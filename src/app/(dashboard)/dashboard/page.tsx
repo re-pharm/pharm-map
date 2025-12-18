@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default async function Dashboard() {
     const openIssues = 
-        await fetch("https://api.github.com/repos/re-pharm/pharm-map/issues")
+        await fetch("https://api.github.com/repos/re-pharm/pharm-map/issues?state=open")
         .then((res) => res.json());
     const closedIssues =
         await fetch("https://api.github.com/repos/re-pharm/pharm-map/issues?state=closed")
@@ -15,7 +15,7 @@ export default async function Dashboard() {
         <div className="flex-col flex w-full">
             <section className="flex gap-2 mb-4 flex-1">
                 <Header isInfoPage={true} />
-                <h1 className="text-lg md:text-2xl mt-[1.25rem]">
+                <h1 className="text-lg md:text-2xl mt-5">
                     |&nbsp;제보 현황판
                 </h1>
             </section>
