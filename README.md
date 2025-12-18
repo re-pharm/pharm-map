@@ -65,11 +65,14 @@
 | 환경 변수명 | 설명 |
 | -- | ---- |
 | `NEXT_PUBLIC_KAKAO_MAP_KEY` | 카카오맵 SDK에서 지도를 불러오기 위한 키입니다. 내 애플리케이션의 *JavaScript 키*를 사용하시면 됩니다. |
-| `KAKAO_REST_KEY` | 카카오 지도/로컬 API에서 현재 주소를 불러와, 현 위치 주변의 폐의약품 보관함을 불러오는 목적으로 사용합니다. |
+| `KAKAO_REST_KEY` | 카카오 지도/로컬 API에서 현재 주소를 불러와, 현 위치 주변의 폐의약품 보관함을 불러오는 목적으로 사용합니다. 카카오 로그인 지원에도 사용됩니다. (3.1 이후) |
 | `DATA_GO_KR_REST_KEY` | 공공데이터 포털에서 제공받은 데이터를 불러올 때 사용하는 API 키입니다. **인코딩된 값으로 저장**해야 정상 작동합니다. |
 | `DATABASE_URL` | PostgreSQL 데이터베이스 연결을 위한 주소입니다. `postgresql://계정명:비밀번호@주소/데이터베이스명` 과 같이 입력합니다. |
 | `HASH` | Sqids 관련하여 주소 형식을 일치시키기 위해 사용합니다. |
 | `BETTER_AUTH_SECRET` | Better Auth 관련하여 계정 정보 암호화 등에 사용합니다. |
+| `GITHUB_CLIENT_ID` | GitHub 로그인 및 제안 기능(3.2 이후) 통합에 사용합니다. 제안 기능을 사용할 경우, 반드시 GitHub Apps로 발급 받아 저장소가 위치한 계정에 설치하세요. |
+| `GITHUB_CLIENT_SECRET` | 위 GitHub 로그인 지원에 필요합니다. |
+| `KAKAO_CLIENT_SECRET` | 위 카카오 로그인 지원에 필요합니다. |
 
 `.env.local`에는 아래 값을 반드시 넣어주세요.
 
