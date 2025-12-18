@@ -58,6 +58,14 @@
     @apply border-b-2 border-slate-300 dark:border-slate-400 hover:bg-slate-100 dark:hover:bg-slate-600 dark:bg-slate-800 rounded-xs p-2;
 }
 
+.plain-select-form {
+    @apply border-0 border-b-2 focus:border-teal-400 focus:ring-transparent bg-slate-50 hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-slate-700 border-slate-300 dark:border-slate-600 disabled:bg-gray-200 disabled:dark:bg-gray-600;
+}
+
+.plain-input-form {
+    @apply border-0 border-b-2 focus:border-teal-400 focus:ring-transparent hover:bg-slate-100 dark:hover:bg-slate-800 pl-2 w-full bg-slate-50 dark:bg-slate-700 dark:text-white border-slate-300 dark:border-slate-600 disabled:dark:bg-gray-600 disabled:bg-gray-200;
+}
+
 .menu-item {
     @apply block rounded-md px-2 py-1 hover:bg-slate-200 w-full dark:hover:bg-slate-600 dark:bg-slate-800 no-underline;
 }
