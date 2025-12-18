@@ -1,7 +1,8 @@
 'use client'
+import { AnimatePresence, motion } from "motion/react";
 import { useRouter } from "next/navigation";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEraser, faLocationCrosshairs, faXmark } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEraser, faLocationCrosshairs, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { IsRealtimeLocationEnabled } from "@/app/types/locationdata";
 import { ERROR } from "@/app/types/errormessages";
 import { useContext, useEffect, useState } from "react";
@@ -86,15 +87,17 @@ export default function CurrentLocationButton() {
 
   return (
     <div className="flex gap-2">
-      {errorMessage ? (
-        <section className="rounded-xl shadow-md p-2 flex z-50 absolute bg-white dark:bg-black items-center">
-          <p>{errorMessage}</p>
-          <button className="hover:bg-slate-200 dark:hover:bg-slate-600 dark:bg-slate-800 rounded-xl px-2"
-            onClick={(e) => {closeErrorMessage()}}>
-            <FontAwesomeIcon icon={faXmark} />
-          </button>
-        </section>
-      ): ""}
+      <AnimatePresence>
+        {errorMessage ? (
+          <motion.section className="rounded-xl shadow-md p-2 flex z-50 absolute bg-white dark:bg-black items-center" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1, transition: { duration: 0.2 } }} exit={{ opacity: 0, scale: 0.8 }}>
+            <p>{errorMessage}</p>
+            <button className="hover:bg-slate-200 dark:hover:bg-slate-600 dark:bg-slate-800 rounded-xl flex items-center justify-center p-1.5 ms-1"
+              onClick={(e) => {closeErrorMessage()}}>
+              <FontAwesomeIcon icon={faXmark} />
+            </button>
+          </motion.section>
+        ): ""}
+      </AnimatePresence>
       <button
         className="plain-btn"
         onClick={(e) => {getGeolocation(e)}}>
