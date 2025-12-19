@@ -77,7 +77,7 @@ export function ManualLocation() {
   return (
     <form name="manualLocation" className="my-2 flex gap-2">
       <select className="w-full plain-select-form"
-      aria-label="시/도" onChange={(e) => sendStateInfo(e.target.value)} value={selectedState} autoFocus={selectedState ? false : true}>
+        aria-label="시/도" onChange={(e) => sendStateInfo(e.target.value)} value={selectedState} autoFocus={selectedState ? false : true}>
         <option value="default" className="dark:text-white">시/도</option>
         {stateList.map((state) => (
           <option key={state.code} value={state.code}>{state.name}</option>

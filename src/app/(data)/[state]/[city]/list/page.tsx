@@ -16,94 +16,94 @@ import { ManualLocation } from "@/app/components/locations/ManualLocation";
 import { useEffect, useState, use } from "react";
 
 type Params = { params: Promise<{
-    state: string,
-    city: string
+  state: string,
+  city: string
 }>};
 
 // 페이지 시작점
 export default function Page(props: Params) {
-    const params = use(props.params);
-    const [data, setData] = useState<Data[]>([]);
-    const [date, setDataDate] = useState<string|undefined>(undefined);
-    const [defaultLoc, setDefaultLocation] = useState<CurrentLoc|undefined>({ lat: 37.65841, lng: 126.83196});
-    const [locProvided, enableDistanceCalculate] = useState<Boolean>(false);
+  const params = use(props.params);
+  const [data, setData] = useState<Data[]>([]);
+  const [date, setDataDate] = useState<string|undefined>(undefined);
+  const [defaultLoc, setDefaultLocation] = useState<CurrentLoc|undefined>({ lat: 37.65841, lng: 126.83196});
+  const [locProvided, enableDistanceCalculate] = useState<Boolean>(false);
 
-    useEffect(() => {
-        async function validateDataList() {
-            const lat = sessionStorage.getItem("lat");
-            const lng = sessionStorage.getItem("lng");
-            const state = sessionStorage.getItem("state");
-            const city = sessionStorage.getItem("city");
+  useEffect(() => {
+    async function validateDataList() {
+      const lat = sessionStorage.getItem("lat");
+      const lng = sessionStorage.getItem("lng");
+      const state = sessionStorage.getItem("state");
+      const city = sessionStorage.getItem("city");
 
-            //데이터 불러오기
-            const pharmBoxData = 
-            await fetch(`/api/list?state=${params.state}&city=${params.city}`)
-                .then(async (data) => await data.json());
+      //데이터 불러오기
+      const pharmBoxData = 
+        await fetch(`/api/list?state=${params.state}&city=${params.city}`)
+          .then(async (data) => await data.json());
 
-            const latest_date = new Date(pharmBoxData.data[0].last_updated);
+      const latest_date = new Date(pharmBoxData.data[0].last_updated);
 
-            //기준 날짜 설정
-            setDataDate(latest_date.toLocaleDateString("ko-KR"));
+      //기준 날짜 설정
+      setDataDate(latest_date.toLocaleDateString("ko-KR"));
 
-            //위치 정보 여부 확인
-            if (lat && lng) {
-                if (locProvided) {
-                    // 거리 계산
-                    const dataWithDistance = insertDistanceInfo(pharmBoxData.data, lat, lng);
+      //위치 정보 여부 확인
+      if (lat && lng) {
+        if (locProvided) {
+          // 거리 계산
+          const dataWithDistance = insertDistanceInfo(pharmBoxData.data, lat, lng);
 
-                    //정렬 및 데이터 삽입
-                    setData(dataWithDistance.sort((a:Data, b: Data) => sortDistance(a, b)));
-                    // 현 위치와 찾고자 하는 지역이 같으면 지도 위치 현 위치로 설정
-                    if (params.state === state && params.city === city) {
-                        setDefaultLocation({
-                            lat: Number(lat),
-                            lng: Number(lng)
-                        });
-                    } else {
-                        setDefaultLocation({
-                            lat: Number(pharmBoxData.city.lat), 
-                            lng: Number(pharmBoxData.city.lng)
-                        });
-                    }
-                } else {
-                    enableDistanceCalculate(true);
-                }
-            } else {
-                setData(pharmBoxData.data);
-                setDefaultLocation({
-                    lat: Number(pharmBoxData.city.lat), 
-                    lng: Number(pharmBoxData.city.lng)
-                });
-            }
+          //정렬 및 데이터 삽입
+          setData(dataWithDistance.sort((a:Data, b: Data) => sortDistance(a, b)));
+          // 현 위치와 찾고자 하는 지역이 같으면 지도 위치 현 위치로 설정
+          if (params.state === state && params.city === city) {
+            setDefaultLocation({
+              lat: Number(lat),
+              lng: Number(lng)
+            });
+          } else {
+            setDefaultLocation({
+              lat: Number(pharmBoxData.city.lat), 
+              lng: Number(pharmBoxData.city.lng)
+            });
+          }
+        } else {
+          enableDistanceCalculate(true);
         }
+      } else {
+        setData(pharmBoxData.data);
+        setDefaultLocation({
+          lat: Number(pharmBoxData.city.lat), 
+          lng: Number(pharmBoxData.city.lng)
+        });
+      }
+    }
         
-        validateDataList();
-    }, [params.city, params.state, locProvided]);
+    validateDataList();
+  }, [params.city, params.state, locProvided]);
 
-    return(
-        <>
-        <IsRealtimeLocationEnabled.Provider value={{
-            value: locProvided,
-            set: enableDistanceCalculate
-        }}>
+  return(
+    <>
+      <IsRealtimeLocationEnabled.Provider value={{
+        value: locProvided,
+        set: enableDistanceCalculate
+      }}>
         <RegionData.Provider value={{
-            state: params.state,
-            city: params.city  
+          state: params.state,
+          city: params.city  
         }}>
-            <div id="mainData" className="w-full sm:w-fit flex flex-col md:h-[calc(100vh-6rem)]">
-                <Header />
-                <main className="h-full flex flex-col overflow-hidden">
-                    <ManualLocation />
-                    <DataList state={params.state} city={params.city} data={data} date={date}
-                        setMapCenter={setDefaultLocation} />
-                </main>
-            </div>
-            <Kmap latLng={defaultLoc ?? { lat: 37.65841, lng: 126.83196}}
-                data={data} />
+          <div id="mainData" className="w-full sm:w-fit flex flex-col md:h-[calc(100vh-6rem)]">
+            <Header />
+            <main className="h-full flex flex-col overflow-hidden">
+              <ManualLocation />
+              <DataList state={params.state} city={params.city} data={data} date={date}
+                setMapCenter={setDefaultLocation} />
+            </main>
+          </div>
+          <Kmap latLng={defaultLoc ?? { lat: 37.65841, lng: 126.83196}}
+            data={data} />
         </RegionData.Provider>
-        </IsRealtimeLocationEnabled.Provider>
-        </>
-    )
+      </IsRealtimeLocationEnabled.Provider>
+    </>
+  )
 }
 
 export const runtime = 'edge';

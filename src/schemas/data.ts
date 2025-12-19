@@ -20,11 +20,11 @@ export const supported_cities = pgTable("supported_cities", {
   id: serial("id").primaryKey(),
   name: text("name").notNull(),
   code: text("code").notNull(),
-  lat: doublePrecision("lat").notNull(),
-  lng: doublePrecision("lng").notNull(),
+  lat: doublePrecision("lat"),
+  lng: doublePrecision("lng"),
   state: text("state").references(() => supported_states.code, { onUpdate: "cascade" }),
   avail: boolean("available").notNull().default(false),
-  origin: text("origin").notNull()
+  origin: text("origin")
 });
 
 export const pharm_boxes = pgTable("pharm_boxes", {
