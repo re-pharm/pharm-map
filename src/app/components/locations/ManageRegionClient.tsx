@@ -70,8 +70,9 @@ export default function ManageRegionClient(props: Props) {
           <ul id="add-states-from-list" className="overflow-y-scroll rounded-xl max-h-[68vh] flex flex-col gap-2 p-2 shrink-0">
             {states.map((state) => (
               <li key={state.code} className="flex p-2 rounded-xl shadow-lg basis-0 w-full text-start justify-between items-center bg-white" onClick={() => enableCityManage(state.code)}>
-                <h2 className="text-lg font-bold mb-2">
-                  {state.name} ({state.code})
+                <h2 className="font-bold mb-2">
+                  <span className="text-lg">{state.name}</span>
+                  <span className="text-sm">({state.code})</span> 
                 </h2>
                 <div className="flex items-center gap-2">
                   <span className="text-sm text-gray-600 dark:text-gray-300">서비스</span>
@@ -79,12 +80,12 @@ export default function ManageRegionClient(props: Props) {
                     onClick={() => handleToggle(state.code, state.avail)}
                     disabled={isPending && pendingCode === state.code}
                     className={`
-                relative inline-flex h-6 w-11 items-center rounded-full
-                transition-colors duration-200 ease-in-out
-                focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
-                disabled:opacity-50 disabled:cursor-not-allowed
-                ${state.avail ? "bg-blue-600" : "bg-gray-300"}
-              `}
+                      relative inline-flex h-6 w-11 items-center rounded-full
+                      transition-colors duration-200 ease-in-out
+                      focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2
+                      disabled:opacity-50 disabled:cursor-not-allowed
+                      ${state.avail ? "bg-teal-400" : "bg-gray-300"}
+                    `}
                     role="switch"
                     aria-checked={state.avail}
                   >
@@ -96,7 +97,7 @@ export default function ManageRegionClient(props: Props) {
                 `}
                     />
                   </button>
-                  <span className={`text-sm font-medium ${state.avail ? "text-blue-600" : "text-gray-500"}`}>
+                  <span className={`text-sm font-medium ${state.avail ? "text-teal-400" : "text-gray-500"}`}>
                     {state.avail ? "ON" : "OFF"}
                   </span>
                   {isPending && pendingCode === state.code && (

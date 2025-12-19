@@ -64,6 +64,8 @@ export default async function PharmBoxInfo(prop: Props) {
   }
 
   if (data) {
+    console.log(data);
+
     const date = new Date(data.last_updated);
     return (
       <div>

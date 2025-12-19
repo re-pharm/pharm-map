@@ -26,6 +26,7 @@ export async function GET(request: Request) {
         name: supported_states.name 
       },
       city: {
+        id: supported_cities.id,
         code: supported_cities.code,
         name: supported_cities.name,
         lat: supported_cities.lat,
@@ -33,7 +34,7 @@ export async function GET(request: Request) {
       }
     }).from(supported_cities).leftJoin(supported_states, eq(supported_states.code, supported_cities.state))
       .where(eq(supported_cities.code, city as string));
-    const list = await db.select().from(pharm_boxes).where(eq(pharm_boxes.region, hash.decode(city as string)[0]));
+    const list = await db.select().from(pharm_boxes).where(eq(pharm_boxes.region, info[0].city.id));
     
     const data: Data[] = [];
         
@@ -49,8 +50,6 @@ export async function GET(request: Request) {
         last_updated: place.updated.toString()
       });
     });
-
-    console.log(info[0]);
 
     return NextResponse.json({
       data: data,

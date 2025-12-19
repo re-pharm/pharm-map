@@ -72,7 +72,8 @@ export default function ManageCityClient(props: { code: string }) {
             {cities.map((city) => (
               <li key={city.code} className="flex p-2 rounded-xl shadow-lg basis-0 w-full text-start justify-between items-center bg-white" onClick={() => setIsCityInfoEnabled(city)}>
                 <h2 className="text-lg font-bold mb-2">
-                  {city.name} ({city.code})
+                  <span className="text-lg">{city.name}</span>
+                  <span className="text-sm">({city.code})</span> 
                 </h2>
                 <div className="flex items-center gap-2">
                   <span className="text-sm text-gray-600 dark:text-gray-300">서비스</span>
@@ -82,9 +83,9 @@ export default function ManageCityClient(props: { code: string }) {
                     className={`
                 relative inline-flex h-6 w-11 items-center rounded-full
                 transition-colors duration-200 ease-in-out
-                focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2
+                focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-offset-2
                 disabled:opacity-50 disabled:cursor-not-allowed
-                ${city.avail ? "bg-blue-600" : "bg-gray-300"}
+                ${city.avail ? "bg-teal-400" : "bg-gray-300"}
               `}
                     role="switch"
                     aria-checked={city.avail}
@@ -97,7 +98,7 @@ export default function ManageCityClient(props: { code: string }) {
                 `}
                     />
                   </button>
-                  <span className={`text-sm font-medium ${city.avail ? "text-blue-600" : "text-gray-500"}`}>
+                  <span className={`text-sm font-medium ${city.avail ? "text-teal-400" : "text-gray-500"}`}>
                     {city.avail ? "ON" : "OFF"}
                   </span>
                   {isPending && pendingCode === city.code && (

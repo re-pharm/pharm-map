@@ -1863,6 +1863,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/papaparse@npm:^5":
+  version: 5.5.2
+  resolution: "@types/papaparse@npm:5.5.2"
+  dependencies:
+    "@types/node": "npm:*"
+  checksum: 10/35c38d8c789a0512465665fa6472e8eda7a20413227aafc25b55955a0ced8a061dfbeb0c75658393ebe61670cb95064cc3753ce1a0bac93a12c53ff569d15170
+  languageName: node
+  linkType: hard
+
 "@types/pg@npm:^8.16.0":
   version: 8.16.0
   resolution: "@types/pg@npm:8.16.0"
@@ -5975,6 +5984,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"papaparse@npm:^5.5.3":
+  version: 5.5.3
+  resolution: "papaparse@npm:5.5.3"
+  checksum: 10/383e38f8ff910be48b684e7f47b84dbe5e67708669c13bb21f316a0591ef183ff670dfc7eb9f6d0a8b67e21a5b0e8934712cda96ff8fb678d6591e597d108bd1
+  languageName: node
+  linkType: hard
+
 "parent-module@npm:^1.0.0":
   version: 1.0.1
   resolution: "parent-module@npm:1.0.1"
@@ -6149,6 +6165,7 @@ __metadata:
     "@tailwindcss/forms": "npm:0.5.11"
     "@tailwindcss/postcss": "npm:^4.1.18"
     "@types/node": "npm:24.10.1"
+    "@types/papaparse": "npm:^5"
     "@types/pg": "npm:^8.16.0"
     "@types/react": "npm:19.2.7"
     "@types/react-dom": "npm:19.2.3"
@@ -6162,6 +6179,7 @@ __metadata:
     motion: "npm:^12.23.26"
     next: "npm:16.1.0"
     next-rspack: "npm:^16.1.0"
+    papaparse: "npm:^5.5.3"
     pg: "npm:^8.16.3"
     postcss: "npm:^8.5.6"
     react: "npm:19.2.3"
