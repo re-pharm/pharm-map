@@ -3,6 +3,9 @@ import { sbHeader } from "./app/types/rest";
 import { NextRequest } from "next/server";
 import { auth } from "./app/utils/user/auth";
 import { headers } from "next/headers";
+import { db } from "./app/utils/data/database";
+import { and, eq } from "drizzle-orm";
+import { supported_cities, supported_states } from "./schemas/data";
 
 // 지역 및 ID가 유효한 데이터인지 검증하는 역할
 export async function proxy(request: NextRequest) {
@@ -39,13 +42,16 @@ export async function proxy(request: NextRequest) {
             return NextResponse.error();
           }
         case "list":
-          const validate = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
-            `available&and=(state.eq.${params[1]}, code.eq.${params[2]})`}`, sbHeader);
-          const available = await validate.json();            
+          const validate = await db.select().from(supported_cities)
+            .leftJoin(supported_states, eq(supported_cities.state, supported_states.code))
+            .where(
+              and(
+                eq(supported_cities.avail, true),
+                and(eq(supported_states.code, params[1]), eq(supported_cities.code, params[2]))
+              )
+            );
 
-          if (!validate.ok) {
-            return NextResponse.error();
-          } else if (available.length < 1 || !available[0].available) {
+          if (validate.length < 1) {
             return NextResponse.error();
           }
         default:

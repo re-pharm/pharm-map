@@ -1,7 +1,7 @@
 "use client";
 import { Data, organizationIcons, organizationType } from "@/app/types/listdata"; //데이터 타입
 import { CurrentLoc, IsRealtimeLocationEnabled } from "@/app/types/locationdata";
-import { faCalendarCheck, faArrowUpWideShort } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarCheck, faArrowUpWideShort, faBoxOpen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Link from "next/link";
 import { Dispatch, SetStateAction, useContext, useMemo, useState } from "react";
@@ -60,12 +60,11 @@ export default function DataList(props: Props) {
       </section>
       <section id="dataList" className="flex items-center justify-center max-h-full flex-col shrink rounded-md overflow-hidden">
         <ul className="overflow-y-scroll w-full flex flex-col gap-4 p-2">
-          {currentData.map((place) => (
+          {currentData.length > 0 ? currentData.map((place) => (
             <li key={place.id}>
               <Link href={`/${props.state}/${props.city}/box?id=${place.id}`}
                 onClick={(e) => {props.setMapCenter({lat: Number(place.lat), lng: Number(place.lng)})}}
-                className="block p-4 rounded-xl shadow-lg basis-0 shrink w-full text-start
-                            no-underline hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-slate-700"
+                className="block p-4 rounded-xl shadow-lg basis-0 shrink w-full text-start no-underline hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-slate-700"
                 scroll={false}>
                 <span className="block">
                   <span className="inline-block rounded-xs dark:bg-slate-900 bg-slate-200 py-1 mb-2 px-2 me-2">
@@ -83,7 +82,10 @@ export default function DataList(props: Props) {
                 <span className="block">{place.call ?? ""}</span>
               </Link>
             </li>
-          ))}
+          )) : <li className="p-4 rounded-xl shadow-lg basis-0 shrink w-full flex items-center gap-2 hover:bg-slate-100 dark:hover:bg-slate-800 dark:bg-slate-700">
+            <FontAwesomeIcon icon={faBoxOpen} />
+            <span>등록된 데이터가 없어요.</span>
+          </li>}
         </ul>       
       </section>
     </>

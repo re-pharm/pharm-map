@@ -47,7 +47,11 @@ export async function GET(request: Request) {
       if (city && state) {
         const data = await db.select().from(supported_cities)
           .leftJoin(supported_states, eq(supported_cities.state, supported_states.code))
-          .where(and(and(eq(supported_cities.name, city), eq(supported_states.name, state)), eq(supported_cities.avail, true)));
+          .where(and(and(eq(
+            type === "geo" ? supported_cities.name : supported_cities.code, city
+          ), eq(
+            type === "geo" ? supported_states.name : supported_states.code, state
+          )), eq(supported_cities.avail, true)));
 
         if (data.length > 0) {
           if (type === "geo") {
@@ -58,13 +62,13 @@ export async function GET(request: Request) {
               lng: data[0].supported_cities.lng
             });
           } else {
-            return {
+            return NextResponse.json({
               state: data[0].supported_states,
               city: {
                 code: data[0].supported_cities.code,
                 name: data[0].supported_cities.name
               }
-            }
+            })
           }
         }
       }

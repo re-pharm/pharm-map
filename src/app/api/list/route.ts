@@ -1,6 +1,9 @@
 import { NextResponse } from "next/server";
 import { sbHeader } from "@/app/types/rest";
 import Sqids from "sqids";
+import { db } from "@/app/utils/data/database";
+import { eq } from "drizzle-orm";
+import { pharm_boxes, supported_cities, supported_states } from "@/schemas/data";
 
 type Data = {
   [index: string]: string
@@ -17,36 +20,50 @@ export async function GET(request: Request) {
   });
 
   try {
-    const info = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
-      `lat,lng`}&and=(state.eq.${state}, code.eq.${city})`, sbHeader)
-      .then((res) => res.json());
-    const list = await fetch(`${process.env.SUPABASE_URL}/rest/v1/${state}?sub=eq.${
-      city}&order=last_updated.desc,name.asc`, sbHeader).then((res) => res.json());
+    const info = await db.select({
+      state: {
+        code: supported_states.code,
+        name: supported_states.name 
+      },
+      city: {
+        code: supported_cities.code,
+        name: supported_cities.name,
+        lat: supported_cities.lat,
+        lng: supported_cities.lng
+      }
+    }).from(supported_cities).leftJoin(supported_states, eq(supported_states.code, supported_cities.state))
+      .where(eq(supported_cities.code, city as string));
+    const list = await db.select().from(pharm_boxes).where(eq(pharm_boxes.region, hash.decode(city as string)[0]));
+    
     const data: Data[] = [];
         
-    list.forEach((place: Data) => {
+    list.forEach((place) => {
       data.push({
         id: hash.encode([Number(place.id)]),
         name: place.name,
         address: place.address,
         type: place.type,
-        call: place.call ?? null,
-        lat: place.lat,
-        lng: place.lng,
-        last_updated: place.last_updated
+        call: place.call ?? "",
+        lat: place.lat.toString(),
+        lng: place.lng.toString(),
+        last_updated: place.updated.toString()
       });
     });
+
+    console.log(info[0]);
 
     return NextResponse.json({
       data: data,
       city: {
-        lat: info[0].lat,
-        lng: info[0].lng
+        lat: info[0].city.lat,
+        lng: info[0].city.lng,
+        name: info[0].city.name,
+      },
+      state: {
+        name: info[0].state?.name
       }
     });
   } catch(e) {
     return NextResponse.json({ error: e }, { status: 500 });
   }
 }
-
-export const runtime = 'edge';

@@ -40,33 +40,35 @@ export default function Page(props: Params) {
         await fetch(`/api/list?state=${params.state}&city=${params.city}`)
           .then(async (data) => await data.json());
 
-      const latest_date = new Date(pharmBoxData.data[0].last_updated);
-
+      
       //기준 날짜 설정
-      setDataDate(latest_date.toLocaleDateString("ko-KR"));
+      if (pharmBoxData.data.length > 0) {
+        const latest_date = new Date(pharmBoxData.data[0].last_updated);
+        setDataDate(latest_date.toLocaleDateString("ko-KR"));    
+      }
 
       //위치 정보 여부 확인
       if (lat && lng) {
-        if (locProvided) {
+        if (locProvided && pharmBoxData.data.length > 0) {
           // 거리 계산
           const dataWithDistance = insertDistanceInfo(pharmBoxData.data, lat, lng);
 
           //정렬 및 데이터 삽입
-          setData(dataWithDistance.sort((a:Data, b: Data) => sortDistance(a, b)));
-          // 현 위치와 찾고자 하는 지역이 같으면 지도 위치 현 위치로 설정
-          if (params.state === state && params.city === city) {
-            setDefaultLocation({
-              lat: Number(lat),
-              lng: Number(lng)
-            });
-          } else {
-            setDefaultLocation({
-              lat: Number(pharmBoxData.city.lat), 
-              lng: Number(pharmBoxData.city.lng)
-            });
-          }
+          setData(dataWithDistance.sort((a:Data, b: Data) => sortDistance(a, b)));  
         } else {
           enableDistanceCalculate(true);
+        }
+        // 현 위치와 찾고자 하는 지역이 같으면 지도 위치 현 위치로 설정
+        if (params.state === state && params.city === city) {
+          setDefaultLocation({
+            lat: Number(lat),
+            lng: Number(lng)
+          });
+        } else {
+          setDefaultLocation({
+            lat: Number(pharmBoxData.city.lat), 
+            lng: Number(pharmBoxData.city.lng)
+          });
         }
       } else {
         setData(pharmBoxData.data);
