@@ -1,5 +1,5 @@
 "use client"
-import { useContext, useEffect, useState } from "react"
+import { useCallback, useContext, useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { RegionData } from "@/app/types/listDataWithContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -20,15 +20,15 @@ export function ManualLocation() {
   const [selectedCity, selectCity] = useState<string|undefined>(undefined); //선택한 시군구
     
   //"시/도" 지역 불러오기
-  async function getStateData() {
+  const getStateData = useCallback(async () => {
     const stateData = await fetch("/api/geo/supported?type=state");
     const states: StateType[] = await stateData.json();
 
     setStates(states);
-  }
+  }, []);
 
   //"시/군/구" 지역 불러오기
-  async function getCityData(state: string|null) {
+  const getCityData = useCallback( async (state: string|null) => {
     if (state) {
       const cityData = await fetch(`/api/geo/supported?type=city&state=${state}`);
       const cities: StateType[] = await cityData.json();
@@ -37,11 +37,13 @@ export function ManualLocation() {
     } else {
       setCities([]);
     }
-  }
+  }, []);
+
 
   //페이지 로드 시 데이터 초기화
   useEffect(() => {
     async function setData() {
+      getStateData();
       if (urlRegionData && urlRegionData.state && urlRegionData.city) {
         selectState(urlRegionData.state);
         await getCityData(urlRegionData.state);
@@ -49,9 +51,8 @@ export function ManualLocation() {
       }
     }
 
-    getStateData();
     setData();
-  }, [urlRegionData]);
+  }, [getCityData, getStateData, urlRegionData]);
 
   //"시/군/구" 선택 후 버튼 눌러야 이동
   function sendRegionInfo(e: React.MouseEvent<HTMLButtonElement>,

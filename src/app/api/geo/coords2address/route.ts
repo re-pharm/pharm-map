@@ -15,7 +15,7 @@ export async function GET(request: Request) {
 
     return NextResponse.json({
       state: addressJson.documents[0]["region_1depth_name"],
-      city: addressJson.documents[0]["region_2depth_name"].split(' ')[0]
+      city: addressJson.documents[0]["region_2depth_name"]
     })
   } else if (addressData.status !== 500) {
     return NextResponse.json({ error: "현재 위치를 파악할 수 없습니다. 국내 주소가 맞는지, 위치 측정이 불가한 장소에 있지는 않은지 확인해주세요."}, { status: 400 });
@@ -23,5 +23,3 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "카카오 위치 변환 API 서비스가 점검 중입니다."}, { status: 500 });
   }
 }
-
-export const runtime = 'edge';

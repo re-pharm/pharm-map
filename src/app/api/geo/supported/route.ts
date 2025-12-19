@@ -2,6 +2,8 @@ import { NextResponse } from "next/server";
 import { ERROR } from "@/app/types/errormessages";
 import { sbHeader } from "@/app/types/rest";
 import { db } from "@/app/utils/data/database";
+import { supported_cities, supported_states } from "@/schemas/data";
+import { eq, and } from "drizzle-orm";
 
 type ListType = {
   code: string,
@@ -28,17 +30,12 @@ export async function GET(request: Request) {
     
   switch(type) {
     case "state":
-      const stateList: ListType[] = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_states?available=eq.true`, 
-        sbHeader)
-        .then((res) => res.json());
+      const stateList = await db.select().from(supported_states).where(eq(supported_states.avail, true));
 
       return NextResponse.json(stateList);
     case "city":
       if (state !== null) {
-        const cityList: ListType[] = 
-          await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities${
-            `?state=eq.${state}&available=eq.true&select=code,name`
-          }`, sbHeader).then((res) => res.json());
+        const cityList = await db.select().from(supported_cities).where(and(eq(supported_cities.avail, true), eq(supported_cities.state, state)));
                 
         return NextResponse.json(cityList);
       } else {
@@ -47,37 +44,32 @@ export async function GET(request: Request) {
                 
     case "geo":
     case "single":
-      const data: DetailType[] = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
-        "state(name,code),name,city:code"
-      }&or=(name.eq.${city},code.eq.${city})&available=eq.true`, sbHeader).then((res) => res.json());
+      if (city && state) {
+        const data = await db.select().from(supported_cities)
+          .leftJoin(supported_states, eq(supported_cities.state, supported_states.code))
+          .where(and(and(eq(supported_cities.name, city), eq(supported_states.name, state)), eq(supported_cities.avail, true)));
 
-      const selected: DetailType | null = (data.length === 1 ? data[0] :
-        data.length > 1 ? data.filter((region) => (
-          region.state.name === state ||
-                    region.state.code === state
-        ))[0] : null);
-
-      if (selected) {
-        if (type === "geo") {
-          return NextResponse.json({
-            state: selected.state.code,
-            city: selected.city,
-            integrated: selected.integrated,
-            lat: selected.lat,
-            lng: selected.lng
-          });    
-        }
-
-        return NextResponse.json({
-          state: selected.state,
-          city: {
-            code: selected.city,
-            name: selected.name
+        if (data.length > 0) {
+          if (type === "geo") {
+            return NextResponse.json({
+              state: data[0].supported_states?.code,
+              city: data[0].supported_cities?.code,
+              lat: data[0].supported_cities.lat,
+              lng: data[0].supported_cities.lng
+            });
+          } else {
+            return {
+              state: data[0].supported_states,
+              city: {
+                code: data[0].supported_cities.code,
+                name: data[0].supported_cities.name
+              }
+            }
           }
-        })
-      } else {
-        return NextResponse.json({error: ERROR.UNSUPPORTED}, {status: 400});
+        }
       }
+      
+      return NextResponse.json({error: ERROR.UNSUPPORTED}, {status: 400});
     case "current":
       const current: DetailType[] = await fetch(`${process.env.SUPABASE_URL}/rest/v1/supported_cities?select=${
         `integrated, lat, lng&and=(state.eq.${state}, code.eq.${city})`
@@ -96,5 +88,3 @@ export async function GET(request: Request) {
       return NextResponse.json({error: ERROR.INVALIDATE_REGION}, {status: 400});
   }
 }
-
-export const runtime = 'edge';
