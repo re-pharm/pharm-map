@@ -270,52 +270,52 @@
         "version": "4.12.2"
       }
     },
-    "@eslint/config-array@npm:^0.23.3": {
-      "checksum": "2917b6855e4c5058b09fba369b63b6b8eb8d291f867e0fc7e628990fdc8dcd5746b492010bb187fc2f81c729f6454ce7e9ffd43715f8cf984d267bd2fe4e138e",
+    "@eslint/config-array@npm:^0.23.5": {
+      "checksum": "2bce91fc62ee67c491d71171a5a5f8aadf6372c9dae4ffc9d83fec7daecf820fb118c0a046447827dd42102d0dc252fc3c40ab9e9817c61789bc2eb4aaec4676",
       "resolution": {
-        "resolution": "@eslint/config-array@npm:0.23.3",
-        "version": "0.23.3",
+        "resolution": "@eslint/config-array@npm:0.23.5",
+        "version": "0.23.5",
         "dependencies": {
-          "@eslint/object-schema": "^3.0.3",
+          "@eslint/object-schema": "^3.0.5",
           "debug": "^4.3.1",
           "minimatch": "^10.2.4"
         }
       }
     },
-    "@eslint/config-helpers@npm:^0.5.2": {
-      "checksum": "744a81ced430cdcc14660cf7581d3c7062d3f76d48461e9087f197a15531b1795929cad8f6c8f319436b8e612ab5fae877c42593ce1309a51f1e0ae6b513e56c",
+    "@eslint/config-helpers@npm:^0.5.5": {
+      "checksum": "0bed8af5795e9f2b7c2b9f248e7e7b2d5345c3ec265f83eecc50365ff250612d3562a46609230edfcb7295fe2fd8e08c862202bc8aaa4f83f8b8ec3c9b9b1ba8",
       "resolution": {
-        "resolution": "@eslint/config-helpers@npm:0.5.3",
-        "version": "0.5.3",
+        "resolution": "@eslint/config-helpers@npm:0.5.5",
+        "version": "0.5.5",
         "dependencies": {
-          "@eslint/core": "^1.1.1"
+          "@eslint/core": "^1.2.1"
         }
       }
     },
-    "@eslint/core@npm:^1.1.1": {
-      "checksum": "e8ffc4535b84ab1314769a17e26cdeb0c6453b488a3c8457ebb2f84342d1eb8e890da668e507b3b3ec4a261b519476d6a3d8a9882a30ab22bd9d59c3fecea8bf",
+    "@eslint/core@npm:^1.2.1": {
+      "checksum": "e50ad98c7d2f1a351081e8d728128a2315746bbd33c769ba76003bfcbbf436e2e5fcdcebd87184054bad14015aca8b1e860acf2b55f89aef4d418d17e5e638fb",
       "resolution": {
-        "resolution": "@eslint/core@npm:1.1.1",
-        "version": "1.1.1",
+        "resolution": "@eslint/core@npm:1.2.1",
+        "version": "1.2.1",
         "dependencies": {
           "@types/json-schema": "^7.0.15"
         }
       }
     },
-    "@eslint/object-schema@npm:^3.0.3": {
-      "checksum": "07bcf48ba965333e5521b9bfc95ae55275fd8a5e8917f426b0bdf6429a5acbe885b30c39ff69c9ca7f04877e989035ca95cde607a6d446400532133211534aaf",
+    "@eslint/object-schema@npm:^3.0.5": {
+      "checksum": "4b226db475971fdb9c76bb6157d376e8b76e0a9444fb49fd7cc05717c4085bef2b4468273b9a7c22c03424a68c431bbd4f4ee5774a21ce042212822c335e824c",
       "resolution": {
-        "resolution": "@eslint/object-schema@npm:3.0.3",
-        "version": "3.0.3"
+        "resolution": "@eslint/object-schema@npm:3.0.5",
+        "version": "3.0.5"
       }
     },
-    "@eslint/plugin-kit@npm:^0.6.1": {
-      "checksum": "fffd3df6c84d507c42a61d5a7fe75187ec302d4fe217905a912e1597ee5b535f22889ce2542a0348d44d1322ea7de79455eb91bc49f36a05577f0b10a251870f",
+    "@eslint/plugin-kit@npm:^0.7.1": {
+      "checksum": "42e01c1bdeca0b3aefdfd717b16792029668af1e1d63564fee98faa37e9e7e78386c82ad563fa1b18afb70ae9f3f3e6245120b1d6b2a3560662f66577d2c297e",
       "resolution": {
-        "resolution": "@eslint/plugin-kit@npm:0.6.1",
-        "version": "0.6.1",
+        "resolution": "@eslint/plugin-kit@npm:0.7.1",
+        "version": "0.7.1",
         "dependencies": {
-          "@eslint/core": "^1.1.1",
+          "@eslint/core": "^1.2.1",
           "levn": "^0.4.1"
         }
       }
@@ -347,11 +347,11 @@
         }
       }
     },
-    "@fortawesome/react-fontawesome@npm:^3.2.0": {
-      "checksum": "b3d621ebab06241fec3602a08aa34edccc00814d91024269a85883d768ffecbea37c9833868a7e819bb4fd18d815ebed307866953b5cc5da4bf21d55f7c0f2c0",
+    "@fortawesome/react-fontawesome@npm:^3.3.1": {
+      "checksum": "9cce30ae22fc953f87f781965d667183036cffe1675a147a80d79da4ecb79ebb95ea20f52449360723a8ab9df8d36f8c7989ed127be6a85e061f4e55a5240fdd",
       "resolution": {
-        "resolution": "@fortawesome/react-fontawesome@npm:3.2.0",
-        "version": "3.2.0",
+        "resolution": "@fortawesome/react-fontawesome@npm:3.3.1",
+        "version": "3.3.1",
         "peerDependencies": {
           "@fortawesome/fontawesome-svg-core": "~6 || ~7",
           "react": "^18.0.0 || ^19.0.0"
@@ -924,28 +924,28 @@
         }
       }
     },
-    "@next/env@npm:16.1.6": {
-      "checksum": "578d494bbf8302580fd874cfc9dd9ca55dd9b010ea44fa6bbcc1b7203d9a5356bc75fd80cd475d51775c770ee412dba164c36cbc578ae872e11627607258b2d1",
+    "@next/env@npm:16.2.4": {
+      "checksum": "70da0e3af555e860806d9d5fbd022f233f88fbbd5da48d971d91e48ce9c9d33f4bd39eabea42e104ebc9582d08290e8b20fff6f3b87142367988c39da19786bb",
       "resolution": {
-        "resolution": "@next/env@npm:16.1.6",
-        "version": "16.1.6"
+        "resolution": "@next/env@npm:16.2.4",
+        "version": "16.2.4"
       }
     },
-    "@next/eslint-plugin-next@npm:16.1.6": {
-      "checksum": "45602cd0d8753811647189543f735c0b08adc77a7d01b4328d61fbe3aebfd7de77e962472dcc0e7b43ab38091ce1be00150a4d0bc02fd9c646a53649988ab0f5",
+    "@next/eslint-plugin-next@npm:16.2.4": {
+      "checksum": "0dae58f359bc009b8809617860942c35b5e3f4340ea72243c59aee9514c36267092e7956a31d9890f60e0d30e4654b1a5e63db1da6364ae8476a494cfbba8386",
       "resolution": {
-        "resolution": "@next/eslint-plugin-next@npm:16.1.6",
-        "version": "16.1.6",
+        "resolution": "@next/eslint-plugin-next@npm:16.2.4",
+        "version": "16.2.4",
         "dependencies": {
           "fast-glob": "3.3.1"
         }
       }
     },
-    "@next/swc-darwin-arm64@npm:16.1.6": {
+    "@next/swc-darwin-arm64@npm:16.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@next/swc-darwin-arm64@npm:16.1.6",
-        "version": "16.1.6",
+        "resolution": "@next/swc-darwin-arm64@npm:16.2.4",
+        "version": "16.2.4",
         "requirements": {
           "cpu": [
             "arm64"
@@ -956,11 +956,11 @@
         }
       }
     },
-    "@next/swc-darwin-x64@npm:16.1.6": {
+    "@next/swc-darwin-x64@npm:16.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@next/swc-darwin-x64@npm:16.1.6",
-        "version": "16.1.6",
+        "resolution": "@next/swc-darwin-x64@npm:16.2.4",
+        "version": "16.2.4",
         "requirements": {
           "cpu": [
             "x64"
@@ -971,11 +971,11 @@
         }
       }
     },
-    "@next/swc-linux-arm64-gnu@npm:16.1.6": {
+    "@next/swc-linux-arm64-gnu@npm:16.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@next/swc-linux-arm64-gnu@npm:16.1.6",
-        "version": "16.1.6",
+        "resolution": "@next/swc-linux-arm64-gnu@npm:16.2.4",
+        "version": "16.2.4",
         "requirements": {
           "cpu": [
             "arm64"
@@ -989,11 +989,11 @@
         }
       }
     },
-    "@next/swc-linux-arm64-musl@npm:16.1.6": {
+    "@next/swc-linux-arm64-musl@npm:16.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@next/swc-linux-arm64-musl@npm:16.1.6",
-        "version": "16.1.6",
+        "resolution": "@next/swc-linux-arm64-musl@npm:16.2.4",
+        "version": "16.2.4",
         "requirements": {
           "cpu": [
             "arm64"
@@ -1007,11 +1007,11 @@
         }
       }
     },
-    "@next/swc-linux-x64-gnu@npm:16.1.6": {
+    "@next/swc-linux-x64-gnu@npm:16.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@next/swc-linux-x64-gnu@npm:16.1.6",
-        "version": "16.1.6",
+        "resolution": "@next/swc-linux-x64-gnu@npm:16.2.4",
+        "version": "16.2.4",
         "requirements": {
           "cpu": [
             "x64"
@@ -1025,11 +1025,11 @@
         }
       }
     },
-    "@next/swc-linux-x64-musl@npm:16.1.6": {
+    "@next/swc-linux-x64-musl@npm:16.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@next/swc-linux-x64-musl@npm:16.1.6",
-        "version": "16.1.6",
+        "resolution": "@next/swc-linux-x64-musl@npm:16.2.4",
+        "version": "16.2.4",
         "requirements": {
           "cpu": [
             "x64"
@@ -1043,11 +1043,11 @@
         }
       }
     },
-    "@next/swc-win32-arm64-msvc@npm:16.1.6": {
+    "@next/swc-win32-arm64-msvc@npm:16.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@next/swc-win32-arm64-msvc@npm:16.1.6",
-        "version": "16.1.6",
+        "resolution": "@next/swc-win32-arm64-msvc@npm:16.2.4",
+        "version": "16.2.4",
         "requirements": {
           "cpu": [
             "arm64"
@@ -1058,11 +1058,11 @@
         }
       }
     },
-    "@next/swc-win32-x64-msvc@npm:16.1.6": {
+    "@next/swc-win32-x64-msvc@npm:16.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@next/swc-win32-x64-msvc@npm:16.1.6",
-        "version": "16.1.6",
+        "resolution": "@next/swc-win32-x64-msvc@npm:16.2.4",
+        "version": "16.2.4",
         "requirements": {
           "cpu": [
             "x64"
@@ -1071,6 +1071,13 @@
             "win32"
           ]
         }
+      }
+    },
+    "@nodable/entities@npm:^2.1.0": {
+      "checksum": "66ef21896f6f824e357a291db4b6f98cf6c28829f8f2d90fc79e3c7a57cb308be95a02baffba700d43d4ffb2c4af14afa929c63c00b7ffe372afa8986a679118",
+      "resolution": {
+        "resolution": "@nodable/entities@npm:2.1.0",
+        "version": "2.1.0"
       }
     },
     "@nodelib/fs.scandir@npm:2.1.5": {
@@ -1124,84 +1131,91 @@
         "version": "1.1.0"
       }
     },
-    "@supabase/auth-js@npm:2.99.0": {
-      "checksum": "7e69031454f5c1e2406ab2a9d93f9b8197343f280e842fdba74e3b99bb687cd71c9a001d9ed1dea7d8c997575abcccc60a0b299bdef3abe1ca25f1f182efd9a1",
+    "@supabase/auth-js@npm:2.104.1": {
+      "checksum": "71e5069f8a6c37be9c21cfc736108dcb7c3922401831baf2fff8b3850f84a5017130f159d78d95c07301d749a53d8b475450eb8ae4bf523801dbc856b1bcf0b7",
       "resolution": {
-        "resolution": "@supabase/auth-js@npm:2.99.0",
-        "version": "2.99.0",
+        "resolution": "@supabase/auth-js@npm:2.104.1",
+        "version": "2.104.1",
         "dependencies": {
           "tslib": "2.8.1"
         }
       }
     },
-    "@supabase/functions-js@npm:2.99.0": {
-      "checksum": "f2e405ecff8b12ea7cfb1a7e24a131826cdd4c406e5b9417f0b8b8cb5137bc53dd24f8839957bdcdb66d05f14d4fe9fa920ab01028a3896226acb5560e9f6f5f",
+    "@supabase/functions-js@npm:2.104.1": {
+      "checksum": "abffb4c06f170c588c3f724bae8d53d87cde70c511c4a741e39de4ba2c5667150e4fe968ef55ba8c96e463f913d746e7aa8fca82771189c2205473db421005e8",
       "resolution": {
-        "resolution": "@supabase/functions-js@npm:2.99.0",
-        "version": "2.99.0",
+        "resolution": "@supabase/functions-js@npm:2.104.1",
+        "version": "2.104.1",
         "dependencies": {
           "tslib": "2.8.1"
         }
       }
     },
-    "@supabase/postgrest-js@npm:2.99.0": {
-      "checksum": "75aa13784b6dc1b0bde05a8f6ab4cfe0a2e61f1cce5e890a0ecbfd6c535bbded5c327c64fb3aca9acdbe9e3420498e89d718e4afacc7ee4fc6464c6db35b2832",
+    "@supabase/phoenix@npm:^0.4.0": {
+      "checksum": "8360a6bda87d59ff1e1de4a7ba8dd2959aee606accb75623d915210ec17525e10ea17967d4ebd634309ed33ffee8ae67786d6652a3ea27ea7aab0e70f62de5aa",
       "resolution": {
-        "resolution": "@supabase/postgrest-js@npm:2.99.0",
-        "version": "2.99.0",
+        "resolution": "@supabase/phoenix@npm:0.4.0",
+        "version": "0.4.0"
+      }
+    },
+    "@supabase/postgrest-js@npm:2.104.1": {
+      "checksum": "63b8e0a92976a1aad586a3545c89922bc6e3e924e9fa1bebc960b03c1b9e1a791552072a95585ed67bf35885842becd366eb41f5a51887f2700c694fba43b641",
+      "resolution": {
+        "resolution": "@supabase/postgrest-js@npm:2.104.1",
+        "version": "2.104.1",
         "dependencies": {
           "tslib": "2.8.1"
         }
       }
     },
-    "@supabase/realtime-js@npm:2.99.0": {
-      "checksum": "1f533c367916d0a7ef63714fb544a3f3869612815a0e2eca398ffe91713e0505aa2dda00f767ccb48d2dc4ee239c5445f5a8e1bd5f09da4aaffc8af5d4e356ec",
+    "@supabase/realtime-js@npm:2.104.1": {
+      "checksum": "63a1e6156b93aa3c28bb760ee013bc64f2d5175be91e3d896baea80ddf7adedcbcd4c6683eb7f3d1c891368ace49413bb9f164b03e986b12e3d1bda60babca25",
       "resolution": {
-        "resolution": "@supabase/realtime-js@npm:2.99.0",
-        "version": "2.99.0",
+        "resolution": "@supabase/realtime-js@npm:2.104.1",
+        "version": "2.104.1",
         "dependencies": {
-          "@types/phoenix": "^1.6.6",
+          "@supabase/phoenix": "^0.4.0",
           "@types/ws": "^8.18.1",
           "tslib": "2.8.1",
           "ws": "^8.18.2"
         }
       }
     },
-    "@supabase/ssr@npm:^0.9.0": {
-      "checksum": "396afaa8bc8e923d14d64f33c0abf763bc83067abbd6409f742df488c934ec6a4fb741c898fbdb0713ae2087b386965f789ce044a8d472299b1082cb835b6d98",
+    "@supabase/ssr@npm:^0.10.2": {
+      "checksum": "f8bad5a793c257a27fb74baac587a6f7b93b4658c35c1ef1eda1fa1ff76399b2f0fb813f90d48a0041a95b628f5fa9327989d2ab15921d29f9b72313f3083f3e",
       "resolution": {
-        "resolution": "@supabase/ssr@npm:0.9.0",
-        "version": "0.9.0",
+        "resolution": "@supabase/ssr@npm:0.10.2",
+        "version": "0.10.2",
         "dependencies": {
           "cookie": "^1.0.2"
         },
         "peerDependencies": {
-          "@supabase/supabase-js": "^2.97.0"
+          "@supabase/supabase-js": "^2.102.1"
         }
       }
     },
-    "@supabase/storage-js@npm:2.99.0": {
-      "checksum": "cf054a7431eae293b4e6ecd539cef7afaba9ac7863f82144b3ca898453fffc8004e094f282c5c277aca42fe598186f40214bd66a2fbf9e9b975a1eff52be8c91",
+    "@supabase/storage-js@npm:2.104.1": {
+      "checksum": "8eef3b004299ecfaff040ff9e4bdf857cf7ebef08e12a87b865b5705a5ed810a1a1c18a3c281b109663e05ec6f0efa41f5e6101ce98f0acae3895e0e5f409601",
       "resolution": {
-        "resolution": "@supabase/storage-js@npm:2.99.0",
-        "version": "2.99.0",
+        "resolution": "@supabase/storage-js@npm:2.104.1",
+        "version": "2.104.1",
         "dependencies": {
           "iceberg-js": "^0.8.1",
           "tslib": "2.8.1"
         }
       }
     },
-    "@supabase/supabase-js@npm:^2.99.0": {
-      "checksum": "a148a934c9464ce284e6f73b090cb2a09a309af5d510b00be39b42084d7b845aaa3f54bc0599e84a065eee9373a602718d9f0d151d23f257ddeaa3d877571246",
+    "@supabase/supabase-js@npm:^2.104.1": {
+      "checksum": "438afa81e3b25551585379f4a2563cdc0119bc6bd9adb0c11d57a20faa9feb879a33cc0ceee866c4ef800496296287fae27b0f6a314c45b9b3d5db3f4bd13866",
       "resolution": {
-        "resolution": "@supabase/supabase-js@npm:2.99.0",
-        "version": "2.99.0",
+        "resolution": "@supabase/supabase-js@npm:2.104.1",
+        "version": "2.104.1",
         "dependencies": {
-          "@supabase/auth-js": "2.99.0",
-          "@supabase/functions-js": "2.99.0",
-          "@supabase/postgrest-js": "2.99.0",
-          "@supabase/realtime-js": "2.99.0",
-          "@supabase/storage-js": "2.99.0"
+          "@supabase/auth-js": "2.104.1",
+          "@supabase/functions-js": "2.104.1",
+          "@supabase/postgrest-js": "2.104.1",
+          "@supabase/realtime-js": "2.104.1",
+          "@supabase/storage-js": "2.104.1"
         }
       }
     },
@@ -1228,40 +1242,40 @@
         }
       }
     },
-    "@tailwindcss/node@npm:4.2.1": {
-      "checksum": "66e44d04422c74fb3b5629afc4fdbca48eeab611f3460063f240a2d5c7c239338023ce70c69c983131f08bcf94b18583a02e035c8992fd02502a4b5b38511267",
+    "@tailwindcss/node@npm:4.2.4": {
+      "checksum": "509b1f404f6e17b188da73b0a69656882495544bb71fdc3488986c7ce21dbe488e1bc2067c91a52891cc5ad24fdb9aa522fde5ec3a378b894a92a662b45125ea",
       "resolution": {
-        "resolution": "@tailwindcss/node@npm:4.2.1",
-        "version": "4.2.1",
+        "resolution": "@tailwindcss/node@npm:4.2.4",
+        "version": "4.2.4",
         "dependencies": {
           "@jridgewell/remapping": "^2.3.5",
           "enhanced-resolve": "^5.19.0",
           "jiti": "^2.6.1",
-          "lightningcss": "1.31.1",
+          "lightningcss": "1.32.0",
           "magic-string": "^0.30.21",
           "source-map-js": "^1.2.1",
-          "tailwindcss": "4.2.1"
+          "tailwindcss": "4.2.4"
         }
       }
     },
-    "@tailwindcss/oxide@npm:4.2.1": {
-      "checksum": "7cac9cbc4dcb1bd4d1357a89f71107c38bfa097fea29cd22f3bf654717adb7dffcc298c32c5a9ee0dd96c9b37dfc71d8be5e25ed253dcd590206b2ec32cff393",
+    "@tailwindcss/oxide@npm:4.2.4": {
+      "checksum": "e38022b240f28d4b23c1a49929151250e0a6b2c7eb30f0265dc55e218c90238d46226843aae24f2a7e277f57b3dd43cd0c4d9b10b277fc1a4fbde286d8655700",
       "resolution": {
-        "resolution": "@tailwindcss/oxide@npm:4.2.1",
-        "version": "4.2.1",
+        "resolution": "@tailwindcss/oxide@npm:4.2.4",
+        "version": "4.2.4",
         "dependencies": {
-          "@tailwindcss/oxide-android-arm64": "4.2.1",
-          "@tailwindcss/oxide-darwin-arm64": "4.2.1",
-          "@tailwindcss/oxide-darwin-x64": "4.2.1",
-          "@tailwindcss/oxide-freebsd-x64": "4.2.1",
-          "@tailwindcss/oxide-linux-arm-gnueabihf": "4.2.1",
-          "@tailwindcss/oxide-linux-arm64-gnu": "4.2.1",
-          "@tailwindcss/oxide-linux-arm64-musl": "4.2.1",
-          "@tailwindcss/oxide-linux-x64-gnu": "4.2.1",
-          "@tailwindcss/oxide-linux-x64-musl": "4.2.1",
-          "@tailwindcss/oxide-wasm32-wasi": "4.2.1",
-          "@tailwindcss/oxide-win32-arm64-msvc": "4.2.1",
-          "@tailwindcss/oxide-win32-x64-msvc": "4.2.1"
+          "@tailwindcss/oxide-android-arm64": "4.2.4",
+          "@tailwindcss/oxide-darwin-arm64": "4.2.4",
+          "@tailwindcss/oxide-darwin-x64": "4.2.4",
+          "@tailwindcss/oxide-freebsd-x64": "4.2.4",
+          "@tailwindcss/oxide-linux-arm-gnueabihf": "4.2.4",
+          "@tailwindcss/oxide-linux-arm64-gnu": "4.2.4",
+          "@tailwindcss/oxide-linux-arm64-musl": "4.2.4",
+          "@tailwindcss/oxide-linux-x64-gnu": "4.2.4",
+          "@tailwindcss/oxide-linux-x64-musl": "4.2.4",
+          "@tailwindcss/oxide-wasm32-wasi": "4.2.4",
+          "@tailwindcss/oxide-win32-arm64-msvc": "4.2.4",
+          "@tailwindcss/oxide-win32-x64-msvc": "4.2.4"
         },
         "optionalDependencies": [
           "@tailwindcss/oxide-android-arm64",
@@ -1279,11 +1293,11 @@
         ]
       }
     },
-    "@tailwindcss/oxide-android-arm64@npm:4.2.1": {
+    "@tailwindcss/oxide-android-arm64@npm:4.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@tailwindcss/oxide-android-arm64@npm:4.2.1",
-        "version": "4.2.1",
+        "resolution": "@tailwindcss/oxide-android-arm64@npm:4.2.4",
+        "version": "4.2.4",
         "requirements": {
           "cpu": [
             "arm64"
@@ -1294,11 +1308,11 @@
         }
       }
     },
-    "@tailwindcss/oxide-darwin-arm64@npm:4.2.1": {
+    "@tailwindcss/oxide-darwin-arm64@npm:4.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@tailwindcss/oxide-darwin-arm64@npm:4.2.1",
-        "version": "4.2.1",
+        "resolution": "@tailwindcss/oxide-darwin-arm64@npm:4.2.4",
+        "version": "4.2.4",
         "requirements": {
           "cpu": [
             "arm64"
@@ -1309,11 +1323,11 @@
         }
       }
     },
-    "@tailwindcss/oxide-darwin-x64@npm:4.2.1": {
+    "@tailwindcss/oxide-darwin-x64@npm:4.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@tailwindcss/oxide-darwin-x64@npm:4.2.1",
-        "version": "4.2.1",
+        "resolution": "@tailwindcss/oxide-darwin-x64@npm:4.2.4",
+        "version": "4.2.4",
         "requirements": {
           "cpu": [
             "x64"
@@ -1324,11 +1338,11 @@
         }
       }
     },
-    "@tailwindcss/oxide-freebsd-x64@npm:4.2.1": {
+    "@tailwindcss/oxide-freebsd-x64@npm:4.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@tailwindcss/oxide-freebsd-x64@npm:4.2.1",
-        "version": "4.2.1",
+        "resolution": "@tailwindcss/oxide-freebsd-x64@npm:4.2.4",
+        "version": "4.2.4",
         "requirements": {
           "cpu": [
             "x64"
@@ -1339,11 +1353,11 @@
         }
       }
     },
-    "@tailwindcss/oxide-linux-arm-gnueabihf@npm:4.2.1": {
+    "@tailwindcss/oxide-linux-arm-gnueabihf@npm:4.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@tailwindcss/oxide-linux-arm-gnueabihf@npm:4.2.1",
-        "version": "4.2.1",
+        "resolution": "@tailwindcss/oxide-linux-arm-gnueabihf@npm:4.2.4",
+        "version": "4.2.4",
         "requirements": {
           "cpu": [
             "arm"
@@ -1354,11 +1368,11 @@
         }
       }
     },
-    "@tailwindcss/oxide-linux-arm64-gnu@npm:4.2.1": {
+    "@tailwindcss/oxide-linux-arm64-gnu@npm:4.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@tailwindcss/oxide-linux-arm64-gnu@npm:4.2.1",
-        "version": "4.2.1",
+        "resolution": "@tailwindcss/oxide-linux-arm64-gnu@npm:4.2.4",
+        "version": "4.2.4",
         "requirements": {
           "cpu": [
             "arm64"
@@ -1372,11 +1386,11 @@
         }
       }
     },
-    "@tailwindcss/oxide-linux-arm64-musl@npm:4.2.1": {
+    "@tailwindcss/oxide-linux-arm64-musl@npm:4.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@tailwindcss/oxide-linux-arm64-musl@npm:4.2.1",
-        "version": "4.2.1",
+        "resolution": "@tailwindcss/oxide-linux-arm64-musl@npm:4.2.4",
+        "version": "4.2.4",
         "requirements": {
           "cpu": [
             "arm64"
@@ -1390,11 +1404,11 @@
         }
       }
     },
-    "@tailwindcss/oxide-linux-x64-gnu@npm:4.2.1": {
+    "@tailwindcss/oxide-linux-x64-gnu@npm:4.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@tailwindcss/oxide-linux-x64-gnu@npm:4.2.1",
-        "version": "4.2.1",
+        "resolution": "@tailwindcss/oxide-linux-x64-gnu@npm:4.2.4",
+        "version": "4.2.4",
         "requirements": {
           "cpu": [
             "x64"
@@ -1408,11 +1422,11 @@
         }
       }
     },
-    "@tailwindcss/oxide-linux-x64-musl@npm:4.2.1": {
+    "@tailwindcss/oxide-linux-x64-musl@npm:4.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@tailwindcss/oxide-linux-x64-musl@npm:4.2.1",
-        "version": "4.2.1",
+        "resolution": "@tailwindcss/oxide-linux-x64-musl@npm:4.2.4",
+        "version": "4.2.4",
         "requirements": {
           "cpu": [
             "x64"
@@ -1426,11 +1440,11 @@
         }
       }
     },
-    "@tailwindcss/oxide-wasm32-wasi@npm:4.2.1": {
+    "@tailwindcss/oxide-wasm32-wasi@npm:4.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@tailwindcss/oxide-wasm32-wasi@npm:4.2.1",
-        "version": "4.2.1",
+        "resolution": "@tailwindcss/oxide-wasm32-wasi@npm:4.2.4",
+        "version": "4.2.4",
         "requirements": {
           "cpu": [
             "wasm32"
@@ -1446,11 +1460,11 @@
         }
       }
     },
-    "@tailwindcss/oxide-win32-arm64-msvc@npm:4.2.1": {
+    "@tailwindcss/oxide-win32-arm64-msvc@npm:4.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@tailwindcss/oxide-win32-arm64-msvc@npm:4.2.1",
-        "version": "4.2.1",
+        "resolution": "@tailwindcss/oxide-win32-arm64-msvc@npm:4.2.4",
+        "version": "4.2.4",
         "requirements": {
           "cpu": [
             "arm64"
@@ -1461,11 +1475,11 @@
         }
       }
     },
-    "@tailwindcss/oxide-win32-x64-msvc@npm:4.2.1": {
+    "@tailwindcss/oxide-win32-x64-msvc@npm:4.2.4": {
       "checksum": null,
       "resolution": {
-        "resolution": "@tailwindcss/oxide-win32-x64-msvc@npm:4.2.1",
-        "version": "4.2.1",
+        "resolution": "@tailwindcss/oxide-win32-x64-msvc@npm:4.2.4",
+        "version": "4.2.4",
         "requirements": {
           "cpu": [
             "x64"
@@ -1476,17 +1490,17 @@
         }
       }
     },
-    "@tailwindcss/postcss@npm:^4.2.1": {
-      "checksum": "c7708f1e045dcc3255bfb57370a358e2076bdfee3bd63d4b02f148417d8b27d6087203efb59a1435515c9aa6346e921819f07b38b9945309c557acc46bba2084",
+    "@tailwindcss/postcss@npm:^4.2.4": {
+      "checksum": "8c8ea2bf2a0bba8636056ca28d8fafe7d444ed833b9fb6a22d94a6313cf85b336c658310945f36a826e4d307c63108acb45de218c17c4ed5ab25d14253af3836",
       "resolution": {
-        "resolution": "@tailwindcss/postcss@npm:4.2.1",
-        "version": "4.2.1",
+        "resolution": "@tailwindcss/postcss@npm:4.2.4",
+        "version": "4.2.4",
         "dependencies": {
           "@alloc/quick-lru": "^5.2.0",
-          "@tailwindcss/node": "4.2.1",
-          "@tailwindcss/oxide": "4.2.1",
+          "@tailwindcss/node": "4.2.4",
+          "@tailwindcss/oxide": "4.2.4",
           "postcss": "^8.5.6",
-          "tailwindcss": "4.2.1"
+          "tailwindcss": "4.2.4"
         }
       }
     },
@@ -1546,13 +1560,6 @@
         "dependencies": {
           "undici-types": "~7.16.0"
         }
-      }
-    },
-    "@types/phoenix@npm:^1.6.6": {
-      "checksum": "97046d96963854ada3f30bd8f10648942bdb28b4385e4954b6500606567f55508be9128e6834f9ee4b2c420d4b18c044b4f56dbc91130f3c86ad7528bf76b5e6",
-      "resolution": {
-        "resolution": "@types/phoenix@npm:1.6.6",
-        "version": "1.6.6"
       }
     },
     "@types/react@npm:19.2.14": {
@@ -2044,11 +2051,11 @@
         "version": "2.8.30"
       }
     },
-    "baseline-browser-mapping@npm:^2.8.3": {
-      "checksum": "8a5cfe7878b21363906f39e520badf8d53c6d592bad6323089ff33d6753e4a21c175b68eae7da5b6e775113a938d1adff8d53eb81a41bd1a0b9581843b4142c5",
+    "baseline-browser-mapping@npm:^2.9.19": {
+      "checksum": "3892be5857b58fd737f5f13c5a2fa746bd29a4f073d6b1f96f06f5a449282b27a5f82187dacf62cdbf4a9f9e95e332a5dbbffa7904731745420d164ae3efc07d",
       "resolution": {
-        "resolution": "baseline-browser-mapping@npm:2.10.0",
-        "version": "2.10.0"
+        "resolution": "baseline-browser-mapping@npm:2.10.21",
+        "version": "2.10.21"
       }
     },
     "big-integer@npm:^1.6.44": {
@@ -2833,18 +2840,18 @@
         "version": "4.0.0"
       }
     },
-    "eslint@npm:^10.0.3": {
-      "checksum": "baad410e6508191179abeb712b686a6fd20c106c1bf00309740ca996a2ae1201c4173b27c7eef08706223194944af8ef50a9d122aae0293d86a44d81cc8c666a",
+    "eslint@npm:^10.2.1": {
+      "checksum": "2d80dc47798c037add3fecad8bbfaaa11fa775f8d94454eb10baa8bac823243c94d93a566cf5d62b0f4b642592ef0d4740599a368301b81f2e35d89d728f1dcd",
       "resolution": {
-        "resolution": "eslint@npm:10.0.3",
-        "version": "10.0.3",
+        "resolution": "eslint@npm:10.2.1",
+        "version": "10.2.1",
         "dependencies": {
           "@eslint-community/eslint-utils": "^4.8.0",
           "@eslint-community/regexpp": "^4.12.2",
-          "@eslint/config-array": "^0.23.3",
-          "@eslint/config-helpers": "^0.5.2",
-          "@eslint/core": "^1.1.1",
-          "@eslint/plugin-kit": "^0.6.1",
+          "@eslint/config-array": "^0.23.5",
+          "@eslint/config-helpers": "^0.5.5",
+          "@eslint/core": "^1.2.1",
+          "@eslint/plugin-kit": "^0.7.1",
           "@humanfs/node": "^0.16.6",
           "@humanwhocodes/module-importer": "^1.0.1",
           "@humanwhocodes/retry": "^0.4.2",
@@ -2855,7 +2862,7 @@
           "escape-string-regexp": "^4.0.0",
           "eslint-scope": "^9.1.2",
           "eslint-visitor-keys": "^5.0.1",
-          "espree": "^11.1.1",
+          "espree": "^11.2.0",
           "esquery": "^1.7.0",
           "esutils": "^2.0.2",
           "fast-deep-equal": "^3.1.3",
@@ -2878,13 +2885,13 @@
         ]
       }
     },
-    "eslint-config-next@npm:16.1.6": {
-      "checksum": "1f43c4f3a66b31d87fc5b4e0e5b7c972b8b134b3c9eda9af2365fdd6beaa51bede3ec4af7029b9950c82e615cdddfaac9cdb4830fa2a52628c622a6f852bbdb3",
+    "eslint-config-next@npm:16.2.4": {
+      "checksum": "23b473911285f1e4661d780e98e3444acf46f2fc44cc8c0c6edbacb1ed95eebdc004d0e2d37c5a104141f890da3e8dcf7b34c57ee2a17ef02fb259c09bca1604",
       "resolution": {
-        "resolution": "eslint-config-next@npm:16.1.6",
-        "version": "16.1.6",
+        "resolution": "eslint-config-next@npm:16.2.4",
+        "version": "16.2.4",
         "dependencies": {
-          "@next/eslint-plugin-next": "16.1.6",
+          "@next/eslint-plugin-next": "16.2.4",
           "eslint-import-resolver-node": "^0.3.6",
           "eslint-import-resolver-typescript": "^3.5.2",
           "eslint-plugin-import": "^2.32.0",
@@ -3119,7 +3126,7 @@
         "version": "5.0.1"
       }
     },
-    "espree@npm:^11.1.1": {
+    "espree@npm:^11.2.0": {
       "checksum": "d71a50f95e07ec024a97be78bf6108f0ed3dacf10c25280fbdc17c3f71548bda3b4ead697b819d32f9c3f8c42f7be152306d44760449b2b7c888d720701db01e",
       "resolution": {
         "resolution": "espree@npm:11.2.0",
@@ -3250,21 +3257,26 @@
         "version": "2.0.6"
       }
     },
-    "fast-xml-builder@npm:^1.0.0": {
-      "checksum": "4fa19edfd0b96b4e8417e7ef455a7e25221662ee172a4a7f0bcc84951c439d9e00c21e8b6bde5bb7c737c534a27acd5a0f09ae53b614e9aea3e1b75901b1e4fc",
+    "fast-xml-builder@npm:^1.1.5": {
+      "checksum": "69a112c264c6737cd0ad38f1524374a975e126804f45b68665e10bc39471799c4877254d7060c83fd8a8daaf2c2388ceb0cbd5dc4d2c5b0997e84c0635f4d64e",
       "resolution": {
-        "resolution": "fast-xml-builder@npm:1.0.0",
-        "version": "1.0.0"
+        "resolution": "fast-xml-builder@npm:1.1.5",
+        "version": "1.1.5",
+        "dependencies": {
+          "path-expression-matcher": "^1.1.3"
+        }
       }
     },
-    "fast-xml-parser@npm:^5.4.2": {
-      "checksum": "275e073a73dea50739e130f252761f770a3fa8533e4cce5ec6a67b01eebca9c461608f9eb8de75872335caf06728177c0322a276a7e793e265e4b68343d64bcd",
+    "fast-xml-parser@npm:^5.7.1": {
+      "checksum": "9ea5884d2815b66b49805186373933359da5ccba3bb83ce7834eacfacb3016c101214684bbb15f9cb901dce59bc31d9f45e98b8ab58448917a5b0e2a00117501",
       "resolution": {
-        "resolution": "fast-xml-parser@npm:5.4.2",
-        "version": "5.4.2",
+        "resolution": "fast-xml-parser@npm:5.7.1",
+        "version": "5.7.1",
         "dependencies": {
-          "fast-xml-builder": "^1.0.0",
-          "strnum": "^2.1.2"
+          "@nodable/entities": "^2.1.0",
+          "fast-xml-builder": "^1.1.5",
+          "path-expression-matcher": "^1.5.0",
+          "strnum": "^2.2.3"
         }
       }
     },
@@ -3357,14 +3369,14 @@
         }
       }
     },
-    "framer-motion@npm:^12.35.2": {
-      "checksum": "77cd4d58425de5b557da5dcd798626065e1a6e468fa342fe1f20f38367969d83a188416eee176099187cc7f6eccbab51ebb23c36e36110a67f70d1b50d5d08ad",
+    "framer-motion@npm:^12.38.0": {
+      "checksum": "45353a05043c2c9b798728dedd91efd7b758269334c6f7c26dbfaff0856925eceb3d7244ff6089dce87407247a5df0d2e320506834df9c7df5f9293752b810f6",
       "resolution": {
-        "resolution": "framer-motion@npm:12.35.2",
-        "version": "12.35.2",
+        "resolution": "framer-motion@npm:12.38.0",
+        "version": "12.38.0",
         "dependencies": {
-          "motion-dom": "^12.35.2",
-          "motion-utils": "^12.29.2",
+          "motion-dom": "^12.38.0",
+          "motion-utils": "^12.36.0",
           "tslib": "^2.4.0"
         },
         "peerDependencies": {
@@ -4399,24 +4411,24 @@
         }
       }
     },
-    "lightningcss@npm:1.31.1": {
-      "checksum": "f178744ebd7a0b7049481a356875b037491ea29719f7b85601bd6d71773dc3f802a8ee55d127802fca9aec879d5e9a6488aa94167dd79310aac59d28e754afc9",
+    "lightningcss@npm:1.32.0": {
+      "checksum": "03e8d02e0b3d3ad2301c266505a36b16bce71439fa7821573215ee32a1aa15a61f8323a6e08c6ce159c006f67fe19096a5c05735a0c2e60b7757ff663adada8e",
       "resolution": {
-        "resolution": "lightningcss@npm:1.31.1",
-        "version": "1.31.1",
+        "resolution": "lightningcss@npm:1.32.0",
+        "version": "1.32.0",
         "dependencies": {
           "detect-libc": "^2.0.3",
-          "lightningcss-android-arm64": "1.31.1",
-          "lightningcss-darwin-arm64": "1.31.1",
-          "lightningcss-darwin-x64": "1.31.1",
-          "lightningcss-freebsd-x64": "1.31.1",
-          "lightningcss-linux-arm-gnueabihf": "1.31.1",
-          "lightningcss-linux-arm64-gnu": "1.31.1",
-          "lightningcss-linux-arm64-musl": "1.31.1",
-          "lightningcss-linux-x64-gnu": "1.31.1",
-          "lightningcss-linux-x64-musl": "1.31.1",
-          "lightningcss-win32-arm64-msvc": "1.31.1",
-          "lightningcss-win32-x64-msvc": "1.31.1"
+          "lightningcss-android-arm64": "1.32.0",
+          "lightningcss-darwin-arm64": "1.32.0",
+          "lightningcss-darwin-x64": "1.32.0",
+          "lightningcss-freebsd-x64": "1.32.0",
+          "lightningcss-linux-arm-gnueabihf": "1.32.0",
+          "lightningcss-linux-arm64-gnu": "1.32.0",
+          "lightningcss-linux-arm64-musl": "1.32.0",
+          "lightningcss-linux-x64-gnu": "1.32.0",
+          "lightningcss-linux-x64-musl": "1.32.0",
+          "lightningcss-win32-arm64-msvc": "1.32.0",
+          "lightningcss-win32-x64-msvc": "1.32.0"
         },
         "optionalDependencies": [
           "lightningcss-android-arm64",
@@ -4433,11 +4445,11 @@
         ]
       }
     },
-    "lightningcss-android-arm64@npm:1.31.1": {
+    "lightningcss-android-arm64@npm:1.32.0": {
       "checksum": null,
       "resolution": {
-        "resolution": "lightningcss-android-arm64@npm:1.31.1",
-        "version": "1.31.1",
+        "resolution": "lightningcss-android-arm64@npm:1.32.0",
+        "version": "1.32.0",
         "requirements": {
           "cpu": [
             "arm64"
@@ -4448,11 +4460,11 @@
         }
       }
     },
-    "lightningcss-darwin-arm64@npm:1.31.1": {
+    "lightningcss-darwin-arm64@npm:1.32.0": {
       "checksum": null,
       "resolution": {
-        "resolution": "lightningcss-darwin-arm64@npm:1.31.1",
-        "version": "1.31.1",
+        "resolution": "lightningcss-darwin-arm64@npm:1.32.0",
+        "version": "1.32.0",
         "requirements": {
           "cpu": [
             "arm64"
@@ -4463,11 +4475,11 @@
         }
       }
     },
-    "lightningcss-darwin-x64@npm:1.31.1": {
+    "lightningcss-darwin-x64@npm:1.32.0": {
       "checksum": null,
       "resolution": {
-        "resolution": "lightningcss-darwin-x64@npm:1.31.1",
-        "version": "1.31.1",
+        "resolution": "lightningcss-darwin-x64@npm:1.32.0",
+        "version": "1.32.0",
         "requirements": {
           "cpu": [
             "x64"
@@ -4478,11 +4490,11 @@
         }
       }
     },
-    "lightningcss-freebsd-x64@npm:1.31.1": {
+    "lightningcss-freebsd-x64@npm:1.32.0": {
       "checksum": null,
       "resolution": {
-        "resolution": "lightningcss-freebsd-x64@npm:1.31.1",
-        "version": "1.31.1",
+        "resolution": "lightningcss-freebsd-x64@npm:1.32.0",
+        "version": "1.32.0",
         "requirements": {
           "cpu": [
             "x64"
@@ -4493,11 +4505,11 @@
         }
       }
     },
-    "lightningcss-linux-arm-gnueabihf@npm:1.31.1": {
+    "lightningcss-linux-arm-gnueabihf@npm:1.32.0": {
       "checksum": null,
       "resolution": {
-        "resolution": "lightningcss-linux-arm-gnueabihf@npm:1.31.1",
-        "version": "1.31.1",
+        "resolution": "lightningcss-linux-arm-gnueabihf@npm:1.32.0",
+        "version": "1.32.0",
         "requirements": {
           "cpu": [
             "arm"
@@ -4508,11 +4520,11 @@
         }
       }
     },
-    "lightningcss-linux-arm64-gnu@npm:1.31.1": {
+    "lightningcss-linux-arm64-gnu@npm:1.32.0": {
       "checksum": null,
       "resolution": {
-        "resolution": "lightningcss-linux-arm64-gnu@npm:1.31.1",
-        "version": "1.31.1",
+        "resolution": "lightningcss-linux-arm64-gnu@npm:1.32.0",
+        "version": "1.32.0",
         "requirements": {
           "cpu": [
             "arm64"
@@ -4526,11 +4538,11 @@
         }
       }
     },
-    "lightningcss-linux-arm64-musl@npm:1.31.1": {
+    "lightningcss-linux-arm64-musl@npm:1.32.0": {
       "checksum": null,
       "resolution": {
-        "resolution": "lightningcss-linux-arm64-musl@npm:1.31.1",
-        "version": "1.31.1",
+        "resolution": "lightningcss-linux-arm64-musl@npm:1.32.0",
+        "version": "1.32.0",
         "requirements": {
           "cpu": [
             "arm64"
@@ -4544,11 +4556,11 @@
         }
       }
     },
-    "lightningcss-linux-x64-gnu@npm:1.31.1": {
+    "lightningcss-linux-x64-gnu@npm:1.32.0": {
       "checksum": null,
       "resolution": {
-        "resolution": "lightningcss-linux-x64-gnu@npm:1.31.1",
-        "version": "1.31.1",
+        "resolution": "lightningcss-linux-x64-gnu@npm:1.32.0",
+        "version": "1.32.0",
         "requirements": {
           "cpu": [
             "x64"
@@ -4562,11 +4574,11 @@
         }
       }
     },
-    "lightningcss-linux-x64-musl@npm:1.31.1": {
+    "lightningcss-linux-x64-musl@npm:1.32.0": {
       "checksum": null,
       "resolution": {
-        "resolution": "lightningcss-linux-x64-musl@npm:1.31.1",
-        "version": "1.31.1",
+        "resolution": "lightningcss-linux-x64-musl@npm:1.32.0",
+        "version": "1.32.0",
         "requirements": {
           "cpu": [
             "x64"
@@ -4580,11 +4592,11 @@
         }
       }
     },
-    "lightningcss-win32-arm64-msvc@npm:1.31.1": {
+    "lightningcss-win32-arm64-msvc@npm:1.32.0": {
       "checksum": null,
       "resolution": {
-        "resolution": "lightningcss-win32-arm64-msvc@npm:1.31.1",
-        "version": "1.31.1",
+        "resolution": "lightningcss-win32-arm64-msvc@npm:1.32.0",
+        "version": "1.32.0",
         "requirements": {
           "cpu": [
             "arm64"
@@ -4595,11 +4607,11 @@
         }
       }
     },
-    "lightningcss-win32-x64-msvc@npm:1.31.1": {
+    "lightningcss-win32-x64-msvc@npm:1.32.0": {
       "checksum": null,
       "resolution": {
-        "resolution": "lightningcss-win32-x64-msvc@npm:1.31.1",
-        "version": "1.31.1",
+        "resolution": "lightningcss-win32-x64-msvc@npm:1.32.0",
+        "version": "1.32.0",
         "requirements": {
           "cpu": [
             "x64"
@@ -4751,13 +4763,13 @@
         "version": "1.2.8"
       }
     },
-    "motion@npm:^12.35.2": {
-      "checksum": "0c859deb79d865db07ff6ce2a313664343a0295928dd7a52bb612c663ae528707a3fc16a0092ea4ec6a463fd93a360fea91e54359f03acb657dac941ad5d1945",
+    "motion@npm:^12.38.0": {
+      "checksum": "cee65925fd7b9f188bf03f5fd94a00f4c4447c6a4296da6f1f5e9fc75283308b33176efc582d5399295a8baf14bf115187c76721913ae60864d9e3ee98219b88",
       "resolution": {
-        "resolution": "motion@npm:12.35.2",
-        "version": "12.35.2",
+        "resolution": "motion@npm:12.38.0",
+        "version": "12.38.0",
         "dependencies": {
-          "framer-motion": "^12.35.2",
+          "framer-motion": "^12.38.0",
           "tslib": "^2.4.0"
         },
         "peerDependencies": {
@@ -4772,21 +4784,21 @@
         ]
       }
     },
-    "motion-dom@npm:^12.35.2": {
-      "checksum": "96ea0553b2f808729fbbce5816901853a6726bb28a1368421d17ac8e3f6ed48032d4c8fb08309f84d0174c90317bc2e7ede7c62f7189aaa31bc963c9e607dbe8",
+    "motion-dom@npm:^12.38.0": {
+      "checksum": "175430e8dcbcd1ab7662ad21814a1bf81f50f2f109385e45bb10f3d20e79d422cb79ca07765b01ccbee8d8c5c01fb8a9b899352b083f65375389b8feab4ce93e",
       "resolution": {
-        "resolution": "motion-dom@npm:12.35.2",
-        "version": "12.35.2",
+        "resolution": "motion-dom@npm:12.38.0",
+        "version": "12.38.0",
         "dependencies": {
-          "motion-utils": "^12.29.2"
+          "motion-utils": "^12.36.0"
         }
       }
     },
-    "motion-utils@npm:^12.29.2": {
-      "checksum": "b812f8162cf91c48a3c898ad6ebf47f918d669fee7bb7e1bcbf182b9ed1760717d5a0e45b1882e608c326587f517fc282f1fcc085f5250d2104b179ea98d7b58",
+    "motion-utils@npm:^12.36.0": {
+      "checksum": "ebfb684cacf9877bb5b3af2240ab7654f6accaba4c975eabda74abcb2695716bdd51e3ca40cc40d636819446fd75092a3e008ba0374e743fd35b0cb6aae9d35f",
       "resolution": {
-        "resolution": "motion-utils@npm:12.29.2",
-        "version": "12.29.2"
+        "resolution": "motion-utils@npm:12.36.0",
+        "version": "12.36.0"
       }
     },
     "ms@npm:2.1.2": {
@@ -4824,26 +4836,26 @@
         "version": "1.4.0"
       }
     },
-    "next@npm:^16.1.6": {
-      "checksum": "169467fcdfb6e39dad17d704089e20f13774b8bcddf7874c67cbfd744d5b68420c2084c1a0581aed249018d72f21fd6eaedf7ad1d0068f4ff6d87d7b6a3049bb",
+    "next@npm:^16.2.4": {
+      "checksum": "6ced98bcf8094fe627330182168b10aac24c47063c0493aeabc8b2e005a375232b0014e0155b14fef05dddce74d25dd65ee41f54200474c9af0327bebe1c70ab",
       "resolution": {
-        "resolution": "next@npm:16.1.6",
-        "version": "16.1.6",
+        "resolution": "next@npm:16.2.4",
+        "version": "16.2.4",
         "dependencies": {
-          "@next/env": "16.1.6",
-          "@next/swc-darwin-arm64": "16.1.6",
-          "@next/swc-darwin-x64": "16.1.6",
-          "@next/swc-linux-arm64-gnu": "16.1.6",
-          "@next/swc-linux-arm64-musl": "16.1.6",
-          "@next/swc-linux-x64-gnu": "16.1.6",
-          "@next/swc-linux-x64-musl": "16.1.6",
-          "@next/swc-win32-arm64-msvc": "16.1.6",
-          "@next/swc-win32-x64-msvc": "16.1.6",
+          "@next/env": "16.2.4",
+          "@next/swc-darwin-arm64": "16.2.4",
+          "@next/swc-darwin-x64": "16.2.4",
+          "@next/swc-linux-arm64-gnu": "16.2.4",
+          "@next/swc-linux-arm64-musl": "16.2.4",
+          "@next/swc-linux-x64-gnu": "16.2.4",
+          "@next/swc-linux-x64-musl": "16.2.4",
+          "@next/swc-win32-arm64-msvc": "16.2.4",
+          "@next/swc-win32-x64-msvc": "16.2.4",
           "@swc/helpers": "0.5.15",
-          "baseline-browser-mapping": "^2.8.3",
+          "baseline-browser-mapping": "^2.9.19",
           "caniuse-lite": "^1.0.30001579",
           "postcss": "8.4.31",
-          "sharp": "^0.34.4",
+          "sharp": "^0.34.5",
           "styled-jsx": "5.1.6"
         },
         "peerDependencies": {
@@ -5113,6 +5125,13 @@
         "version": "4.0.0"
       }
     },
+    "path-expression-matcher@npm:^1.1.3, path-expression-matcher@npm:^1.5.0": {
+      "checksum": "3ffc915f118607ca3b584624ba5afae40cf31d797c904c26c268a4b8ae58e3a630acc7c083749f106a1ca8be5acd11f64ffb92fe9f953e5c454baf9e1927f2a4",
+      "resolution": {
+        "resolution": "path-expression-matcher@npm:1.5.0",
+        "version": "1.5.0"
+      }
+    },
     "path-key@npm:^3.0.0, path-key@npm:^3.1.0": {
       "checksum": "7975ea2a38b3199c47a74be5eb6a353a366744bd35e139d1fce6cba761eada303764499e2629f93f3d027b2205e15f207e7e7dc1e0484560c33e4f579df3cfbe",
       "resolution": {
@@ -5181,11 +5200,11 @@
         }
       }
     },
-    "postcss@npm:^8.5.6": {
-      "checksum": "a33db16bf073c454a17372191c35caa14ec9749276592b9a4c9df02ef8849bdbea858b5a79de36ccff2eec3e8283a41e962607d1efdb5ef091b0f85b52e01936",
+    "postcss@npm:^8.5.10": {
+      "checksum": "18bea05cea4d8274cc97841810f164161a16fda51bf7ed59c5655e8398c6059ddd2cbb077108df2525f44fcbdd04207884b1963709b74d7effff2e1673aa0f2c",
       "resolution": {
-        "resolution": "postcss@npm:8.5.6",
-        "version": "8.5.6",
+        "resolution": "postcss@npm:8.5.10",
+        "version": "8.5.10",
         "dependencies": {
           "nanoid": "^3.3.11",
           "picocolors": "^1.1.1",
@@ -5193,11 +5212,11 @@
         }
       }
     },
-    "postcss@npm:^8.5.8": {
-      "checksum": "1f7bf247f0187e0158bf3fd859f91f873e30bc666c5f14b6f891cf717b2f9c629f81fed5124611ee0d0d1579b410c7e219c9c1908d266c4ada057a1e99bf8f8f",
+    "postcss@npm:^8.5.6": {
+      "checksum": "a33db16bf073c454a17372191c35caa14ec9749276592b9a4c9df02ef8849bdbea858b5a79de36ccff2eec3e8283a41e962607d1efdb5ef091b0f85b52e01936",
       "resolution": {
-        "resolution": "postcss@npm:8.5.8",
-        "version": "8.5.8",
+        "resolution": "postcss@npm:8.5.6",
+        "version": "8.5.6",
         "dependencies": {
           "nanoid": "^3.3.11",
           "picocolors": "^1.1.1",
@@ -5238,23 +5257,23 @@
         "version": "1.2.3"
       }
     },
-    "react@npm:^19.2.4": {
-      "checksum": "eb0a012ef87f549784484b134778135d8f06849b3b5b06ffa2e6f742be332c99ea3680005211681ebc0ef8cd018c717b8e9f77c1ecd0f3c399708ae9c377ca86",
+    "react@npm:^19.2.5": {
+      "checksum": "5163011f9094977956c0de766f6f8039a871991913d884178996661f6eb57c6cfc7817d06ad16352d5585e99f11c4703b984ff5b6757e7fd3f8e6bb295d1807c",
       "resolution": {
-        "resolution": "react@npm:19.2.4",
-        "version": "19.2.4"
+        "resolution": "react@npm:19.2.5",
+        "version": "19.2.5"
       }
     },
-    "react-dom@npm:^19.2.4": {
-      "checksum": "79da0bc2c21c3ab86deb5b91fce8c8f5f356c20f881ec6e053519143ed5edf9452374d6407e46aebb129c552e25d14863551487f5abe2a2b2d346e4eb87c6c18",
+    "react-dom@npm:^19.2.5": {
+      "checksum": "72c06753f5ad73c2a14ccd3e3c0729fee91a7c1dfe419ed3b48a18762ae822753d1bbd276e780305db09802b46067e5cbf03658cc021f32f902071c3c9b1277d",
       "resolution": {
-        "resolution": "react-dom@npm:19.2.4",
-        "version": "19.2.4",
+        "resolution": "react-dom@npm:19.2.5",
+        "version": "19.2.5",
         "dependencies": {
           "scheduler": "^0.27.0"
         },
         "peerDependencies": {
-          "react": "^19.2.4"
+          "react": "^19.2.5"
         }
       }
     },
@@ -5547,7 +5566,7 @@
         }
       }
     },
-    "sharp@npm:^0.34.4": {
+    "sharp@npm:^0.34.5": {
       "checksum": "f08060c4c2f3ab473899ee22fd75d656b8b124af7ceb8966be1e96be5674c4fdaef8b5c649fa1817f5bd397c0912d303a4877bec45102f8e449a6e40fd9900da",
       "resolution": {
         "resolution": "sharp@npm:0.34.5",
@@ -5915,11 +5934,11 @@
         "version": "3.0.0"
       }
     },
-    "strnum@npm:^2.1.2": {
-      "checksum": "0cea5f6d2cca220d5fc2b65bd6dd433c12edc4192d4fc487b2c89919fc79fd00a04bd00d5bd99b23a8df3d510686f1556020f8cfc1ee4d3b06b278850fea44fe",
+    "strnum@npm:^2.2.3": {
+      "checksum": "f89ca70a93a26a712129ea4122704fedbe6c3dc449dfaeb88cd55f1ef4c739b62249e8bbb00e21e2c7d381a8a3f7fc5931596d602ad45bc9d022e5c5a3cff57f",
       "resolution": {
-        "resolution": "strnum@npm:2.2.0",
-        "version": "2.2.0"
+        "resolution": "strnum@npm:2.2.3",
+        "version": "2.2.3"
       }
     },
     "styled-jsx@npm:5.1.6": {
@@ -5959,11 +5978,11 @@
         }
       }
     },
-    "tailwindcss@npm:4.2.1, tailwindcss@npm:^4.2.1": {
-      "checksum": "1869ac4715aa4690eb282932e3c1b93d181cef51ec594d76ddc31e39b10b82d469737f622862ec8f2b91b777c44855589e81c14cdb998607fecafcfe7c20f731",
+    "tailwindcss@npm:4.2.4, tailwindcss@npm:^4.2.4": {
+      "checksum": "a55fe3c51a91614d331b350387065ee50642e1bbad0cbc1d1561ce36ff1e406e5bc1edb8f81412513b704644a7a3550e384545b845682d52b8e42f3ee1c1d70c",
       "resolution": {
-        "resolution": "tailwindcss@npm:4.2.1",
-        "version": "4.2.1"
+        "resolution": "tailwindcss@npm:4.2.4",
+        "version": "4.2.4"
       }
     },
     "tapable@npm:^2.2.0": {
